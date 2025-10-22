@@ -16,7 +16,7 @@ namespace SistemadeClinica
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Inicio());
+            Application.Run(new SistemadeClinica.Views.FormLogin());
         }
     }
 }
