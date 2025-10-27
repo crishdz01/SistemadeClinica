@@ -66,6 +66,7 @@ namespace SistemadeClinica.Views
             this.BtnIngresar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.BtnIngresar.UseAccentColor = false;
             this.BtnIngresar.UseVisualStyleBackColor = true;
+            this.BtnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
             // 
             // BtnSalir
             // 
@@ -84,6 +85,7 @@ namespace SistemadeClinica.Views
             this.BtnSalir.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.BtnSalir.UseAccentColor = false;
             this.BtnSalir.UseVisualStyleBackColor = true;
+            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // materialLabel1
             // 

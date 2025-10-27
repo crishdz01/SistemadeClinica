@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SistemadeClinica.Views;
+using SistemadeClinica.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +12,11 @@ using System.Windows.Forms;
 using MaterialSkin;
 using MaterialSkin.Controls;
 
-namespace SistemadeClinica
+namespace SistemadeClinica.Views
 {
-    public partial class Inicio : MaterialForm
+    public partial class FormDashboard : MaterialForm
     {
-        public Inicio()
+        public FormDashboard()
         {
             InitializeComponent();
         }

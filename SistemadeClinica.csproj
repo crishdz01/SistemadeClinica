@@ -107,6 +107,7 @@
     <Compile Include="Models\Administrador.cs" />
     <Compile Include="Models\Medico.cs" />
     <Compile Include="Models\Recepcionista.cs" />
+    <Compile Include="Models\Sesion.cs" />
     <Compile Include="Views\FormDashboard.cs">
       <SubType>Form</SubType>
     </Compile>

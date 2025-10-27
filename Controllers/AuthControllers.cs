@@ -4,6 +4,8 @@ using SistemadeClinica.Models;
 using SistemadeClinica.Data;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Security.Cryptography;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +15,7 @@ namespace SistemadeClinica.Controllers
     //Clase para el login
     public class AuthControllers
     {
-        /*
+        
         private ClaseCRUD crud = new ClaseCRUD();
         public bool Autenticar(string usuario, string password)
         {
@@ -40,6 +42,18 @@ namespace SistemadeClinica.Controllers
                 throw new Exception($"Error en autenticación: {ex.Message}");
             }
         }
-        */
+        public static string GenerarHashSHA256(string input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
     }
 }

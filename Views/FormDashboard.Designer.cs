@@ -1,7 +1,7 @@
 ﻿
-namespace SistemadeClinica
+namespace SistemadeClinica.Views
 {
-    partial class Inicio
+    partial class FormDashboard
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -29,7 +29,7 @@ namespace SistemadeClinica
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDashboard));
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.PanelMedio = new System.Windows.Forms.Panel();
@@ -265,7 +265,7 @@ namespace SistemadeClinica
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1270, 543);
+            this.tabPage3.Size = new System.Drawing.Size(1270, 436);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Medicamentos";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -274,7 +274,7 @@ namespace SistemadeClinica
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1270, 543);
+            this.tabPage4.Size = new System.Drawing.Size(1270, 436);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Pacientes";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -283,19 +283,19 @@ namespace SistemadeClinica
             // 
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1270, 543);
+            this.tabPage5.Size = new System.Drawing.Size(1270, 436);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Perfil";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // Inicio
+            // FormDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1278, 569);
             this.Controls.Add(this.materialTabControl1);
             this.DrawerTabControl = this.materialTabControl1;
-            this.Name = "Inicio";
+            this.Name = "FormDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de gestión de clinica";
             this.Load += new System.EventHandler(this.Inicio_Load);

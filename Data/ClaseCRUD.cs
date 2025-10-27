@@ -1,30 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 //Clase para usar la base
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace SistemadeClinica.Data
 {
     //Clase para la base
     class ClaseCRUD
     {
-        private string Cadena = "server=localhost;port=3306;uid=root;pwd='';database=sistema_de_clinica;";
-        public SqlConnection Conexion; //Comando para la conexion abierta
+        public string Cadena = "server=localhost;port=3306;uid=root;pwd='';database=sistema_de_clinica;";
+        public MySqlConnection Conexion; //Comando para la conexion abierta
 
 
 
-        /*
-        private SqlCommandBuilder cmb;
+
+        private MySqlCommandBuilder cmb;
         public DataSet ds = new DataSet(); //Almacenar datos en memoria
-        public SqlDataAdapter da; //Rellena un DataSet y actualizar una base de datos (Puente entre BD y DataSet).
-        public SqlCommand Comando; //Instrucción de Transact-SQL que se ejecuta en una base de datos de SQL Server.
-                                   //Método para conectar a la BD
+        public MySqlDataAdapter da; //Rellena un DataSet y actualizar una base de datos (Puente entre BD y DataSet).
+        public MySqlCommand Comando; //Instrucción de Transact-SQL que se ejecuta en una base de datos de SQL Server.
+                                     //Método para conectar a la BD
         private void Conectar()
         {
-            Conexion = new SqlConnection(Cadena);
+            Conexion = new MySqlConnection(Cadena);
         }
         //Constructor para conectar, debe tener el mismo nombre de la Clase
         public ClaseCRUD()
@@ -36,7 +37,7 @@ namespace SistemadeClinica.Data
         {
             Conexion.Open();
             string querySQL = "INSERT INTO " + Tabla + "(" + Campos + ") VALUES(" + Valores + ");"; ;
-            Comando = new SqlCommand(querySQL, Conexion);
+            Comando = new MySqlCommand(querySQL, Conexion);
             int i = Comando.ExecuteNonQuery(); //Ejecuta sentencia dentro del servidor
             Conexion.Close();
             if (i > 0) //Evaluar si la variable i devuelve un valor mayor a cero
@@ -52,7 +53,7 @@ namespace SistemadeClinica.Data
         public DataTable Consultar(string Campos, string Tabla)
         {
             string querySQL = "SELECT " + Campos + " FROM " + Tabla;
-            da = new SqlDataAdapter(querySQL, Conexion);
+            da = new MySqlDataAdapter(querySQL, Conexion);
             DataSet dts = new DataSet();
             da.Fill(dts, Tabla); //Fill rellena con los datos del DataSet
             DataTable dt = new DataTable();
@@ -63,8 +64,8 @@ namespace SistemadeClinica.Data
         public void ConsultarGral(string querySQL, string Tabla)
         {
             ds.Tables.Clear(); //Limpiar contenido del DataSet de cualquier información
-            da = new SqlDataAdapter(querySQL, Conexion);
-            cmb = new SqlCommandBuilder(da);
+            da = new MySqlDataAdapter(querySQL, Conexion);
+            cmb = new MySqlCommandBuilder(da);
             da.Fill(ds, Tabla);
         }
         //Método para eliminar registro de una tabla
@@ -72,7 +73,7 @@ namespace SistemadeClinica.Data
         {
             Conexion.Open();
             string querySQL = "DELETE FROM " + Tabla + " WHERE " + Condicion;
-            Comando = new SqlCommand(querySQL, Conexion);
+            Comando = new MySqlCommand(querySQL, Conexion);
             int i = Comando.ExecuteNonQuery(); //Ejecuta sentencia dentro del servidor
             Conexion.Close();
             if (i > 0) //Evaluar si la variable i devuelve un valor mayor a cero
@@ -88,7 +89,7 @@ namespace SistemadeClinica.Data
         public DataTable ConsultarCondicion(string Campos, string Tabla, string Condicion)
         {
             string querySQL = "SELECT " + Campos + " FROM " + Tabla + " WHERE " + Condicion;
-            da = new SqlDataAdapter(querySQL, Conexion);
+            da = new MySqlDataAdapter(querySQL, Conexion);
             DataSet dts = new DataSet();
             da.Fill(dts, Tabla);
             DataTable dt = new DataTable();
@@ -100,7 +101,7 @@ namespace SistemadeClinica.Data
         {
             Conexion.Open();
             string querySQL = "UPDATE " + Tabla + " SET " + Campos + " WHERE " + Condicion;
-            Comando = new SqlCommand(querySQL, Conexion);
+            Comando = new MySqlCommand(querySQL, Conexion);
             int i = Comando.ExecuteNonQuery(); //Ejecuta sentencia dentro del servidor
             Conexion.Close();
             if (i > 0) //Evaluar si la variable i devuelve un valor mayor a cero
@@ -112,7 +113,7 @@ namespace SistemadeClinica.Data
                 return false;
             }
         }
-        
-        */
+
+
     }
 }
