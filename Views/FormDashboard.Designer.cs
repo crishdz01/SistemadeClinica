@@ -50,29 +50,31 @@ namespace SistemadeClinica.Views
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.materialButton5 = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton4 = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton3 = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton2 = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
+            this.BtnVerTodos = new MaterialSkin.Controls.MaterialButton();
+            this.BtnBuscar = new MaterialSkin.Controls.MaterialButton();
+            this.BtnEliminar = new MaterialSkin.Controls.MaterialButton();
+            this.BtnActualizar = new MaterialSkin.Controls.MaterialButton();
+            this.BtnInsertar = new MaterialSkin.Controls.MaterialButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.ComboBoxRol = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.tra = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.TxtUsuarioGestion = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.TxtCorreoGestion = new System.Windows.Forms.TextBox();
+            this.TxtTelefonoGestion = new System.Windows.Forms.TextBox();
+            this.TxtApellidoGestion = new System.Windows.Forms.TextBox();
+            this.TxtNombreGestion = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.ComboBoxSexo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DgvUsuarios = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -97,8 +99,6 @@ namespace SistemadeClinica.Views
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.MaterialControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.PanelMedio.SuspendLayout();
@@ -122,7 +122,7 @@ namespace SistemadeClinica.Views
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvUsuarios)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox5.SuspendLayout();
@@ -319,7 +319,7 @@ namespace SistemadeClinica.Views
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.pictureBox11);
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.DgvUsuarios);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -343,115 +343,116 @@ namespace SistemadeClinica.Views
             // groupBox3
             // 
             this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.groupBox3.Controls.Add(this.materialButton5);
-            this.groupBox3.Controls.Add(this.materialButton4);
-            this.groupBox3.Controls.Add(this.materialButton3);
-            this.groupBox3.Controls.Add(this.materialButton2);
-            this.groupBox3.Controls.Add(this.materialButton1);
+            this.groupBox3.Controls.Add(this.BtnVerTodos);
+            this.groupBox3.Controls.Add(this.BtnBuscar);
+            this.groupBox3.Controls.Add(this.BtnEliminar);
+            this.groupBox3.Controls.Add(this.BtnActualizar);
+            this.groupBox3.Controls.Add(this.BtnInsertar);
             this.groupBox3.Location = new System.Drawing.Point(24, 314);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(998, 59);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             // 
-            // materialButton5
+            // BtnVerTodos
             // 
-            this.materialButton5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton5.Depth = 0;
-            this.materialButton5.DrawShadows = true;
-            this.materialButton5.HighEmphasis = true;
-            this.materialButton5.Icon = null;
-            this.materialButton5.Location = new System.Drawing.Point(793, 14);
-            this.materialButton5.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton5.Name = "materialButton5";
-            this.materialButton5.Size = new System.Drawing.Size(121, 36);
-            this.materialButton5.TabIndex = 10;
-            this.materialButton5.Text = "      VER TODOS      ";
-            this.materialButton5.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton5.UseAccentColor = false;
-            this.materialButton5.UseVisualStyleBackColor = true;
+            this.BtnVerTodos.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnVerTodos.Depth = 0;
+            this.BtnVerTodos.DrawShadows = true;
+            this.BtnVerTodos.HighEmphasis = true;
+            this.BtnVerTodos.Icon = null;
+            this.BtnVerTodos.Location = new System.Drawing.Point(793, 14);
+            this.BtnVerTodos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnVerTodos.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnVerTodos.Name = "BtnVerTodos";
+            this.BtnVerTodos.Size = new System.Drawing.Size(121, 36);
+            this.BtnVerTodos.TabIndex = 10;
+            this.BtnVerTodos.Text = "      VER TODOS      ";
+            this.BtnVerTodos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.BtnVerTodos.UseAccentColor = false;
+            this.BtnVerTodos.UseVisualStyleBackColor = true;
             // 
-            // materialButton4
+            // BtnBuscar
             // 
-            this.materialButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton4.Depth = 0;
-            this.materialButton4.DrawShadows = true;
-            this.materialButton4.HighEmphasis = true;
-            this.materialButton4.Icon = null;
-            this.materialButton4.Location = new System.Drawing.Point(627, 14);
-            this.materialButton4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton4.Name = "materialButton4";
-            this.materialButton4.Size = new System.Drawing.Size(99, 36);
-            this.materialButton4.TabIndex = 9;
-            this.materialButton4.Text = "      BUSCAR      ";
-            this.materialButton4.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton4.UseAccentColor = false;
-            this.materialButton4.UseVisualStyleBackColor = true;
+            this.BtnBuscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnBuscar.Depth = 0;
+            this.BtnBuscar.DrawShadows = true;
+            this.BtnBuscar.HighEmphasis = true;
+            this.BtnBuscar.Icon = null;
+            this.BtnBuscar.Location = new System.Drawing.Point(627, 14);
+            this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnBuscar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnBuscar.Name = "BtnBuscar";
+            this.BtnBuscar.Size = new System.Drawing.Size(99, 36);
+            this.BtnBuscar.TabIndex = 9;
+            this.BtnBuscar.Text = "      BUSCAR      ";
+            this.BtnBuscar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.BtnBuscar.UseAccentColor = false;
+            this.BtnBuscar.UseVisualStyleBackColor = true;
             // 
-            // materialButton3
+            // BtnEliminar
             // 
-            this.materialButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton3.Depth = 0;
-            this.materialButton3.DrawShadows = true;
-            this.materialButton3.HighEmphasis = true;
-            this.materialButton3.Icon = null;
-            this.materialButton3.Location = new System.Drawing.Point(463, 14);
-            this.materialButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton3.Name = "materialButton3";
-            this.materialButton3.Size = new System.Drawing.Size(110, 36);
-            this.materialButton3.TabIndex = 8;
-            this.materialButton3.Text = "      ELIMINAR      ";
-            this.materialButton3.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton3.UseAccentColor = false;
-            this.materialButton3.UseVisualStyleBackColor = true;
+            this.BtnEliminar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnEliminar.Depth = 0;
+            this.BtnEliminar.DrawShadows = true;
+            this.BtnEliminar.HighEmphasis = true;
+            this.BtnEliminar.Icon = null;
+            this.BtnEliminar.Location = new System.Drawing.Point(463, 14);
+            this.BtnEliminar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnEliminar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnEliminar.Name = "BtnEliminar";
+            this.BtnEliminar.Size = new System.Drawing.Size(110, 36);
+            this.BtnEliminar.TabIndex = 8;
+            this.BtnEliminar.Text = "      ELIMINAR      ";
+            this.BtnEliminar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.BtnEliminar.UseAccentColor = false;
+            this.BtnEliminar.UseVisualStyleBackColor = true;
             // 
-            // materialButton2
+            // BtnActualizar
             // 
-            this.materialButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton2.Depth = 0;
-            this.materialButton2.DrawShadows = true;
-            this.materialButton2.HighEmphasis = true;
-            this.materialButton2.Icon = null;
-            this.materialButton2.Location = new System.Drawing.Point(273, 14);
-            this.materialButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton2.Name = "materialButton2";
-            this.materialButton2.Size = new System.Drawing.Size(130, 36);
-            this.materialButton2.TabIndex = 7;
-            this.materialButton2.Text = "      ACTUALIZAR      ";
-            this.materialButton2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton2.UseAccentColor = false;
-            this.materialButton2.UseVisualStyleBackColor = true;
+            this.BtnActualizar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnActualizar.Depth = 0;
+            this.BtnActualizar.DrawShadows = true;
+            this.BtnActualizar.HighEmphasis = true;
+            this.BtnActualizar.Icon = null;
+            this.BtnActualizar.Location = new System.Drawing.Point(273, 14);
+            this.BtnActualizar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnActualizar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnActualizar.Name = "BtnActualizar";
+            this.BtnActualizar.Size = new System.Drawing.Size(130, 36);
+            this.BtnActualizar.TabIndex = 7;
+            this.BtnActualizar.Text = "      ACTUALIZAR      ";
+            this.BtnActualizar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.BtnActualizar.UseAccentColor = false;
+            this.BtnActualizar.UseVisualStyleBackColor = true;
             // 
-            // materialButton1
+            // BtnInsertar
             // 
-            this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton1.Depth = 0;
-            this.materialButton1.DrawShadows = true;
-            this.materialButton1.HighEmphasis = true;
-            this.materialButton1.Icon = null;
-            this.materialButton1.Location = new System.Drawing.Point(93, 14);
-            this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton1.Name = "materialButton1";
-            this.materialButton1.Size = new System.Drawing.Size(112, 36);
-            this.materialButton1.TabIndex = 6;
-            this.materialButton1.Text = "      INSERTAR      ";
-            this.materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton1.UseAccentColor = false;
-            this.materialButton1.UseVisualStyleBackColor = true;
+            this.BtnInsertar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnInsertar.Depth = 0;
+            this.BtnInsertar.DrawShadows = true;
+            this.BtnInsertar.HighEmphasis = true;
+            this.BtnInsertar.Icon = null;
+            this.BtnInsertar.Location = new System.Drawing.Point(93, 14);
+            this.BtnInsertar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnInsertar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnInsertar.Name = "BtnInsertar";
+            this.BtnInsertar.Size = new System.Drawing.Size(112, 36);
+            this.BtnInsertar.TabIndex = 6;
+            this.BtnInsertar.Text = "      INSERTAR      ";
+            this.BtnInsertar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.BtnInsertar.UseAccentColor = false;
+            this.BtnInsertar.UseVisualStyleBackColor = true;
+            this.BtnInsertar.Click += new System.EventHandler(this.BtnInsertar_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.groupBox2.Controls.Add(this.comboBox2);
+            this.groupBox2.Controls.Add(this.ComboBoxRol);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.tra);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.textBox5);
+            this.groupBox2.Controls.Add(this.TxtUsuarioGestion);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Font = new System.Drawing.Font("Perpetua Titling MT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.SystemColors.HotTrack;
@@ -462,13 +463,13 @@ namespace SistemadeClinica.Views
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "DATOS DE INICIO DE SESIÓN";
             // 
-            // comboBox2
+            // ComboBoxRol
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(793, 31);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(131, 28);
-            this.comboBox2.TabIndex = 5;
+            this.ComboBoxRol.FormattingEnabled = true;
+            this.ComboBoxRol.Location = new System.Drawing.Point(793, 31);
+            this.ComboBoxRol.Name = "ComboBoxRol";
+            this.ComboBoxRol.Size = new System.Drawing.Size(131, 28);
+            this.ComboBoxRol.TabIndex = 5;
             // 
             // label8
             // 
@@ -481,12 +482,12 @@ namespace SistemadeClinica.Views
             this.label8.Text = "rol:";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // textBox6
+            // tra
             // 
-            this.textBox6.Location = new System.Drawing.Point(463, 32);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(240, 27);
-            this.textBox6.TabIndex = 3;
+            this.tra.Location = new System.Drawing.Point(463, 32);
+            this.tra.Name = "tra";
+            this.tra.Size = new System.Drawing.Size(240, 27);
+            this.tra.TabIndex = 3;
             // 
             // label7
             // 
@@ -498,12 +499,12 @@ namespace SistemadeClinica.Views
             this.label7.TabIndex = 2;
             this.label7.Text = "Contraseña:";
             // 
-            // textBox5
+            // TxtUsuarioGestion
             // 
-            this.textBox5.Location = new System.Drawing.Point(95, 29);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(227, 27);
-            this.textBox5.TabIndex = 1;
+            this.TxtUsuarioGestion.Location = new System.Drawing.Point(95, 29);
+            this.TxtUsuarioGestion.Name = "TxtUsuarioGestion";
+            this.TxtUsuarioGestion.Size = new System.Drawing.Size(227, 27);
+            this.TxtUsuarioGestion.TabIndex = 1;
             // 
             // label6
             // 
@@ -519,12 +520,12 @@ namespace SistemadeClinica.Views
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.TxtCorreoGestion);
+            this.groupBox1.Controls.Add(this.TxtTelefonoGestion);
+            this.groupBox1.Controls.Add(this.TxtApellidoGestion);
+            this.groupBox1.Controls.Add(this.TxtNombreGestion);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.ComboBoxSexo);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -537,26 +538,44 @@ namespace SistemadeClinica.Views
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DATOS DE USUARIO";
             // 
-            // textBox4
+            // label15
             // 
-            this.textBox4.Location = new System.Drawing.Point(364, 63);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(304, 27);
-            this.textBox4.TabIndex = 9;
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Showcard Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label15.Location = new System.Drawing.Point(13, 31);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(76, 18);
+            this.label15.TabIndex = 10;
+            this.label15.Text = "Nombre:";
             // 
-            // textBox3
+            // TxtCorreoGestion
             // 
-            this.textBox3.Location = new System.Drawing.Point(93, 68);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(176, 27);
-            this.textBox3.TabIndex = 8;
+            this.TxtCorreoGestion.Location = new System.Drawing.Point(364, 63);
+            this.TxtCorreoGestion.Name = "TxtCorreoGestion";
+            this.TxtCorreoGestion.Size = new System.Drawing.Size(304, 27);
+            this.TxtCorreoGestion.TabIndex = 9;
             // 
-            // textBox2
+            // TxtTelefonoGestion
             // 
-            this.textBox2.Location = new System.Drawing.Point(504, 27);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(420, 27);
-            this.textBox2.TabIndex = 7;
+            this.TxtTelefonoGestion.Location = new System.Drawing.Point(93, 68);
+            this.TxtTelefonoGestion.Name = "TxtTelefonoGestion";
+            this.TxtTelefonoGestion.Size = new System.Drawing.Size(176, 27);
+            this.TxtTelefonoGestion.TabIndex = 8;
+            // 
+            // TxtApellidoGestion
+            // 
+            this.TxtApellidoGestion.Location = new System.Drawing.Point(504, 27);
+            this.TxtApellidoGestion.Name = "TxtApellidoGestion";
+            this.TxtApellidoGestion.Size = new System.Drawing.Size(420, 27);
+            this.TxtApellidoGestion.TabIndex = 7;
+            // 
+            // TxtNombreGestion
+            // 
+            this.TxtNombreGestion.Location = new System.Drawing.Point(93, 27);
+            this.TxtNombreGestion.Name = "TxtNombreGestion";
+            this.TxtNombreGestion.Size = new System.Drawing.Size(310, 27);
+            this.TxtNombreGestion.TabIndex = 6;
             // 
             // label5
             // 
@@ -569,13 +588,13 @@ namespace SistemadeClinica.Views
             this.label5.TabIndex = 5;
             this.label5.Text = "Sexo";
             // 
-            // comboBox1
+            // ComboBoxSexo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(732, 63);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(192, 28);
-            this.comboBox1.TabIndex = 4;
+            this.ComboBoxSexo.FormattingEnabled = true;
+            this.ComboBoxSexo.Location = new System.Drawing.Point(732, 63);
+            this.ComboBoxSexo.Name = "ComboBoxSexo";
+            this.ComboBoxSexo.Size = new System.Drawing.Size(192, 28);
+            this.ComboBoxSexo.TabIndex = 4;
             // 
             // label4
             // 
@@ -622,17 +641,17 @@ namespace SistemadeClinica.Views
             this.pictureBox11.TabIndex = 5;
             this.pictureBox11.TabStop = false;
             // 
-            // dataGridView1
+            // DgvUsuarios
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DgvUsuarios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(24, 397);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1030, 138);
-            this.dataGridView1.TabIndex = 3;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.DgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvUsuarios.Location = new System.Drawing.Point(24, 397);
+            this.DgvUsuarios.Name = "DgvUsuarios";
+            this.DgvUsuarios.Size = new System.Drawing.Size(1030, 138);
+            this.DgvUsuarios.TabIndex = 3;
+            this.DgvUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // tabPage3
             // 
@@ -934,24 +953,6 @@ namespace SistemadeClinica.Views
             this.tabPage5.Text = "Perfil";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Showcard Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label15.Location = new System.Drawing.Point(13, 31);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(76, 18);
-            this.label15.TabIndex = 10;
-            this.label15.Text = "Nombre:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(93, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(310, 27);
-            this.textBox1.TabIndex = 6;
-            // 
             // FormDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -989,7 +990,7 @@ namespace SistemadeClinica.Views
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvUsuarios)).EndInit();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox5.ResumeLayout(false);
@@ -1025,7 +1026,7 @@ namespace SistemadeClinica.Views
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.PictureBox pictureBox11;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DgvUsuarios;
         private MaterialSkin.Controls.MaterialButton materialButton11;
         private MaterialSkin.Controls.MaterialButton materialButton10;
         private MaterialSkin.Controls.MaterialButton materialButton9;
@@ -1049,29 +1050,29 @@ namespace SistemadeClinica.Views
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.GroupBox groupBox3;
-        private MaterialSkin.Controls.MaterialButton materialButton5;
-        private MaterialSkin.Controls.MaterialButton materialButton4;
-        private MaterialSkin.Controls.MaterialButton materialButton3;
-        private MaterialSkin.Controls.MaterialButton materialButton2;
-        private MaterialSkin.Controls.MaterialButton materialButton1;
+        private MaterialSkin.Controls.MaterialButton BtnVerTodos;
+        private MaterialSkin.Controls.MaterialButton BtnBuscar;
+        private MaterialSkin.Controls.MaterialButton BtnEliminar;
+        private MaterialSkin.Controls.MaterialButton BtnActualizar;
+        private MaterialSkin.Controls.MaterialButton BtnInsertar;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox ComboBoxRol;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox tra;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox TxtUsuarioGestion;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox TxtCorreoGestion;
+        private System.Windows.Forms.TextBox TxtTelefonoGestion;
+        private System.Windows.Forms.TextBox TxtApellidoGestion;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox ComboBoxSexo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtNombreGestion;
     }
 }
 

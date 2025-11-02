@@ -103,8 +103,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AuthControllers.cs" />
+    <Compile Include="Controllers\RolController.cs" />
     <Compile Include="Controllers\UsuarioControllers.cs" />
     <Compile Include="Data\ClaseCRUD.cs" />
+    <Compile Include="Helpers\Validaciones.cs" />
+    <Compile Include="Models\Rol.cs" />
     <Compile Include="Models\Sesion.cs" />
     <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Views\FormDashboard.cs">
@@ -153,7 +156,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Database\" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Doc.png" />
