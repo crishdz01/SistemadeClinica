@@ -21,10 +21,54 @@ namespace SistemadeClinica.Views
             InitializeComponent();
         }
 
+
+
+
+
+
+
+
+
+        /*
+         tabPage2 = MaterialControl.TabPages["tabPage2"];
+            MaterialControl.TabPages.Remove(tabPage2);
+         */
+
+
         private void Inicio_Load(object sender, EventArgs e)
         {
             
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void tabPage2_Click(object sender, EventArgs e)
         {
@@ -87,6 +131,23 @@ namespace SistemadeClinica.Views
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void materialButton12_Click(object sender, EventArgs e)
+        {
+            
+
+
+        }
+
+        private void PanelMedio_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
         {
 
         }

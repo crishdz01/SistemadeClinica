@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SistemadeClinica.Models
 {
-    class Sesion
+    //Clase modelo que representa los objetos que se usaran en el inicio de sesión
+    public class Sesion
     {
         public static int UsuarioId { get; set; }
         public static string Username { get; set; }

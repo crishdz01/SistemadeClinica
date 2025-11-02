@@ -1,5 +1,4 @@
 ﻿
-//Usando la clase models. La clase models nos dara los que usaran el programa 
 using SistemadeClinica.Models;
 using SistemadeClinica.Data;
 using System;
@@ -12,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace SistemadeClinica.Controllers
 {
-    //Clase para el login
+    //Clase para el login, aqui estan los metodos que se usan en el login
     public class AuthControllers
     {
         
