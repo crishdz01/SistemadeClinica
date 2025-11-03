@@ -26,6 +26,7 @@ namespace SistemadeClinica.Views
         {
             InitializeComponent();
             usuarioController = new UsuarioControllers();
+            PersonalizarFormulario();
             CargarRoles();
             CargarUsuarios();
             CargarSexo();
@@ -33,10 +34,35 @@ namespace SistemadeClinica.Views
         }
 
 
+
         /*
-         tabPage2 = MaterialControl.TabPages["tabPage2"];
-            MaterialControl.TabPages.Remove(tabPage2);
+          ************************************************************************************************************************************
+          ---------------------------------------PESTAÑA GESTION DE USUARIOS------------------------------------------------------------------
+          ************************************************************************************************************************************
          */
+        
+        //Metodo para colorear los texbox de la pestaña gestion de usuarios
+        private void PersonalizarFormulario()
+        {
+            TxtUsuarioGestion.Enter += (s, e) => { TxtUsuarioGestion.BackColor = Color.LightCyan; };
+            TxtUsuarioGestion.Leave += (s, e) => { TxtUsuarioGestion.BackColor = Color.White; };
+
+            TxtPaswordGestion.Enter += (s, e) => { TxtPaswordGestion.BackColor = Color.LightCyan; };
+            TxtPaswordGestion.Leave += (s, e) => { TxtPaswordGestion.BackColor = Color.White; };
+
+            TxtNombreGestion.Enter += (s, e) => { TxtNombreGestion.BackColor = Color.LightCyan; };
+            TxtNombreGestion.Leave += (s, e) => { TxtNombreGestion.BackColor = Color.White; };
+
+            TxtApellidoGestion.Enter += (s, e) => { TxtApellidoGestion.BackColor = Color.LightCyan; };
+            TxtApellidoGestion.Leave += (s, e) => { TxtApellidoGestion.BackColor = Color.White; };
+
+            TxtTelefonoGestion.Enter += (s, e) => { TxtTelefonoGestion.BackColor = Color.LightCyan; };
+            TxtTelefonoGestion.Leave += (s, e) => { TxtTelefonoGestion.BackColor = Color.White; };
+
+            TxtCorreoGestion.Enter += (s, e) => { TxtCorreoGestion.BackColor = Color.LightCyan; };
+            TxtCorreoGestion.Leave += (s, e) => { TxtCorreoGestion.BackColor = Color.White; };
+        }
+        
 
         private void Inicio_Load(object sender, EventArgs e)
         {
@@ -44,6 +70,7 @@ namespace SistemadeClinica.Views
         }
 
 
+        //Metodo para configurar la pestaña gestion de usuarios, que no aparezca el boton actualizar ni el eliminar porque no ha nada auin
         private void ConfigurarModoInicial()
         {
             BtnActualizar.Enabled = false;
@@ -64,6 +91,7 @@ namespace SistemadeClinica.Views
 
         }
 
+        //Metodo para obtener los roles del combo box
         private void CargarRoles()
         {
             try
@@ -87,6 +115,7 @@ namespace SistemadeClinica.Views
             }
         }
 
+        //Metodo para cargar los usuarios del DataView
         private void CargarUsuarios()
         {
             try
@@ -111,6 +140,7 @@ namespace SistemadeClinica.Views
             }
         }
 
+        //Metodo para configurar la vista del DataView
         private void ConfigurarDataGriwView()
         {
             try
@@ -185,7 +215,7 @@ namespace SistemadeClinica.Views
                     Visible = false
                 });
 
-                //Propiedades visuales
+                //Propiedades visuales del DataView
                 DgvUsuarios.ReadOnly = true;
                 DgvUsuarios.AllowUserToAddRows = false;
                 DgvUsuarios.AllowUserToDeleteRows = false;
@@ -215,17 +245,189 @@ namespace SistemadeClinica.Views
 
         }
 
+        //Metodo y Evento para colocar los datos de una celda a los texboxs
+        private void DgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex < 0) return;
 
+                DataGridViewRow fila = DgvUsuarios.Rows[e.RowIndex];
 
+                if (fila.Cells["Id"].Value != null)
+                {
+                    usuarioSelecionado = Convert.ToInt32(fila.Cells["Id"].Value);
+                }
 
+                TxtUsuarioGestion.Text = fila.Cells["Usuario"].Value?.ToString() ?? "";
+                TxtNombreGestion.Text = fila.Cells["Nombre"].Value?.ToString() ?? "";
+                TxtApellidoGestion.Text = fila.Cells["Apellido"].Value?.ToString() ?? "";
+                TxtCorreoGestion.Text = fila.Cells["Correo"].Value?.ToString() ?? "";
+                TxtTelefonoGestion.Text = fila.Cells["Telefono"].Value?.ToString() ?? "";
 
+                string sexo = fila.Cells["Sexo"].Value?.ToString() ?? "";
+                if (!string.IsNullOrEmpty(sexo))
+                {
+                    ComboBoxSexo.Text = sexo;
+                }
 
+                string nombreRol = fila.Cells["Rol"].Value?.ToString() ?? "";
+                if (!string.IsNullOrEmpty(nombreRol))
+                {
+                    foreach (DataRowView item in ComboBoxRol.Items)
+                    {
+                        if (item["Nombre"].ToString() == nombreRol)
+                        {
+                            ComboBoxRol.SelectedValue = item["Id"];
+                            break;
+                        }
+                    }
+                }
 
+                TxtPaswordGestion.Text = "********";
+                TxtPaswordGestion.Tag = "edicion";
 
+                CambiarColorFormularioEdicion();
+                BtnActualizar.Enabled = true;
+                BtnEliminar.Enabled = true;
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar datos del usuario: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
+        //Metodo para cambiar el color cuando se edita
+        private void CambiarColorFormularioEdicion()
+        {
+            Color colorEdicion = Color.LightYellow;
+            TxtUsuarioGestion.BackColor = colorEdicion;
+            TxtNombreGestion.BackColor = colorEdicion;
+            TxtApellidoGestion.BackColor = colorEdicion;
+
+        }
+
+        //Metodo para cambiar el color cuando no se edita
+        private void RestaurarColorFormulario()
+        {
+            Color colorNormal = Color.White;
+            TxtUsuarioGestion.BackColor = colorNormal;
+            TxtNombreGestion.BackColor = colorNormal;
+            TxtApellidoGestion.BackColor = colorNormal;
+
+        }
+
+        //Metodo y Evento para colocar los datos de una celda a los texboxs este sirve para volverlos a cargar
+        private void DgvUsuarios_SelectionChanged(object sender, EventArgs e)
+        {
+            if (DgvUsuarios.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = DgvUsuarios.SelectedRows[0];
+            }
+        }
+
+        //Metodo y boton para agregar usuarios
         private void BtnInsertar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (usuarioSelecionado > 0)
+                {
+                    MessageBox.Show("Esta en modo edicion, Para crear un nuevo usuario, " +
+                        "Primero llene el formulario con los datos correctos.", "Modo edicion",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //LimpiarFormulario();
+                    return;
+                }
+
+                //Validaciones Simples
+
+                if (!Validaciones.ValidarNoVacio(TxtNombreGestion, "Nombre")) return;
+                if (!Validaciones.ValidarSoloLetras(TxtNombreGestion.Text, "Nombre")) return;
+
+                if (!Validaciones.ValidarNoVacio(TxtApellidoGestion, "Apellido")) return;
+                if (!Validaciones.ValidarSoloLetras(TxtApellidoGestion.Text, "Apellido")) return;
+
+                if (!Validaciones.ValidarNoVacio(TxtTelefonoGestion, "Telefono")) return;
+                if (!Validaciones.ValidarSoloNumeros(TxtTelefonoGestion.Text, "Apellido")) return;
+
+                if (!Validaciones.ValidarNoVacio(TxtCorreoGestion, "Correo electronico")) return;
+                if (!Validaciones.ValidarEmail(TxtCorreoGestion.Text, "Correo electronico")) return;
+
+                //Validacion del combo box sexo
+                if (!Validaciones.ValidarComboBox2(ComboBoxSexo, "Sexo")) return;
+
+                //Validacion de pasword solo usuarios nuevos
+                if (!Validaciones.ValidarNoVacio(TxtUsuarioGestion, "Usuario")) return;
+
+                //Validaciones especificas
+                if (!Validaciones.ValidarNoVacio(TxtPaswordGestion, "Contraseña")) return;
+                if (!Validaciones.ValidarFortalezaPassword(TxtPaswordGestion.Text)) return;
+
+                if (!Validaciones.ValidarComboBox(ComboBoxRol, "Rol")) return;
+
+                Usuarios usuarios = new Usuarios
+                {
+                    Username = TxtUsuarioGestion.Text,
+                    PasswordHash = AuthControllers.GenerarHashSHA256(TxtPaswordGestion.Text),
+                    IdRol = Convert.ToInt32(ComboBoxRol.SelectedValue),
+                    Nombre = TxtNombreGestion.Text,
+                    Apellido = TxtApellidoGestion.Text,
+                    Sexo = ComboBoxSexo.SelectedItem.ToString(),
+                    Telefono = TxtTelefonoGestion.Text,
+                    Correo = TxtCorreoGestion.Text
+                };
+
+                bool resultado = usuarioController.CrearUsuario(usuarios);
+
+                if (resultado)
+                {
+                    MessageBox.Show("Usuario creado exitosamente.", "Exito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //LimpiarFormularios();
+                    CargarUsuarios();
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show($"Error al guardar usuario: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Metodo uilizado en agregar para verificar que se repita usuarios
+        private bool ValidarUsuarioUnico (string usuarios, int idExcluir = 0)
+        {
+            try
+            {
+                string condicion = $"Usuario = '{usuarios.Replace("'", "''")}' AND Activo = 1";
+                
+                if (idExcluir > 0)
+                {
+                    condicion += $"AND Id != {idExcluir}";
+                }
+
+                DataTable usuariosExistentes = usuarioController.ObtenerUsuariosPorCondicion(condicion);
+
+                if (usuariosExistentes.Rows.Count > 0)
+                {
+                    MessageBox.Show("Ya existe un usuario con ese nombre de usuario. Por favor elija otro.",
+                        "Usuario duplicado",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    TxtUsuarioGestion.Focus();
+                    TxtUsuarioGestion.SelectAll();
+                    return false;
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al validar usuario unico: {ex.Message}", "Error");
+                    return false;
+            }
 
         }
 
@@ -336,6 +538,12 @@ namespace SistemadeClinica.Views
         private void label8_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+            tabPage2 = MaterialControl.TabPages["tabPage2"];
+            MaterialControl.TabPages.Remove(tabPage2);
         }
 
         

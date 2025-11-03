@@ -33,6 +33,7 @@ namespace SistemadeClinica.Views
             this.MaterialControl = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.PanelMedio = new System.Windows.Forms.Panel();
+            this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
@@ -58,7 +59,7 @@ namespace SistemadeClinica.Views
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.ComboBoxRol = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.tra = new System.Windows.Forms.TextBox();
+            this.TxtPaswordGestion = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.TxtUsuarioGestion = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -162,6 +163,7 @@ namespace SistemadeClinica.Views
             // 
             // PanelMedio
             // 
+            this.PanelMedio.Controls.Add(this.materialButton1);
             this.PanelMedio.Controls.Add(this.panel4);
             this.PanelMedio.Controls.Add(this.pictureBox7);
             this.PanelMedio.Controls.Add(this.pictureBox5);
@@ -171,6 +173,25 @@ namespace SistemadeClinica.Views
             this.PanelMedio.Size = new System.Drawing.Size(642, 537);
             this.PanelMedio.TabIndex = 2;
             this.PanelMedio.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelMedio_Paint);
+            // 
+            // materialButton1
+            // 
+            this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton1.Depth = 0;
+            this.materialButton1.DrawShadows = true;
+            this.materialButton1.HighEmphasis = true;
+            this.materialButton1.Icon = null;
+            this.materialButton1.Location = new System.Drawing.Point(205, 311);
+            this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton1.Name = "materialButton1";
+            this.materialButton1.Size = new System.Drawing.Size(158, 36);
+            this.materialButton1.TabIndex = 44;
+            this.materialButton1.Text = "materialButton1";
+            this.materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton1.UseAccentColor = false;
+            this.materialButton1.UseVisualStyleBackColor = true;
+            this.materialButton1.Click += new System.EventHandler(this.materialButton1_Click);
             // 
             // panel4
             // 
@@ -450,7 +471,7 @@ namespace SistemadeClinica.Views
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox2.Controls.Add(this.ComboBoxRol);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.tra);
+            this.groupBox2.Controls.Add(this.TxtPaswordGestion);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.TxtUsuarioGestion);
             this.groupBox2.Controls.Add(this.label6);
@@ -482,12 +503,12 @@ namespace SistemadeClinica.Views
             this.label8.Text = "rol:";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // tra
+            // TxtPaswordGestion
             // 
-            this.tra.Location = new System.Drawing.Point(463, 32);
-            this.tra.Name = "tra";
-            this.tra.Size = new System.Drawing.Size(240, 27);
-            this.tra.TabIndex = 3;
+            this.TxtPaswordGestion.Location = new System.Drawing.Point(463, 32);
+            this.TxtPaswordGestion.Name = "TxtPaswordGestion";
+            this.TxtPaswordGestion.Size = new System.Drawing.Size(240, 27);
+            this.TxtPaswordGestion.TabIndex = 3;
             // 
             // label7
             // 
@@ -651,7 +672,9 @@ namespace SistemadeClinica.Views
             this.DgvUsuarios.Name = "DgvUsuarios";
             this.DgvUsuarios.Size = new System.Drawing.Size(1030, 138);
             this.DgvUsuarios.TabIndex = 3;
+            this.DgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUsuarios_CellClick);
             this.DgvUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.DgvUsuarios.SelectionChanged += new System.EventHandler(this.DgvUsuarios_SelectionChanged);
             // 
             // tabPage3
             // 
@@ -967,6 +990,7 @@ namespace SistemadeClinica.Views
             this.MaterialControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.PanelMedio.ResumeLayout(false);
+            this.PanelMedio.PerformLayout();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
@@ -1058,7 +1082,7 @@ namespace SistemadeClinica.Views
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox ComboBoxRol;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox tra;
+        private System.Windows.Forms.TextBox TxtPaswordGestion;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox TxtUsuarioGestion;
         private System.Windows.Forms.Label label6;
@@ -1073,6 +1097,7 @@ namespace SistemadeClinica.Views
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox TxtNombreGestion;
+        private MaterialSkin.Controls.MaterialButton materialButton1;
     }
 }
 
