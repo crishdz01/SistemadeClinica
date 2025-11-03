@@ -100,6 +100,7 @@ namespace SistemadeClinica.Views
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.BtnLimpiar = new MaterialSkin.Controls.MaterialButton();
             this.MaterialControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.PanelMedio.SuspendLayout();
@@ -364,6 +365,7 @@ namespace SistemadeClinica.Views
             // groupBox3
             // 
             this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox3.Controls.Add(this.BtnLimpiar);
             this.groupBox3.Controls.Add(this.BtnVerTodos);
             this.groupBox3.Controls.Add(this.BtnBuscar);
             this.groupBox3.Controls.Add(this.BtnEliminar);
@@ -382,7 +384,7 @@ namespace SistemadeClinica.Views
             this.BtnVerTodos.DrawShadows = true;
             this.BtnVerTodos.HighEmphasis = true;
             this.BtnVerTodos.Icon = null;
-            this.BtnVerTodos.Location = new System.Drawing.Point(793, 14);
+            this.BtnVerTodos.Location = new System.Drawing.Point(828, 14);
             this.BtnVerTodos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.BtnVerTodos.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnVerTodos.Name = "BtnVerTodos";
@@ -400,7 +402,7 @@ namespace SistemadeClinica.Views
             this.BtnBuscar.DrawShadows = true;
             this.BtnBuscar.HighEmphasis = true;
             this.BtnBuscar.Icon = null;
-            this.BtnBuscar.Location = new System.Drawing.Point(627, 14);
+            this.BtnBuscar.Location = new System.Drawing.Point(678, 14);
             this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.BtnBuscar.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnBuscar.Name = "BtnBuscar";
@@ -418,7 +420,7 @@ namespace SistemadeClinica.Views
             this.BtnEliminar.DrawShadows = true;
             this.BtnEliminar.HighEmphasis = true;
             this.BtnEliminar.Icon = null;
-            this.BtnEliminar.Location = new System.Drawing.Point(463, 14);
+            this.BtnEliminar.Location = new System.Drawing.Point(517, 14);
             this.BtnEliminar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.BtnEliminar.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnEliminar.Name = "BtnEliminar";
@@ -428,6 +430,7 @@ namespace SistemadeClinica.Views
             this.BtnEliminar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.BtnEliminar.UseAccentColor = false;
             this.BtnEliminar.UseVisualStyleBackColor = true;
+            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
             // BtnActualizar
             // 
@@ -436,7 +439,7 @@ namespace SistemadeClinica.Views
             this.BtnActualizar.DrawShadows = true;
             this.BtnActualizar.HighEmphasis = true;
             this.BtnActualizar.Icon = null;
-            this.BtnActualizar.Location = new System.Drawing.Point(273, 14);
+            this.BtnActualizar.Location = new System.Drawing.Point(209, 14);
             this.BtnActualizar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.BtnActualizar.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnActualizar.Name = "BtnActualizar";
@@ -446,6 +449,7 @@ namespace SistemadeClinica.Views
             this.BtnActualizar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.BtnActualizar.UseAccentColor = false;
             this.BtnActualizar.UseVisualStyleBackColor = true;
+            this.BtnActualizar.Click += new System.EventHandler(this.BtnActualizar_Click);
             // 
             // BtnInsertar
             // 
@@ -454,7 +458,7 @@ namespace SistemadeClinica.Views
             this.BtnInsertar.DrawShadows = true;
             this.BtnInsertar.HighEmphasis = true;
             this.BtnInsertar.Icon = null;
-            this.BtnInsertar.Location = new System.Drawing.Point(93, 14);
+            this.BtnInsertar.Location = new System.Drawing.Point(60, 14);
             this.BtnInsertar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.BtnInsertar.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnInsertar.Name = "BtnInsertar";
@@ -976,6 +980,25 @@ namespace SistemadeClinica.Views
             this.tabPage5.Text = "Perfil";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // BtnLimpiar
+            // 
+            this.BtnLimpiar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnLimpiar.Depth = 0;
+            this.BtnLimpiar.DrawShadows = true;
+            this.BtnLimpiar.HighEmphasis = true;
+            this.BtnLimpiar.Icon = null;
+            this.BtnLimpiar.Location = new System.Drawing.Point(376, 14);
+            this.BtnLimpiar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnLimpiar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnLimpiar.Name = "BtnLimpiar";
+            this.BtnLimpiar.Size = new System.Drawing.Size(100, 36);
+            this.BtnLimpiar.TabIndex = 11;
+            this.BtnLimpiar.Text = "      LIMPIAR      ";
+            this.BtnLimpiar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.BtnLimpiar.UseAccentColor = false;
+            this.BtnLimpiar.UseVisualStyleBackColor = true;
+            this.BtnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
+            // 
             // FormDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1098,6 +1121,7 @@ namespace SistemadeClinica.Views
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox TxtNombreGestion;
         private MaterialSkin.Controls.MaterialButton materialButton1;
+        private MaterialSkin.Controls.MaterialButton BtnLimpiar;
     }
 }
 

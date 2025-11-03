@@ -338,7 +338,7 @@ namespace SistemadeClinica.Views
                     MessageBox.Show("Esta en modo edicion, Para crear un nuevo usuario, " +
                         "Primero llene el formulario con los datos correctos.", "Modo edicion",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //LimpiarFormulario();
+                    LimpiarFormulario();
                     return;
                 }
 
@@ -386,7 +386,7 @@ namespace SistemadeClinica.Views
                 {
                     MessageBox.Show("Usuario creado exitosamente.", "Exito",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //LimpiarFormularios();
+                    LimpiarFormulario();
                     CargarUsuarios();
                 }
             }catch(Exception ex)
@@ -431,11 +431,152 @@ namespace SistemadeClinica.Views
 
         }
 
+        //Metodo y boton para actualizar usuarios
+        private void BtnActualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (usuarioSelecionado == 0)
+                {
+                    MessageBox.Show("Debe seleccionar un usuario de la lista para actualizar.",
+                        "Seleccion Requerida",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
+                    return;
+                }
 
+                //Validaciones Simples
 
+                if (!Validaciones.ValidarNoVacio(TxtNombreGestion, "Nombre")) return;
+                if (!Validaciones.ValidarSoloLetras(TxtNombreGestion.Text, "Nombre")) return;
 
+                if (!Validaciones.ValidarNoVacio(TxtApellidoGestion, "Apellido")) return;
+                if (!Validaciones.ValidarSoloLetras(TxtApellidoGestion.Text, "Apellido")) return;
 
+                if (!Validaciones.ValidarNoVacio(TxtTelefonoGestion, "Telefono")) return;
+                if (!Validaciones.ValidarSoloNumeros(TxtTelefonoGestion.Text, "Apellido")) return;
+
+                if (!Validaciones.ValidarNoVacio(TxtCorreoGestion, "Correo electronico")) return;
+                if (!Validaciones.ValidarEmail(TxtCorreoGestion.Text, "Correo electronico")) return;
+
+                //Validaciones Combo box
+                if (!Validaciones.ValidarComboBox2(ComboBoxSexo, "Sexo")) return;
+                if (!Validaciones.ValidarComboBox(ComboBoxRol, "Rol")) return;
+
+                //Validaciones Especificas
+                if (!Validaciones.ValidarNoVacio(TxtUsuarioGestion, "Usuario")) return;
+
+                //Validacion de usuario Unico
+                if (!ValidarUsuarioUnico(TxtUsuarioGestion.Text, usuarioSelecionado)) return;
+
+                //Validacion de contraseña
+                string nuevoPasswordHash = null;
+                if (!string.IsNullOrEmpty(TxtPaswordGestion.Text) && TxtPaswordGestion.Text != "********")
+                {
+                    if (!Validaciones.ValidarFortalezaPassword(TxtPaswordGestion.Text)) return;
+                    nuevoPasswordHash = AuthControllers.GenerarHashSHA256(TxtPaswordGestion.Text);
+                }
+
+                var confirmacion = MessageBox.Show(
+                    $"¿Esta seguro de actualizar los datos del usuario: {TxtNombreGestion.Text} {TxtApellidoGestion.Text}?",
+                    "Confirmar Actualización",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (confirmacion != DialogResult.Yes) return;
+
+                Usuarios usuarios = new Usuarios
+                {
+                    Id = usuarioSelecionado,
+                    Username = TxtUsuarioGestion.Text,
+                    PasswordHash = nuevoPasswordHash,
+                    IdRol = Convert.ToInt32(ComboBoxRol.SelectedValue),
+                    Nombre = TxtNombreGestion.Text,
+                    Apellido = TxtApellidoGestion.Text,
+                    Sexo = ComboBoxSexo.SelectedItem.ToString(),
+                    Telefono = TxtTelefonoGestion.Text,
+                    Correo = TxtCorreoGestion.Text
+                };
+
+                bool resultado = usuarioController.ActualizarUsuario(usuarios);
+
+                if (resultado)
+                {
+                    MessageBox.Show("Usuario actualizado exitosamente.", "Exito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo actualizar el usuario, Verifique los datos.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo actualizar el usuario: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void LimpiarFormulario()
+        {
+            usuarioSelecionado = 0;
+
+            TxtUsuarioGestion.Clear();
+            TxtNombreGestion.Clear();
+            TxtApellidoGestion.Clear();
+            TxtCorreoGestion.Clear();
+            TxtTelefonoGestion.Clear();
+            TxtPaswordGestion.Clear();
+            TxtPaswordGestion.Tag = null;
+            ComboBoxSexo.SelectedIndex = 0;
+            ComboBoxRol.SelectedIndex = 0;
+
+            RestaurarColorFormulario();
+
+            BtnActualizar.Enabled = false;
+            BtnEliminar.Enabled = false;
+        }
+
+        //Boton para limpiar el formulario
+        private void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarFormulario();
+        }
+
+        //Boton eliminar en este caso esconder un registro
+        private void BtnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (usuarioSelecionado == 0)
+                {
+                    MessageBox.Show("Seleccione un usuario para eliminar.");
+                    return;
+                }
+
+                var confirmacion = MessageBox.Show(
+                    $"¿Eliminar al usuario {TxtNombreGestion.Text} {TxtApellidoGestion.Text}?",
+                    "Confirmar",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirmacion != DialogResult.Yes) return;
+
+                bool resultado = usuarioController.EliminarUsuario(usuarioSelecionado);
+
+                if (resultado)
+                {
+                    MessageBox.Show("Usuario Eliminado Exitosamente.");
+                    LimpiarFormulario();
+                    CargarUsuarios();
+                }
+                
+            }catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+
+        }
 
 
 
