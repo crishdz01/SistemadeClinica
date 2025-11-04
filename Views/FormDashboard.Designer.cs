@@ -51,6 +51,7 @@ namespace SistemadeClinica.Views
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.BtnLimpiar = new MaterialSkin.Controls.MaterialButton();
             this.BtnVerTodos = new MaterialSkin.Controls.MaterialButton();
             this.BtnBuscar = new MaterialSkin.Controls.MaterialButton();
             this.BtnEliminar = new MaterialSkin.Controls.MaterialButton();
@@ -100,7 +101,6 @@ namespace SistemadeClinica.Views
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.BtnLimpiar = new MaterialSkin.Controls.MaterialButton();
             this.MaterialControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.PanelMedio.SuspendLayout();
@@ -377,6 +377,25 @@ namespace SistemadeClinica.Views
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             // 
+            // BtnLimpiar
+            // 
+            this.BtnLimpiar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnLimpiar.Depth = 0;
+            this.BtnLimpiar.DrawShadows = true;
+            this.BtnLimpiar.HighEmphasis = true;
+            this.BtnLimpiar.Icon = null;
+            this.BtnLimpiar.Location = new System.Drawing.Point(376, 14);
+            this.BtnLimpiar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnLimpiar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnLimpiar.Name = "BtnLimpiar";
+            this.BtnLimpiar.Size = new System.Drawing.Size(100, 36);
+            this.BtnLimpiar.TabIndex = 11;
+            this.BtnLimpiar.Text = "      LIMPIAR      ";
+            this.BtnLimpiar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.BtnLimpiar.UseAccentColor = false;
+            this.BtnLimpiar.UseVisualStyleBackColor = true;
+            this.BtnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
+            // 
             // BtnVerTodos
             // 
             this.BtnVerTodos.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -412,6 +431,7 @@ namespace SistemadeClinica.Views
             this.BtnBuscar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.BtnBuscar.UseAccentColor = false;
             this.BtnBuscar.UseVisualStyleBackColor = true;
+            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
             // BtnEliminar
             // 
@@ -979,25 +999,6 @@ namespace SistemadeClinica.Views
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Perfil";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // BtnLimpiar
-            // 
-            this.BtnLimpiar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BtnLimpiar.Depth = 0;
-            this.BtnLimpiar.DrawShadows = true;
-            this.BtnLimpiar.HighEmphasis = true;
-            this.BtnLimpiar.Icon = null;
-            this.BtnLimpiar.Location = new System.Drawing.Point(376, 14);
-            this.BtnLimpiar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.BtnLimpiar.MouseState = MaterialSkin.MouseState.HOVER;
-            this.BtnLimpiar.Name = "BtnLimpiar";
-            this.BtnLimpiar.Size = new System.Drawing.Size(100, 36);
-            this.BtnLimpiar.TabIndex = 11;
-            this.BtnLimpiar.Text = "      LIMPIAR      ";
-            this.BtnLimpiar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.BtnLimpiar.UseAccentColor = false;
-            this.BtnLimpiar.UseVisualStyleBackColor = true;
-            this.BtnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
             // 
             // FormDashboard
             // 

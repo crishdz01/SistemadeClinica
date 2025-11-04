@@ -578,6 +578,137 @@ namespace SistemadeClinica.Views
 
         }
 
+        private void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string filtro = TxtUsuarioGestion.Text.Trim();
+
+                if (!Validaciones.ValidarNoVacio(TxtUsuarioGestion, "Usuario a buscar"))
+                    return;
+
+                DataTable dt = usuarioController.BuscarUsuariosPorNombreUsuario(filtro);
+                LimpiarFormulario();
+
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show($"No se encontro el usuario '{filtro}'.",
+                        "Sin resultados",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    DgvUsuarios.DataSource = null;
+                    return;
+                }
+
+                if (!dt.Columns.Contains("Rol") && dt.Columns.Contains("IdRol"))
+                {
+                    dt.Columns.Add("Rol", typeof(string));
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (row["IdRol"] == DBNull.Value)
+                        {
+                            row["IdRol"] = string.Empty;
+                            continue;
+
+                        }
+
+                        int idRol;
+                        if (int.TryParse(row["IdRol"].ToString(), out idRol))
+                        {
+                            string nombreRol = ObtenerNombreRolDesdeCombo(idRol);
+                            if(!string.IsNullOrEmpty(nombreRol))
+                            {
+                                 row["Rol"] = nombreRol;
+                            }
+                            else
+                            {
+                                row["Rol"] = idRol.ToString();
+                            }
+                        }
+                    }
+                }
+
+                if (!dt.Columns.Contains("Correo") && dt.Columns.Contains("CorreoElectronico"))
+                {
+                    dt.Columns.Add("Correo", typeof(string));
+                    foreach (DataRow row in dt.Rows)
+                        row["Correo"] = row["CorreoElectronico"];
+                }
+
+                DgvUsuarios.DataSource = dt;
+
+                MessageBox.Show($"Se encontraron {dt.Rows.Count} usuario(s).",
+                    "Busqueda exitosa",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }catch (Exception ex)
+            {
+                MessageBox.Show($"Error en la busqueda: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Metodo que busca el ROl en el combo box Rol, devuelve null si no lo encuentra
+        private string ObtenerNombreRolDesdeCombo (int idRol)
+        {
+            try
+            {
+                if (ComboBoxRol.DataSource == null) return null;
+
+                if (ComboBoxRol.DataSource is DataTable dtRoles)
+                {
+                    DataRow[] rows = dtRoles.Select($"Id = {idRol}");
+                    if (rows.Length > 0) return rows[0]["Nombre"].ToString();
+                }
+
+                if (ComboBoxRol.DataSource is BindingSource bs)
+                {
+                    if (bs.DataSource is DataTable dt2)
+                    {
+                        DataRow[] rows = dt2.Select($"Id = {idRol}");
+                        if (rows.Length > 0) return rows[0]["Nombre"].ToString();
+                    }
+
+                    else if (bs.DataSource is IEnumerable<object> listObj)
+                    {
+                        foreach (var item in listObj)
+                        {
+                            var propId = item.GetType().GetProperty("Id");
+                            var propNombre = item.GetType().GetProperty("Nombre");
+                            if (propId != null && propNombre != null)
+                            {
+                                var val = propId.GetValue(item);
+                                if (val != null && Convert.ToInt32(val) == idRol)
+                                    return propNombre.GetValue(item)?.ToString();
+                            }
+                        }
+                    }
+                }
+
+                if (ComboBoxRol.Items.Count > 0)
+                {
+                    foreach (var it in ComboBoxRol.Items)
+                    {
+                        var propId = it.GetType().GetProperty("Id");
+                        var propNombre = it.GetType().GetProperty("Nombre");
+                        if (propId != null && propNombre != null)
+                        {
+                            var val = propId.GetValue(it);
+                            if (val != null && Convert.ToInt32(val) == idRol)
+                                return propNombre.GetValue(it)?.ToString();
+                        }
+                    }
+                }
+
+                return null;
+            }catch
+            {
+                return null;
+            }
+        }
+
 
 
 
