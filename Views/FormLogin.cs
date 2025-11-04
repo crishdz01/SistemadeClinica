@@ -23,12 +23,16 @@ namespace SistemadeClinica.Views
         {
             InitializeComponent();
             authController = new SistemadeClinica.Controllers.AuthControllers();
+            
+            
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
             
         }
+
+
 
         //Metodo para que al hacer click en usuario, el texto usuario desaparezca 
         private void TxtUsuario_Enter(object sender, EventArgs e)
@@ -116,5 +120,10 @@ namespace SistemadeClinica.Views
         {
             Application.Exit();
         }
+
+       
+
+        
+
     }
 }

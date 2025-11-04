@@ -31,7 +31,11 @@ namespace SistemadeClinica.Views
             CargarUsuarios();
             CargarSexo();
             ConfigurarModoInicial();
-            //ConfigurarBotonesSegunRol();
+            ConfigurarBotonesSegunRol();
+
+
+
+
         }
 
         private void Inicio_Load(object sender, EventArgs e)
@@ -39,24 +43,37 @@ namespace SistemadeClinica.Views
 
         }
 
-        /*
-        //Codigo que ocula gestion de usuarios si no es admin
-         private void ConfigurarBotonesSegunRol()
-        {
-            if (Sesion.RolId != '2')
-            {
-                GestionUsu = MaterialControl.TabPages["GestionUsu"];
-                MaterialControl.TabPages.Remove(GestionUsu);
-            }
 
-            if (Sesion.RolId != '3')
+        //Codigo que ocula gestion de usuarios si no es admin
+        private void ConfigurarBotonesSegunRol()
+        {
+            try
             {
-                GestionUsu = MaterialControl.TabPages["GestionUsu"];
-                MaterialControl.TabPages.Remove(GestionUsu);
+                // Verificar si hay sesión activa
+                if (Sesion.RolId <= 0)
+                {
+                    MessageBox.Show("No se detectó el rol del usuario. Revise el inicio de sesión.");
+                    return;
+                }
+
+                // Ocultar pestaña según rol
+                if (Sesion.RolId != 1) 
+                {
+                    if (MaterialControl.TabPages.ContainsKey("GestionUsu"))
+                    {
+                        MaterialControl.TabPages.RemoveByKey("GestionUsu");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al configurar pestañas: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        */
+
+
         /*
           ************************************************************************************************************************************
           ---------------------------------------PESTAÑA GESTION DE USUARIOS------------------------------------------------------------------
