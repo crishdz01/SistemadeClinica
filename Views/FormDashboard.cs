@@ -710,7 +710,23 @@ namespace SistemadeClinica.Views
         }
 
 
+        private void BtnVerTodos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TxtUsuarioGestion.Clear();
 
+                CargarUsuarios();
+                LimpiarFormulario();
+
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show($"Error al cargar usuarios: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
 
 
 

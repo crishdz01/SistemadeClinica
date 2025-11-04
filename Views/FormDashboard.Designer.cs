@@ -413,6 +413,7 @@ namespace SistemadeClinica.Views
             this.BtnVerTodos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.BtnVerTodos.UseAccentColor = false;
             this.BtnVerTodos.UseVisualStyleBackColor = true;
+            this.BtnVerTodos.Click += new System.EventHandler(this.BtnVerTodos_Click);
             // 
             // BtnBuscar
             // 
