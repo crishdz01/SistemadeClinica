@@ -31,9 +31,8 @@ namespace SistemadeClinica.Views
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDashboard));
             this.MaterialControl = new MaterialSkin.Controls.MaterialTabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.Inicio = new System.Windows.Forms.TabPage();
             this.PanelMedio = new System.Windows.Forms.Panel();
-            this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
@@ -48,7 +47,7 @@ namespace SistemadeClinica.Views
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.GestionUsu = new System.Windows.Forms.TabPage();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.BtnLimpiar = new MaterialSkin.Controls.MaterialButton();
@@ -77,32 +76,28 @@ namespace SistemadeClinica.Views
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.DgvUsuarios = new System.Windows.Forms.DataGridView();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Medicamentos = new System.Windows.Forms.TabPage();
+            this.DgvMedicamentos = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.materialButton6 = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton7 = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton11 = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton8 = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton10 = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton9 = new MaterialSkin.Controls.MaterialButton();
+            this.MaterialBtnInsertarMedi = new MaterialSkin.Controls.MaterialButton();
+            this.MaterialBtnActualizarMedi = new MaterialSkin.Controls.MaterialButton();
+            this.MaterialBtnLimpiarMedi = new MaterialSkin.Controls.MaterialButton();
+            this.MaterialBtnEliminarMedi = new MaterialSkin.Controls.MaterialButton();
+            this.MaterialBtnVerTodosMedi = new MaterialSkin.Controls.MaterialButton();
+            this.MaterialBtnBuscarMedi = new MaterialSkin.Controls.MaterialButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.XtxDescripMedi = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.TxtStockMedi = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.XtxPrecioMedi = new System.Windows.Forms.TextBox();
+            this.XtxNombreMedi = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.MaterialControl.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.Inicio.SuspendLayout();
             this.PanelMedio.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -118,15 +113,15 @@ namespace SistemadeClinica.Views
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.GestionUsu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvUsuarios)).BeginInit();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.Medicamentos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvMedicamentos)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
@@ -134,11 +129,9 @@ namespace SistemadeClinica.Views
             // 
             // MaterialControl
             // 
-            this.MaterialControl.Controls.Add(this.tabPage1);
-            this.MaterialControl.Controls.Add(this.tabPage2);
-            this.MaterialControl.Controls.Add(this.tabPage3);
-            this.MaterialControl.Controls.Add(this.tabPage4);
-            this.MaterialControl.Controls.Add(this.tabPage5);
+            this.MaterialControl.Controls.Add(this.Inicio);
+            this.MaterialControl.Controls.Add(this.GestionUsu);
+            this.MaterialControl.Controls.Add(this.Medicamentos);
             this.MaterialControl.Depth = 0;
             this.MaterialControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MaterialControl.Location = new System.Drawing.Point(0, 0);
@@ -149,22 +142,21 @@ namespace SistemadeClinica.Views
             this.MaterialControl.Size = new System.Drawing.Size(1278, 569);
             this.MaterialControl.TabIndex = 0;
             // 
-            // tabPage1
+            // Inicio
             // 
-            this.tabPage1.Controls.Add(this.PanelMedio);
-            this.tabPage1.Controls.Add(this.PanelIzquierdo);
-            this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1270, 543);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Inicio";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.Inicio.Controls.Add(this.PanelMedio);
+            this.Inicio.Controls.Add(this.PanelIzquierdo);
+            this.Inicio.Controls.Add(this.panel1);
+            this.Inicio.Location = new System.Drawing.Point(4, 22);
+            this.Inicio.Name = "Inicio";
+            this.Inicio.Padding = new System.Windows.Forms.Padding(3);
+            this.Inicio.Size = new System.Drawing.Size(1270, 543);
+            this.Inicio.TabIndex = 0;
+            this.Inicio.Text = "Inicio";
+            this.Inicio.UseVisualStyleBackColor = true;
             // 
             // PanelMedio
             // 
-            this.PanelMedio.Controls.Add(this.materialButton1);
             this.PanelMedio.Controls.Add(this.panel4);
             this.PanelMedio.Controls.Add(this.pictureBox7);
             this.PanelMedio.Controls.Add(this.pictureBox5);
@@ -174,25 +166,6 @@ namespace SistemadeClinica.Views
             this.PanelMedio.Size = new System.Drawing.Size(642, 537);
             this.PanelMedio.TabIndex = 2;
             this.PanelMedio.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelMedio_Paint);
-            // 
-            // materialButton1
-            // 
-            this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton1.Depth = 0;
-            this.materialButton1.DrawShadows = true;
-            this.materialButton1.HighEmphasis = true;
-            this.materialButton1.Icon = null;
-            this.materialButton1.Location = new System.Drawing.Point(205, 311);
-            this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton1.Name = "materialButton1";
-            this.materialButton1.Size = new System.Drawing.Size(158, 36);
-            this.materialButton1.TabIndex = 44;
-            this.materialButton1.Text = "materialButton1";
-            this.materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton1.UseAccentColor = false;
-            this.materialButton1.UseVisualStyleBackColor = true;
-            this.materialButton1.Click += new System.EventHandler(this.materialButton1_Click);
             // 
             // panel4
             // 
@@ -334,22 +307,22 @@ namespace SistemadeClinica.Views
             this.pictureBox9.TabIndex = 41;
             this.pictureBox9.TabStop = false;
             // 
-            // tabPage2
+            // GestionUsu
             // 
-            this.tabPage2.Controls.Add(this.pictureBox10);
-            this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Controls.Add(this.groupBox2);
-            this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Controls.Add(this.pictureBox11);
-            this.tabPage2.Controls.Add(this.DgvUsuarios);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1270, 543);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Gestión de Usuarios";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            this.GestionUsu.Controls.Add(this.pictureBox10);
+            this.GestionUsu.Controls.Add(this.groupBox3);
+            this.GestionUsu.Controls.Add(this.groupBox2);
+            this.GestionUsu.Controls.Add(this.groupBox1);
+            this.GestionUsu.Controls.Add(this.pictureBox11);
+            this.GestionUsu.Controls.Add(this.DgvUsuarios);
+            this.GestionUsu.Location = new System.Drawing.Point(4, 22);
+            this.GestionUsu.Name = "GestionUsu";
+            this.GestionUsu.Padding = new System.Windows.Forms.Padding(3);
+            this.GestionUsu.Size = new System.Drawing.Size(1270, 543);
+            this.GestionUsu.TabIndex = 1;
+            this.GestionUsu.Text = "Gestión de Usuarios";
+            this.GestionUsu.UseVisualStyleBackColor = true;
+            this.GestionUsu.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // pictureBox10
             // 
@@ -701,267 +674,246 @@ namespace SistemadeClinica.Views
             this.DgvUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.DgvUsuarios.SelectionChanged += new System.EventHandler(this.DgvUsuarios_SelectionChanged);
             // 
-            // tabPage3
+            // Medicamentos
             // 
-            this.tabPage3.Controls.Add(this.dataGridView2);
-            this.tabPage3.Controls.Add(this.groupBox5);
-            this.tabPage3.Controls.Add(this.groupBox4);
-            this.tabPage3.Controls.Add(this.pictureBox12);
-            this.tabPage3.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1270, 543);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Reporte de Citas ";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.Medicamentos.Controls.Add(this.DgvMedicamentos);
+            this.Medicamentos.Controls.Add(this.groupBox5);
+            this.Medicamentos.Controls.Add(this.groupBox4);
+            this.Medicamentos.Controls.Add(this.pictureBox12);
+            this.Medicamentos.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.Medicamentos.Location = new System.Drawing.Point(4, 22);
+            this.Medicamentos.Name = "Medicamentos";
+            this.Medicamentos.Size = new System.Drawing.Size(1270, 543);
+            this.Medicamentos.TabIndex = 2;
+            this.Medicamentos.Text = "Medicamentos";
+            this.Medicamentos.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // DgvMedicamentos
             // 
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DgvMedicamentos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(31, 349);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(866, 150);
-            this.dataGridView2.TabIndex = 10;
+            this.DgvMedicamentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvMedicamentos.Location = new System.Drawing.Point(31, 349);
+            this.DgvMedicamentos.Name = "DgvMedicamentos";
+            this.DgvMedicamentos.Size = new System.Drawing.Size(1212, 150);
+            this.DgvMedicamentos.TabIndex = 10;
             // 
             // groupBox5
             // 
             this.groupBox5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.groupBox5.Controls.Add(this.materialButton6);
-            this.groupBox5.Controls.Add(this.materialButton7);
-            this.groupBox5.Controls.Add(this.materialButton11);
-            this.groupBox5.Controls.Add(this.materialButton8);
-            this.groupBox5.Controls.Add(this.materialButton10);
-            this.groupBox5.Controls.Add(this.materialButton9);
-            this.groupBox5.Location = new System.Drawing.Point(31, 277);
+            this.groupBox5.Controls.Add(this.MaterialBtnInsertarMedi);
+            this.groupBox5.Controls.Add(this.MaterialBtnActualizarMedi);
+            this.groupBox5.Controls.Add(this.MaterialBtnLimpiarMedi);
+            this.groupBox5.Controls.Add(this.MaterialBtnEliminarMedi);
+            this.groupBox5.Controls.Add(this.MaterialBtnVerTodosMedi);
+            this.groupBox5.Controls.Add(this.MaterialBtnBuscarMedi);
+            this.groupBox5.Location = new System.Drawing.Point(31, 218);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(866, 66);
+            this.groupBox5.Size = new System.Drawing.Size(1212, 93);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
             // 
-            // materialButton6
+            // MaterialBtnInsertarMedi
             // 
-            this.materialButton6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton6.Depth = 0;
-            this.materialButton6.DrawShadows = true;
-            this.materialButton6.HighEmphasis = true;
-            this.materialButton6.Icon = null;
-            this.materialButton6.Location = new System.Drawing.Point(12, 15);
-            this.materialButton6.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton6.Name = "materialButton6";
-            this.materialButton6.Size = new System.Drawing.Size(90, 36);
-            this.materialButton6.TabIndex = 2;
-            this.materialButton6.Text = "INSERTAR";
-            this.materialButton6.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton6.UseAccentColor = false;
-            this.materialButton6.UseVisualStyleBackColor = true;
+            this.MaterialBtnInsertarMedi.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.MaterialBtnInsertarMedi.Depth = 0;
+            this.MaterialBtnInsertarMedi.DrawShadows = true;
+            this.MaterialBtnInsertarMedi.HighEmphasis = true;
+            this.MaterialBtnInsertarMedi.Icon = null;
+            this.MaterialBtnInsertarMedi.Location = new System.Drawing.Point(111, 22);
+            this.MaterialBtnInsertarMedi.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.MaterialBtnInsertarMedi.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MaterialBtnInsertarMedi.Name = "MaterialBtnInsertarMedi";
+            this.MaterialBtnInsertarMedi.Size = new System.Drawing.Size(112, 36);
+            this.MaterialBtnInsertarMedi.TabIndex = 2;
+            this.MaterialBtnInsertarMedi.Text = "      INSERTAR      ";
+            this.MaterialBtnInsertarMedi.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.MaterialBtnInsertarMedi.UseAccentColor = false;
+            this.MaterialBtnInsertarMedi.UseVisualStyleBackColor = true;
             // 
-            // materialButton7
+            // MaterialBtnActualizarMedi
             // 
-            this.materialButton7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton7.Depth = 0;
-            this.materialButton7.DrawShadows = true;
-            this.materialButton7.HighEmphasis = true;
-            this.materialButton7.Icon = null;
-            this.materialButton7.Location = new System.Drawing.Point(172, 15);
-            this.materialButton7.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton7.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton7.Name = "materialButton7";
-            this.materialButton7.Size = new System.Drawing.Size(109, 36);
-            this.materialButton7.TabIndex = 3;
-            this.materialButton7.Text = "ACTUALIZAR";
-            this.materialButton7.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton7.UseAccentColor = false;
-            this.materialButton7.UseVisualStyleBackColor = true;
+            this.MaterialBtnActualizarMedi.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.MaterialBtnActualizarMedi.Depth = 0;
+            this.MaterialBtnActualizarMedi.DrawShadows = true;
+            this.MaterialBtnActualizarMedi.HighEmphasis = true;
+            this.MaterialBtnActualizarMedi.Icon = null;
+            this.MaterialBtnActualizarMedi.Location = new System.Drawing.Point(293, 22);
+            this.MaterialBtnActualizarMedi.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.MaterialBtnActualizarMedi.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MaterialBtnActualizarMedi.Name = "MaterialBtnActualizarMedi";
+            this.MaterialBtnActualizarMedi.Size = new System.Drawing.Size(130, 36);
+            this.MaterialBtnActualizarMedi.TabIndex = 3;
+            this.MaterialBtnActualizarMedi.Text = "      ACTUALIZAR      ";
+            this.MaterialBtnActualizarMedi.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.MaterialBtnActualizarMedi.UseAccentColor = false;
+            this.MaterialBtnActualizarMedi.UseVisualStyleBackColor = true;
             // 
-            // materialButton11
+            // MaterialBtnLimpiarMedi
             // 
-            this.materialButton11.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton11.Depth = 0;
-            this.materialButton11.DrawShadows = true;
-            this.materialButton11.HighEmphasis = true;
-            this.materialButton11.Icon = null;
-            this.materialButton11.Location = new System.Drawing.Point(753, 15);
-            this.materialButton11.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton11.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton11.Name = "materialButton11";
-            this.materialButton11.Size = new System.Drawing.Size(79, 36);
-            this.materialButton11.TabIndex = 7;
-            this.materialButton11.Text = "LIMPIAR";
-            this.materialButton11.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton11.UseAccentColor = false;
-            this.materialButton11.UseVisualStyleBackColor = true;
-            this.materialButton11.Click += new System.EventHandler(this.materialButton11_Click);
+            this.MaterialBtnLimpiarMedi.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.MaterialBtnLimpiarMedi.Depth = 0;
+            this.MaterialBtnLimpiarMedi.DrawShadows = true;
+            this.MaterialBtnLimpiarMedi.HighEmphasis = true;
+            this.MaterialBtnLimpiarMedi.Icon = null;
+            this.MaterialBtnLimpiarMedi.Location = new System.Drawing.Point(506, 22);
+            this.MaterialBtnLimpiarMedi.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.MaterialBtnLimpiarMedi.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MaterialBtnLimpiarMedi.Name = "MaterialBtnLimpiarMedi";
+            this.MaterialBtnLimpiarMedi.Size = new System.Drawing.Size(100, 36);
+            this.MaterialBtnLimpiarMedi.TabIndex = 7;
+            this.MaterialBtnLimpiarMedi.Text = "      LIMPIAR      ";
+            this.MaterialBtnLimpiarMedi.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.MaterialBtnLimpiarMedi.UseAccentColor = false;
+            this.MaterialBtnLimpiarMedi.UseVisualStyleBackColor = true;
+            this.MaterialBtnLimpiarMedi.Click += new System.EventHandler(this.materialButton11_Click);
             // 
-            // materialButton8
+            // MaterialBtnEliminarMedi
             // 
-            this.materialButton8.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton8.Depth = 0;
-            this.materialButton8.DrawShadows = true;
-            this.materialButton8.HighEmphasis = true;
-            this.materialButton8.Icon = null;
-            this.materialButton8.Location = new System.Drawing.Point(335, 15);
-            this.materialButton8.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton8.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton8.Name = "materialButton8";
-            this.materialButton8.Size = new System.Drawing.Size(88, 36);
-            this.materialButton8.TabIndex = 4;
-            this.materialButton8.Text = "ELIMINAR";
-            this.materialButton8.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton8.UseAccentColor = false;
-            this.materialButton8.UseVisualStyleBackColor = true;
+            this.MaterialBtnEliminarMedi.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.MaterialBtnEliminarMedi.Depth = 0;
+            this.MaterialBtnEliminarMedi.DrawShadows = true;
+            this.MaterialBtnEliminarMedi.HighEmphasis = true;
+            this.MaterialBtnEliminarMedi.Icon = null;
+            this.MaterialBtnEliminarMedi.Location = new System.Drawing.Point(673, 22);
+            this.MaterialBtnEliminarMedi.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.MaterialBtnEliminarMedi.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MaterialBtnEliminarMedi.Name = "MaterialBtnEliminarMedi";
+            this.MaterialBtnEliminarMedi.Size = new System.Drawing.Size(110, 36);
+            this.MaterialBtnEliminarMedi.TabIndex = 4;
+            this.MaterialBtnEliminarMedi.Text = "      ELIMINAR      ";
+            this.MaterialBtnEliminarMedi.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.MaterialBtnEliminarMedi.UseAccentColor = false;
+            this.MaterialBtnEliminarMedi.UseVisualStyleBackColor = true;
             // 
-            // materialButton10
+            // MaterialBtnVerTodosMedi
             // 
-            this.materialButton10.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton10.Depth = 0;
-            this.materialButton10.DrawShadows = true;
-            this.materialButton10.HighEmphasis = true;
-            this.materialButton10.Icon = null;
-            this.materialButton10.Location = new System.Drawing.Point(623, 15);
-            this.materialButton10.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton10.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton10.Name = "materialButton10";
-            this.materialButton10.Size = new System.Drawing.Size(100, 36);
-            this.materialButton10.TabIndex = 6;
-            this.materialButton10.Text = "VER TODOS";
-            this.materialButton10.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton10.UseAccentColor = false;
-            this.materialButton10.UseVisualStyleBackColor = true;
+            this.MaterialBtnVerTodosMedi.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.MaterialBtnVerTodosMedi.Depth = 0;
+            this.MaterialBtnVerTodosMedi.DrawShadows = true;
+            this.MaterialBtnVerTodosMedi.HighEmphasis = true;
+            this.MaterialBtnVerTodosMedi.Icon = null;
+            this.MaterialBtnVerTodosMedi.Location = new System.Drawing.Point(1018, 22);
+            this.MaterialBtnVerTodosMedi.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.MaterialBtnVerTodosMedi.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MaterialBtnVerTodosMedi.Name = "MaterialBtnVerTodosMedi";
+            this.MaterialBtnVerTodosMedi.Size = new System.Drawing.Size(118, 36);
+            this.MaterialBtnVerTodosMedi.TabIndex = 6;
+            this.MaterialBtnVerTodosMedi.Text = "     VER TODOS      ";
+            this.MaterialBtnVerTodosMedi.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.MaterialBtnVerTodosMedi.UseAccentColor = false;
+            this.MaterialBtnVerTodosMedi.UseVisualStyleBackColor = true;
             // 
-            // materialButton9
+            // MaterialBtnBuscarMedi
             // 
-            this.materialButton9.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton9.Depth = 0;
-            this.materialButton9.DrawShadows = true;
-            this.materialButton9.HighEmphasis = true;
-            this.materialButton9.Icon = null;
-            this.materialButton9.Location = new System.Drawing.Point(482, 15);
-            this.materialButton9.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton9.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton9.Name = "materialButton9";
-            this.materialButton9.Size = new System.Drawing.Size(77, 36);
-            this.materialButton9.TabIndex = 5;
-            this.materialButton9.Text = "BUSCAR";
-            this.materialButton9.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton9.UseAccentColor = false;
-            this.materialButton9.UseVisualStyleBackColor = true;
+            this.MaterialBtnBuscarMedi.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.MaterialBtnBuscarMedi.Depth = 0;
+            this.MaterialBtnBuscarMedi.DrawShadows = true;
+            this.MaterialBtnBuscarMedi.HighEmphasis = true;
+            this.MaterialBtnBuscarMedi.Icon = null;
+            this.MaterialBtnBuscarMedi.Location = new System.Drawing.Point(854, 22);
+            this.MaterialBtnBuscarMedi.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.MaterialBtnBuscarMedi.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MaterialBtnBuscarMedi.Name = "MaterialBtnBuscarMedi";
+            this.MaterialBtnBuscarMedi.Size = new System.Drawing.Size(99, 36);
+            this.MaterialBtnBuscarMedi.TabIndex = 5;
+            this.MaterialBtnBuscarMedi.Text = "      BUSCAR      ";
+            this.MaterialBtnBuscarMedi.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.MaterialBtnBuscarMedi.UseAccentColor = false;
+            this.MaterialBtnBuscarMedi.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
             this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.groupBox4.Controls.Add(this.textBox11);
-            this.groupBox4.Controls.Add(this.textBox10);
-            this.groupBox4.Controls.Add(this.textBox9);
-            this.groupBox4.Controls.Add(this.textBox8);
-            this.groupBox4.Controls.Add(this.textBox7);
-            this.groupBox4.Controls.Add(this.label14);
-            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.XtxDescripMedi);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.TxtStockMedi);
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.XtxPrecioMedi);
+            this.groupBox4.Controls.Add(this.XtxNombreMedi);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Font = new System.Drawing.Font("Perpetua Titling MT", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.groupBox4.Location = new System.Drawing.Point(31, 86);
+            this.groupBox4.Location = new System.Drawing.Point(31, 87);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(866, 160);
+            this.groupBox4.Size = new System.Drawing.Size(1212, 113);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Expediente";
+            this.groupBox4.Text = "Gestión de medicamentos";
             this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
-            // textBox11
+            // XtxDescripMedi
             // 
-            this.textBox11.Location = new System.Drawing.Point(704, 107);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(128, 23);
-            this.textBox11.TabIndex = 10;
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(482, 111);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(121, 23);
-            this.textBox10.TabIndex = 9;
-            this.textBox10.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(580, 45);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(252, 23);
-            this.textBox9.TabIndex = 8;
-            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(144, 107);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(218, 23);
-            this.textBox8.TabIndex = 7;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(144, 52);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(243, 23);
-            this.textBox7.TabIndex = 6;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(649, 113);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(49, 17);
-            this.label14.TabIndex = 5;
-            this.label14.Text = "Hora:";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(423, 113);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(52, 17);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "Fecha:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(434, 47);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(129, 17);
-            this.label12.TabIndex = 3;
-            this.label12.Text = "Nombre del Area:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(9, 51);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(129, 17);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Escribir Nombre:";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
+            this.XtxDescripMedi.Location = new System.Drawing.Point(142, 71);
+            this.XtxDescripMedi.Name = "XtxDescripMedi";
+            this.XtxDescripMedi.Size = new System.Drawing.Size(854, 23);
+            this.XtxDescripMedi.TabIndex = 12;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(23, 113);
+            this.label10.Location = new System.Drawing.Point(41, 73);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(115, 17);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Area de la Cita:";
+            this.label10.Size = new System.Drawing.Size(95, 17);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Descripción";
+            // 
+            // TxtStockMedi
+            // 
+            this.TxtStockMedi.Location = new System.Drawing.Point(908, 29);
+            this.TxtStockMedi.Name = "TxtStockMedi";
+            this.TxtStockMedi.Size = new System.Drawing.Size(252, 23);
+            this.TxtStockMedi.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(851, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 17);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Stock";
+            // 
+            // XtxPrecioMedi
+            // 
+            this.XtxPrecioMedi.Location = new System.Drawing.Point(577, 29);
+            this.XtxPrecioMedi.Name = "XtxPrecioMedi";
+            this.XtxPrecioMedi.Size = new System.Drawing.Size(252, 23);
+            this.XtxPrecioMedi.TabIndex = 8;
+            this.XtxPrecioMedi.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
+            // 
+            // XtxNombreMedi
+            // 
+            this.XtxNombreMedi.Location = new System.Drawing.Point(93, 29);
+            this.XtxNombreMedi.Name = "XtxNombreMedi";
+            this.XtxNombreMedi.Size = new System.Drawing.Size(391, 23);
+            this.XtxNombreMedi.TabIndex = 6;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(503, 31);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(68, 17);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "Precio  $";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(20, 31);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(67, 17);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Nombre:";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label9
             // 
@@ -976,30 +928,12 @@ namespace SistemadeClinica.Views
             // 
             this.pictureBox12.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
-            this.pictureBox12.Location = new System.Drawing.Point(315, 21);
+            this.pictureBox12.Location = new System.Drawing.Point(466, 16);
             this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(239, 46);
+            this.pictureBox12.Size = new System.Drawing.Size(312, 65);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox12.TabIndex = 1;
             this.pictureBox12.TabStop = false;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1270, 543);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Pacientes";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1270, 543);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Perfil";
-            this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // FormDashboard
             // 
@@ -1013,9 +947,8 @@ namespace SistemadeClinica.Views
             this.Text = "Sistema de gestión de clinica";
             this.Load += new System.EventHandler(this.Inicio_Load);
             this.MaterialControl.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.Inicio.ResumeLayout(false);
             this.PanelMedio.ResumeLayout(false);
-            this.PanelMedio.PerformLayout();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
@@ -1030,7 +963,7 @@ namespace SistemadeClinica.Views
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            this.tabPage2.ResumeLayout(false);
+            this.GestionUsu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -1040,8 +973,8 @@ namespace SistemadeClinica.Views
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvUsuarios)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.Medicamentos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DgvMedicamentos)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -1054,7 +987,7 @@ namespace SistemadeClinica.Views
         #endregion
 
         private MaterialSkin.Controls.MaterialTabControl MaterialControl;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage Inicio;
         private System.Windows.Forms.Panel PanelMedio;
         private System.Windows.Forms.Panel PanelIzquierdo;
         private System.Windows.Forms.Panel panel1;
@@ -1070,33 +1003,25 @@ namespace SistemadeClinica.Views
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage Medicamentos;
+        private System.Windows.Forms.TabPage GestionUsu;
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.DataGridView DgvUsuarios;
-        private MaterialSkin.Controls.MaterialButton materialButton11;
-        private MaterialSkin.Controls.MaterialButton materialButton10;
-        private MaterialSkin.Controls.MaterialButton materialButton9;
-        private MaterialSkin.Controls.MaterialButton materialButton8;
-        private MaterialSkin.Controls.MaterialButton materialButton7;
-        private MaterialSkin.Controls.MaterialButton materialButton6;
+        private MaterialSkin.Controls.MaterialButton MaterialBtnLimpiarMedi;
+        private MaterialSkin.Controls.MaterialButton MaterialBtnVerTodosMedi;
+        private MaterialSkin.Controls.MaterialButton MaterialBtnBuscarMedi;
+        private MaterialSkin.Controls.MaterialButton MaterialBtnEliminarMedi;
+        private MaterialSkin.Controls.MaterialButton MaterialBtnActualizarMedi;
+        private MaterialSkin.Controls.MaterialButton MaterialBtnInsertarMedi;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox XtxNombreMedi;
+        private System.Windows.Forms.TextBox XtxPrecioMedi;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView DgvMedicamentos;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.GroupBox groupBox3;
         private MaterialSkin.Controls.MaterialButton BtnVerTodos;
@@ -1122,8 +1047,11 @@ namespace SistemadeClinica.Views
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox TxtNombreGestion;
-        private MaterialSkin.Controls.MaterialButton materialButton1;
         private MaterialSkin.Controls.MaterialButton BtnLimpiar;
+        private System.Windows.Forms.TextBox XtxDescripMedi;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox TxtStockMedi;
+        private System.Windows.Forms.Label label1;
     }
 }
 

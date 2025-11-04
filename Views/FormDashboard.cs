@@ -31,16 +31,38 @@ namespace SistemadeClinica.Views
             CargarUsuarios();
             CargarSexo();
             ConfigurarModoInicial();
+            //ConfigurarBotonesSegunRol();
         }
 
+        private void Inicio_Load(object sender, EventArgs e)
+        {
 
+        }
 
+        /*
+        //Codigo que ocula gestion de usuarios si no es admin
+         private void ConfigurarBotonesSegunRol()
+        {
+            if (Sesion.RolId != '2')
+            {
+                GestionUsu = MaterialControl.TabPages["GestionUsu"];
+                MaterialControl.TabPages.Remove(GestionUsu);
+            }
+
+            if (Sesion.RolId != '3')
+            {
+                GestionUsu = MaterialControl.TabPages["GestionUsu"];
+                MaterialControl.TabPages.Remove(GestionUsu);
+            }
+        }
+
+        */
         /*
           ************************************************************************************************************************************
           ---------------------------------------PESTAÑA GESTION DE USUARIOS------------------------------------------------------------------
           ************************************************************************************************************************************
          */
-        
+
         //Metodo para colorear los texbox de la pestaña gestion de usuarios
         private void PersonalizarFormulario()
         {
@@ -62,13 +84,6 @@ namespace SistemadeClinica.Views
             TxtCorreoGestion.Enter += (s, e) => { TxtCorreoGestion.BackColor = Color.LightCyan; };
             TxtCorreoGestion.Leave += (s, e) => { TxtCorreoGestion.BackColor = Color.White; };
         }
-        
-
-        private void Inicio_Load(object sender, EventArgs e)
-        {
-            
-        }
-
 
         //Metodo para configurar la pestaña gestion de usuarios, que no aparezca el boton actualizar ni el eliminar porque no ha nada auin
         private void ConfigurarModoInicial()
@@ -139,6 +154,8 @@ namespace SistemadeClinica.Views
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        
 
         //Metodo para configurar la vista del DataView
         private void ConfigurarDataGriwView()
@@ -405,7 +422,7 @@ namespace SistemadeClinica.Views
                 
                 if (idExcluir > 0)
                 {
-                    condicion += $"AND Id != {idExcluir}";
+                    condicion += $" AND Id != {idExcluir}";
                 }
 
                 DataTable usuariosExistentes = usuarioController.ObtenerUsuariosPorCondicion(condicion);
@@ -517,6 +534,7 @@ namespace SistemadeClinica.Views
 
         }
 
+        //Metodo limpiar formulario
         private void LimpiarFormulario()
         {
             usuarioSelecionado = 0;
@@ -578,6 +596,7 @@ namespace SistemadeClinica.Views
 
         }
 
+        //Boton buscar un registro
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             try
@@ -709,7 +728,7 @@ namespace SistemadeClinica.Views
             }
         }
 
-
+        //Boton buscar todos los registros
         private void BtnVerTodos_Click(object sender, EventArgs e)
         {
             try
@@ -729,9 +748,14 @@ namespace SistemadeClinica.Views
         }
 
 
+        /*
+          **********************************************************************************************************************************************************************
+          ---------------------------------------FIN DE PESTAÑA GESTION DE USUARIOS---------------------------------------------------------------------------------------------
+          **********************************************************************************************************************************************************************
+         */
 
 
-
+        
 
 
 
@@ -828,12 +852,13 @@ namespace SistemadeClinica.Views
 
         }
 
+        /*
         private void materialButton1_Click(object sender, EventArgs e)
         {
-            tabPage2 = MaterialControl.TabPages["tabPage2"];
-            MaterialControl.TabPages.Remove(tabPage2);
+            GestionUsu = MaterialControl.TabPages["tabPage2"];
+            MaterialControl.TabPages.Remove(GestionUsu);
         }
 
-        
+        */
     }
 }
