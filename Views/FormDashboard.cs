@@ -18,12 +18,19 @@ namespace SistemadeClinica.Views
 {
     public partial class FormDashboard : MaterialForm
     {
+        //Metodos para usuarios
         private int usuarioSelecionado = 0; //Variable Id del usuario
         private UsuarioControllers usuarioController;
         private DataTable dtUsuarios;
         private DataTable dtRoles;
+
+        //Metodos para producto
+        private int medicamentoSeleccionado = 0;
+        private MedicamentosController medicamentosController;
+        private DataTable dtMedicamentos;
         public FormDashboard()
         {
+            //Usuarios
             InitializeComponent();
             usuarioController = new UsuarioControllers();
             PersonalizarFormulario();
@@ -33,7 +40,9 @@ namespace SistemadeClinica.Views
             ConfigurarModoInicial();
             ConfigurarBotonesSegunRol();
 
-
+            //Medicamentos
+            ConfigurarModoInicial2();
+            CargarMedicamentos();
 
 
         }
@@ -83,6 +92,7 @@ namespace SistemadeClinica.Views
         //Metodo para colorear los texbox de la pestaña gestion de usuarios
         private void PersonalizarFormulario()
         {
+            //Usuarios
             TxtUsuarioGestion.Enter += (s, e) => { TxtUsuarioGestion.BackColor = Color.LightCyan; };
             TxtUsuarioGestion.Leave += (s, e) => { TxtUsuarioGestion.BackColor = Color.White; };
 
@@ -100,6 +110,19 @@ namespace SistemadeClinica.Views
 
             TxtCorreoGestion.Enter += (s, e) => { TxtCorreoGestion.BackColor = Color.LightCyan; };
             TxtCorreoGestion.Leave += (s, e) => { TxtCorreoGestion.BackColor = Color.White; };
+
+            //Medicamentos
+            XtxNombreMedi.Enter += (s, e) => { XtxNombreMedi.BackColor = Color.LightCyan; };
+            XtxNombreMedi.Leave += (s, e) => { XtxNombreMedi.BackColor = Color.White; };
+
+            XtxPrecioMedi.Enter += (s, e) => { XtxPrecioMedi.BackColor = Color.LightCyan; };
+            XtxPrecioMedi.Leave += (s, e) => { XtxPrecioMedi.BackColor = Color.White; };
+
+            XtxDescripMedi.Enter += (s, e) => { XtxDescripMedi.BackColor = Color.LightCyan; };
+            XtxDescripMedi.Leave += (s, e) => { XtxDescripMedi.BackColor = Color.White; };
+
+            XtxStockMedi.Enter += (s, e) => { XtxStockMedi.BackColor = Color.LightCyan; };
+            XtxStockMedi.Leave += (s, e) => { XtxStockMedi.BackColor = Color.White; };
         }
 
         //Metodo para configurar la pestaña gestion de usuarios, que no aparezca el boton actualizar ni el eliminar porque no ha nada auin
@@ -772,7 +795,225 @@ namespace SistemadeClinica.Views
          */
 
 
-        
+
+        /*
+          **********************************************************************************************************************************************************************
+          ---------------------------------------PESTAÑA MEDICAMENTOS---------------------------------------------------------------------------------------------
+          **********************************************************************************************************************************************************************
+         */
+
+        //Ocultar botones indispensables
+        private void ConfigurarModoInicial2()
+        {
+            MaterialBtnActualizarMedi.Enabled = false;
+            MaterialBtnEliminarMedi.Enabled = false;
+        }
+
+
+        private void CargarMedicamentos()
+        {
+            try
+            {
+                dtMedicamentos = medicamentosController.ObtenerTodosMedicamentos();
+
+                if (dtMedicamentos != null && dtMedicamentos.Rows.Count > 0)
+                {
+                    if (dtMedicamentos.Columns.Contains("Precio"))
+                    {
+                        dtMedicamentos.Columns["Precio"].DataType = typeof(double);
+                    }
+                    DgvMedicamentos.DataSource = dtMedicamentos;
+                    ConfigurarDataGridView2();
+                }
+                else
+                {
+                    DgvMedicamentos.DataSource = null;
+                    MessageBox.Show("No se encontraron medicamentos registrados.", "Información",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar medicamentos:  {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ConfigurarDataGridView2()
+        {
+            try
+            {
+                DgvMedicamentos.SuspendLayout();
+
+                DgvMedicamentos.AutoGenerateColumns = false;
+                DgvMedicamentos.Columns.Clear();
+
+                DgvMedicamentos.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Nombre",
+                    HeaderText = "Nombre del medicamento",
+                    DataPropertyName = "Nombre",
+                    ReadOnly = true
+                });
+
+                DgvMedicamentos.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Precio",
+                    HeaderText = "Precio",
+                    DataPropertyName = "Precio",
+                    ReadOnly = true,
+                    DefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Format = "C2",//DataGridContentAlignment
+                        Alignment = DataGridViewContentAlignment.MiddleRight
+                        
+                    }
+                });
+
+                DgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Stock",
+                    HeaderText = "Stock",
+                    DataPropertyName = "Stock",
+                    ReadOnly = true,
+                    DefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Alignment = DataGridViewContentAlignment.MiddleRight
+
+                    }
+                });
+
+                DgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Descripcion",
+                    HeaderText = "Descripcion",
+                    DataPropertyName = "Descripcion",
+                    ReadOnly = true
+                });
+
+                //Columna ids no visible
+                DgvUsuarios.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Id",
+                    HeaderText = "Id",
+                    DataPropertyName = "Id",
+                    ReadOnly = true,
+                    Visible = false
+                });
+
+                //Propiedades visuales del DataView
+                DgvMedicamentos.ReadOnly = true;
+                DgvMedicamentos.AllowUserToAddRows = false;
+                DgvMedicamentos.AllowUserToDeleteRows = false;
+
+                DgvMedicamentos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                DgvMedicamentos.MultiSelect = false;
+
+                DgvMedicamentos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                DgvMedicamentos.BackgroundColor = Color.White;
+                DgvMedicamentos.BorderStyle = BorderStyle.None;
+                DgvMedicamentos.AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue;
+                DgvMedicamentos.RowHeadersVisible = false;
+                DgvMedicamentos.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+                DgvMedicamentos.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                DgvMedicamentos.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 9, FontStyle.Regular);
+                DgvMedicamentos.EnableHeadersVisualStyles = false;
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error  al configurar DataGridView2: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                DgvMedicamentos.ResumeLayout();
+            }
+
+        }
+
+        //Evento para cambiar las views al hacer clic
+        private void DgvMedicamentos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex < 0) return;
+
+                DataGridViewRow fila = DgvMedicamentos.Rows[e.RowIndex];
+
+                if (fila.Cells["Id"].Value != null)
+                {
+                    medicamentoSeleccionado = Convert.ToInt32(fila.Cells["Id"].Value);
+                }
+
+                XtxNombreMedi.Text = fila.Cells["Nombre"].Value?.ToString() ?? "";
+                XtxPrecioMedi.Text = fila.Cells["Precio"].Value?.ToString() ?? "";
+                XtxStockMedi.Text = fila.Cells["Stock"].Value?.ToString() ?? "";
+                XtxDescripMedi.Text = fila.Cells["Descripcion"].Value?.ToString() ?? "";
+
+
+                
+                string nombreRol = fila.Cells["Rol"].Value?.ToString() ?? "";
+                if (!string.IsNullOrEmpty(nombreRol))
+                {
+                    foreach (DataRowView item in ComboBoxRol.Items)
+                    {
+                        if (item["Nombre"].ToString() == nombreRol)
+                        {
+                            ComboBoxRol.SelectedValue = item["Id"];
+                            break;
+                        }
+                    }
+                }
+
+                
+
+                CambiarColorFormularioEdicion2();
+                MaterialBtnActualizarMedi.Enabled = true;
+                MaterialBtnEliminarMedi.Enabled = true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar datos del medicamento: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Metodo para cambiar el color cuando se edita
+        private void CambiarColorFormularioEdicion2()
+        {
+            Color colorEdicion = Color.LightYellow;
+            XtxNombreMedi.BackColor = colorEdicion;
+            XtxPrecioMedi.BackColor = colorEdicion;
+            XtxStockMedi.BackColor = colorEdicion;
+            XtxDescripMedi.BackColor = colorEdicion;
+        }
+
+        //Metodo para cambiar el color cuando no se edita
+        private void RestaurarColorFormulario2()
+        {
+            Color colorNormal = Color.White;
+            XtxNombreMedi.BackColor = colorNormal;
+            XtxPrecioMedi.BackColor = colorNormal;
+            XtxStockMedi.BackColor = colorNormal;
+            XtxDescripMedi.BackColor = colorNormal;
+
+        }
+
+        //Boton agregar
+        private void MaterialBtnInsertarMedi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+
+
 
 
 
@@ -789,7 +1030,7 @@ namespace SistemadeClinica.Views
 
         private void tabPage2_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -869,13 +1110,6 @@ namespace SistemadeClinica.Views
 
         }
 
-        /*
-        private void materialButton1_Click(object sender, EventArgs e)
-        {
-            GestionUsu = MaterialControl.TabPages["tabPage2"];
-            MaterialControl.TabPages.Remove(GestionUsu);
-        }
-
-        */
+        
     }
 }

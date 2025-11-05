@@ -88,7 +88,7 @@ namespace SistemadeClinica.Views
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.XtxDescripMedi = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.TxtStockMedi = new System.Windows.Forms.TextBox();
+            this.XtxStockMedi = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.XtxPrecioMedi = new System.Windows.Forms.TextBox();
             this.XtxNombreMedi = new System.Windows.Forms.TextBox();
@@ -698,6 +698,7 @@ namespace SistemadeClinica.Views
             this.DgvMedicamentos.Name = "DgvMedicamentos";
             this.DgvMedicamentos.Size = new System.Drawing.Size(1212, 150);
             this.DgvMedicamentos.TabIndex = 10;
+            this.DgvMedicamentos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvMedicamentos_CellClick);
             // 
             // groupBox5
             // 
@@ -731,6 +732,7 @@ namespace SistemadeClinica.Views
             this.MaterialBtnInsertarMedi.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.MaterialBtnInsertarMedi.UseAccentColor = false;
             this.MaterialBtnInsertarMedi.UseVisualStyleBackColor = true;
+            this.MaterialBtnInsertarMedi.Click += new System.EventHandler(this.MaterialBtnInsertarMedi_Click);
             // 
             // MaterialBtnActualizarMedi
             // 
@@ -828,7 +830,7 @@ namespace SistemadeClinica.Views
             this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox4.Controls.Add(this.XtxDescripMedi);
             this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.TxtStockMedi);
+            this.groupBox4.Controls.Add(this.XtxStockMedi);
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.XtxPrecioMedi);
             this.groupBox4.Controls.Add(this.XtxNombreMedi);
@@ -862,12 +864,12 @@ namespace SistemadeClinica.Views
             this.label10.TabIndex = 11;
             this.label10.Text = "Descripción";
             // 
-            // TxtStockMedi
+            // XtxStockMedi
             // 
-            this.TxtStockMedi.Location = new System.Drawing.Point(908, 29);
-            this.TxtStockMedi.Name = "TxtStockMedi";
-            this.TxtStockMedi.Size = new System.Drawing.Size(252, 23);
-            this.TxtStockMedi.TabIndex = 10;
+            this.XtxStockMedi.Location = new System.Drawing.Point(908, 29);
+            this.XtxStockMedi.Name = "XtxStockMedi";
+            this.XtxStockMedi.Size = new System.Drawing.Size(252, 23);
+            this.XtxStockMedi.TabIndex = 10;
             // 
             // label1
             // 
@@ -1050,7 +1052,7 @@ namespace SistemadeClinica.Views
         private MaterialSkin.Controls.MaterialButton BtnLimpiar;
         private System.Windows.Forms.TextBox XtxDescripMedi;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox TxtStockMedi;
+        private System.Windows.Forms.TextBox XtxStockMedi;
         private System.Windows.Forms.Label label1;
     }
 }
