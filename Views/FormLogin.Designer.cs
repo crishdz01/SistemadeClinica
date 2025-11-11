@@ -32,7 +32,6 @@ namespace SistemadeClinica.Views
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BtnIngresar = new MaterialSkin.Controls.MaterialButton();
             this.BtnSalir = new MaterialSkin.Controls.MaterialButton();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.TxtContrasena = new MaterialSkin.Controls.MaterialTextBox();
             this.TxtUsuario = new MaterialSkin.Controls.MaterialTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -40,7 +39,7 @@ namespace SistemadeClinica.Views
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.pictureBox1.Image = global::SistemadeClinica.Properties.Resources.Doc;
             this.pictureBox1.Location = new System.Drawing.Point(2, 63);
             this.pictureBox1.Name = "pictureBox1";
@@ -87,31 +86,20 @@ namespace SistemadeClinica.Views
             this.BtnSalir.UseVisualStyleBackColor = true;
             this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.Location = new System.Drawing.Point(70, 243);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(158, 19);
-            this.materialLabel1.TabIndex = 9;
-            this.materialLabel1.Text = "Olvido su contraseña?";
-            // 
             // TxtContrasena
             // 
             this.TxtContrasena.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TxtContrasena.Depth = 0;
-            this.TxtContrasena.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.TxtContrasena.Location = new System.Drawing.Point(42, 176);
+            this.TxtContrasena.Font = new System.Drawing.Font("Roboto", 12F);
+            this.TxtContrasena.Hint = "Contraseña";
+            this.TxtContrasena.Location = new System.Drawing.Point(42, 201);
             this.TxtContrasena.MaxLength = 50;
             this.TxtContrasena.MouseState = MaterialSkin.MouseState.OUT;
             this.TxtContrasena.Multiline = false;
             this.TxtContrasena.Name = "TxtContrasena";
             this.TxtContrasena.Size = new System.Drawing.Size(218, 50);
             this.TxtContrasena.TabIndex = 8;
-            this.TxtContrasena.Text = "Contraseña";
+            this.TxtContrasena.Text = "";
             this.TxtContrasena.Enter += new System.EventHandler(this.TxtContrasena_Enter);
             this.TxtContrasena.Leave += new System.EventHandler(this.TxtContrasena_Leave);
             // 
@@ -119,15 +107,17 @@ namespace SistemadeClinica.Views
             // 
             this.TxtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TxtUsuario.Depth = 0;
-            this.TxtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.TxtUsuario.Location = new System.Drawing.Point(42, 102);
+            this.TxtUsuario.Font = new System.Drawing.Font("Roboto", 12F);
+            this.TxtUsuario.Hint = "Usuario";
+            this.TxtUsuario.Location = new System.Drawing.Point(42, 128);
             this.TxtUsuario.MaxLength = 50;
             this.TxtUsuario.MouseState = MaterialSkin.MouseState.OUT;
             this.TxtUsuario.Multiline = false;
             this.TxtUsuario.Name = "TxtUsuario";
             this.TxtUsuario.Size = new System.Drawing.Size(218, 50);
             this.TxtUsuario.TabIndex = 7;
-            this.TxtUsuario.Text = "Usuario";
+            this.TxtUsuario.Text = "";
+            this.TxtUsuario.TextChanged += new System.EventHandler(this.TxtUsuario_TextChanged);
             this.TxtUsuario.Enter += new System.EventHandler(this.TxtUsuario_Enter);
             this.TxtUsuario.Leave += new System.EventHandler(this.TxtUsuario_Leave);
             // 
@@ -136,7 +126,6 @@ namespace SistemadeClinica.Views
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(541, 477);
-            this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.TxtContrasena);
             this.Controls.Add(this.TxtUsuario);
             this.Controls.Add(this.BtnSalir);
@@ -158,7 +147,6 @@ namespace SistemadeClinica.Views
         private System.Windows.Forms.PictureBox pictureBox1;
         private MaterialSkin.Controls.MaterialButton BtnIngresar;
         private MaterialSkin.Controls.MaterialButton BtnSalir;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialTextBox TxtContrasena;
         private MaterialSkin.Controls.MaterialTextBox TxtUsuario;
     }

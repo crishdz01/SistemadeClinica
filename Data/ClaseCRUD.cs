@@ -13,16 +13,15 @@ namespace SistemadeClinica.Data
     class ClaseCRUD
     {
         public string Cadena = "server=localhost;port=3306;uid=root;pwd='';database=sistema_de_clinica;";
-        public MySqlConnection Conexion; //Comando para la conexion abierta
+        
 
-
-
-
+        
+        private MySqlConnection Conexion;
         private MySqlCommandBuilder cmb;
-        public DataSet ds = new DataSet(); //Almacenar datos en memoria
-        public MySqlDataAdapter da; //Rellena un DataSet y actualizar una base de datos (Puente entre BD y DataSet).
-        public MySqlCommand Comando; //Instrucción de Transact-SQL que se ejecuta en una base de datos de SQL Server.
-                                     //Método para conectar a la BD
+        public DataSet ds = new DataSet();
+        public MySqlDataAdapter da;
+        public MySqlCommand Comando;
+         
         private void Conectar()
         {
             Conexion = new MySqlConnection(Cadena);
@@ -35,82 +34,145 @@ namespace SistemadeClinica.Data
         //Método para insertar nuevo registros a una tabla
         public bool Insertar(string Tabla, string Campos, string Valores)
         {
-            Conexion.Open();
-            string querySQL = "INSERT INTO " + Tabla + "(" + Campos + ") VALUES(" + Valores + ");"; ;
-            Comando = new MySqlCommand(querySQL, Conexion);
-            int i = Comando.ExecuteNonQuery(); //Ejecuta sentencia dentro del servidor
-            Conexion.Close();
-            if (i > 0) //Evaluar si la variable i devuelve un valor mayor a cero
+            try
             {
-                return true;
+                if (Conexion.State != ConnectionState.Open)
+                    Conexion.Open();
+
+                string querySQL = $"INSERT INTO {Tabla} ({Campos}) VALUES ({Valores});";
+                Comando = new MySqlCommand(querySQL, Conexion);
+                int i = Comando.ExecuteNonQuery();
+
+                return i > 0;
             }
-            else
+            catch (Exception ex)
             {
-                return false;
+                throw new Exception($"Error al insertar en la tabla {Tabla}: {ex.Message}");
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                    Conexion.Close();
             }
         }
         //Método para generar una consulta de una tabla en específica
         public DataTable Consultar(string Campos, string Tabla)
         {
-            string querySQL = "SELECT " + Campos + " FROM " + Tabla;
-            da = new MySqlDataAdapter(querySQL, Conexion);
-            DataSet dts = new DataSet();
-            da.Fill(dts, Tabla); //Fill rellena con los datos del DataSet
-            DataTable dt = new DataTable();
-            dt = dts.Tables[Tabla]; //Corchetes porque las tablas son arreglos
-            return dt;
+            try
+            {
+                if (Conexion.State != ConnectionState.Open)
+                    Conexion.Open();
+
+                string querySQL = $"SELECT {Campos} FROM {Tabla}";
+                da = new MySqlDataAdapter(querySQL, Conexion);
+                DataSet dts = new DataSet();
+                da.Fill(dts, Tabla);
+                return dts.Tables[Tabla];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al consultar la tabla {Tabla}: {ex.Message}");
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                    Conexion.Close();
+            }
         }
         //Método para realizar todo tipo de consulta
         public void ConsultarGral(string querySQL, string Tabla)
         {
-            ds.Tables.Clear(); //Limpiar contenido del DataSet de cualquier información
-            da = new MySqlDataAdapter(querySQL, Conexion);
-            cmb = new MySqlCommandBuilder(da);
-            da.Fill(ds, Tabla);
+            try
+            {
+                ds.Tables.Clear();
+
+                if (Conexion.State != ConnectionState.Open)
+                    Conexion.Open();
+
+                da = new MySqlDataAdapter(querySQL, Conexion);
+                cmb = new MySqlCommandBuilder(da);
+                da.Fill(ds, Tabla);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al consultar datos generales: {ex.Message}");
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                    Conexion.Close();
+            }
         }
         //Método para eliminar registro de una tabla
         public bool Eliminar(string Tabla, string Condicion)
         {
-            Conexion.Open();
-            string querySQL = "DELETE FROM " + Tabla + " WHERE " + Condicion;
-            Comando = new MySqlCommand(querySQL, Conexion);
-            int i = Comando.ExecuteNonQuery(); //Ejecuta sentencia dentro del servidor
-            Conexion.Close();
-            if (i > 0) //Evaluar si la variable i devuelve un valor mayor a cero
+            try
             {
-                return true;
+                if (Conexion.State != ConnectionState.Open)
+                    Conexion.Open();
+
+                string querySQL = $"DELETE FROM {Tabla} WHERE {Condicion}";
+                Comando = new MySqlCommand(querySQL, Conexion);
+                int i = Comando.ExecuteNonQuery();
+
+                return i > 0;
             }
-            else
+            catch (Exception ex)
             {
-                return false;
+                throw new Exception($"Error al eliminar de la tabla {Tabla}: {ex.Message}");
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                    Conexion.Close();
             }
         }
         //Método para generar una consulta definiendo una condición
         public DataTable ConsultarCondicion(string Campos, string Tabla, string Condicion)
         {
-            string querySQL = "SELECT " + Campos + " FROM " + Tabla + " WHERE " + Condicion;
-            da = new MySqlDataAdapter(querySQL, Conexion);
-            DataSet dts = new DataSet();
-            da.Fill(dts, Tabla);
-            DataTable dt = new DataTable();
-            dt = dts.Tables[Tabla]; //Corchetes porque las tablas son arreglos
-            return dt;
+            try
+            {
+                if (Conexion.State != ConnectionState.Open)
+                    Conexion.Open();
+
+                string querySQL = $"SELECT {Campos} FROM {Tabla} WHERE {Condicion}";
+                da = new MySqlDataAdapter(querySQL, Conexion);
+                DataSet dts = new DataSet();
+                da.Fill(dts, Tabla);
+                return dts.Tables[Tabla];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al consultar con condición: {ex.Message}");
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                    Conexion.Close();
+            }
         }
         //Método para actualizar registro en una tabla
         public bool Actualizar(string Tabla, string Campos, string Condicion)
         {
-            Conexion.Open();
-            string querySQL = "UPDATE " + Tabla + " SET " + Campos + " WHERE " + Condicion;
-            Comando = new MySqlCommand(querySQL, Conexion);
-            int i = Comando.ExecuteNonQuery(); //Ejecuta sentencia dentro del servidor
-            Conexion.Close();
-            if (i > 0) //Evaluar si la variable i devuelve un valor mayor a cero
+            try
             {
-                return true;
+                if (Conexion.State != ConnectionState.Open)
+                    Conexion.Open();
+
+                string querySQL = $"UPDATE {Tabla} SET {Campos} WHERE {Condicion}";
+                Comando = new MySqlCommand(querySQL, Conexion);
+                int i = Comando.ExecuteNonQuery();
+
+                return i > 0;
             }
-            else
+            catch (Exception ex)
             {
-                return false;
+                throw new Exception($"Error al actualizar la tabla {Tabla}: {ex.Message}");
+            }
+            finally
+            {
+                if (Conexion.State == ConnectionState.Open)
+                    Conexion.Close();
             }
         }
 

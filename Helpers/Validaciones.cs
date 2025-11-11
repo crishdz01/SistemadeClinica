@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using MaterialSkin;
+using MaterialSkin.Controls;
+     
 namespace SistemadeClinica.Helpers
 {
     public class Validaciones
@@ -14,17 +16,31 @@ namespace SistemadeClinica.Helpers
         /// <summary>
         /// Valida que un TextBox no esté vacío o con solo espacios
         /// /// </summary>
-        public static bool ValidarNoVacio(TextBox textBox, string nombreCampo = "Este campo")
+        public static bool ValidarNoVacio(object control, string nombreCampo = "Este campo")
         {
-            if (string.IsNullOrWhiteSpace(textBox.Text))
+            string texto = "";
+
+            if (control is TextBox txt)
+                texto = txt.Text;
+            else if (control is MaterialTextBox mtxt)
+                texto = mtxt.Text;
+            else
+                throw new ArgumentException("El control no es compatible con esta validación.");
+
+            if (string.IsNullOrWhiteSpace(texto))
             {
                 MessageBox.Show($"{nombreCampo} es requerido.", "Validación",
-                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox.Focus();
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                if (control is Control c)
+                    c.Focus();
+
                 return false;
             }
+
             return true;
         }
+
         /// <summary>
         /// Valida que un ComboBox tenga una selección válida
         /// </summary>
@@ -113,28 +129,7 @@ namespace SistemadeClinica.Helpers
             return true;
         }
 
-        /// <summary>
-        /// Valida y convierte a decimal, retorna el valor y un booleano de éxito
-        /// </summary>
-        public static (bool esValido, decimal valor) ValidarYConvertirDecimal(string texto, string nombreCampo = "Este campo")
-        {
-            if (string.IsNullOrWhiteSpace(texto))
-                return (false, 0);
-            if (!ValidarNumeroDecimal(texto, nombreCampo))
-                return (false, 0);
-            if (decimal.TryParse(texto, out decimal resultado))
-            {
-                if (resultado >= 0)
-                    return (true, resultado);
-                else
-                {
-                    MessageBox.Show($"{nombreCampo} no puede ser negativo.", "Validación",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return (false, 0);
-                }
-            }
-            return (false, 0);
-        }
+
         #endregion
         #region Validaciones Específicas para Entidades
         /// <summary>
@@ -171,6 +166,38 @@ namespace SistemadeClinica.Helpers
             MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
+
+        
+        /// <summary>
+        /// Validacion que un número de teléfono tenga exactamente 8 dígitos y sea compatible con material skin
+        /// </summary>
+        public static bool ValidarTelefono(MaterialTextBox textBox, string nombreCampo = "Teléfono")
+        {
+            string texto = textBox.Text.Trim();
+
+
+            //Validacion que solo tenga números
+            if (!long.TryParse(texto, out _))
+            {
+                MessageBox.Show($"{nombreCampo} solo debe contener números.", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox.Focus();
+                return false;
+            }
+
+            //8 dígitos
+            if (texto.Length != 8)
+            {
+                MessageBox.Show($"{nombreCampo} debe tener exactamente 8 dígitos.", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+
 
         /// <summary>
         /// Valida fortaleza de contraseña

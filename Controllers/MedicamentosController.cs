@@ -12,17 +12,17 @@ namespace SistemadeClinica.Controllers
     {
         private ClaseCRUD crud = new ClaseCRUD();
 
-        public DataTable ObtenerTodosMedicamentos ()
+        public DataTable ObtenerTodosMedicamentos()
         {
             try
             {
-                string query = "SELECT Id, Nombre, Precio, Stock, Descripcion FROM medicamentos WHERE Activo = 1";
-                crud.ConsultarGral(query, "medicamentoss");
-                return crud.ds.Tables["medicamentos"];
+                string query = "SELECT Id, Nombre, Precio, Stock, Descripcion FROM Medicamentos WHERE Activo = 1";
+                crud.ConsultarGral(query, "Medicamentos");
+                return crud.ds.Tables["Medicamentos"];
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error al obtener medicamentos: {ex.Message}");
+                throw new Exception($"Error al obtener Medicamentos: {ex.Message}");
             }
         }
 
@@ -31,26 +31,27 @@ namespace SistemadeClinica.Controllers
             try
             {
                 string campos = "Nombre, Precio, Stock, Descripcion";
-                string valores = $"'{medicamento.Nombre}', {medicamento.Precio}, {medicamento.Stock}, {medicamento.Descripcion}";
-                return crud.Insertar("medicamentos", campos, valores);
+                string valores = $"'{medicamento.Nombre}', '{medicamento.Precio}', '{medicamento.Stock}', '{medicamento.Descripcion}'";
+
+                return crud.Insertar("Medicamentos", campos, valores);
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error al crear medicamentos: {ex.Message}");
+                throw new Exception($"Error al crear Medicamentos: {ex.Message}");
             }
         }
 
-        public bool ActualizarProducto(Medicamentos medicamentos)
+        public bool ActualizarMedicamento(Medicamentos medicamentos)
         {
             try
             {
-                string campos = $"Nombre='{medicamentos.Nombre}', Precio={medicamentos.Precio}, Stock={medicamentos.Stock}";
+                string campos = $"Nombre='{medicamentos.Nombre}', Precio='{medicamentos.Precio}', Stock='{medicamentos.Stock}', Descripcion='{medicamentos.Descripcion}'";
                 string condicion = $"Id = {medicamentos.Id}";
-                return crud.Actualizar("Productos", campos, condicion);
+                return crud.Actualizar("Medicamentos", campos, condicion);
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error al actualizar producto: {ex.Message}");
+                throw new Exception($"Error al actualizar Medicamentos: {ex.Message}");
             }
         }
 
@@ -60,12 +61,44 @@ namespace SistemadeClinica.Controllers
             {
                 string condicion = $"Id = {id}";
                 string campos = "Activo = 0"; // Eliminación lógica
-                return crud.Actualizar("medicamentos", campos, condicion);
+                return crud.Actualizar("Medicamentos", campos, condicion);
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error al eliminar medicamentos: {ex.Message}");
+                throw new Exception($"Error al eliminar Medicamentos: {ex.Message}");
             }
         }
+
+        public DataTable ObtenerMedicamentoPorCondicion(string condicion)
+        {
+            try
+            {
+                string query = $"SELECT Id, Nombre FROM medicamentos WHERE {condicion}";
+                return crud.ConsultarCondicion("Id, Nombre", "Medicamentos", condicion);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al obtener Medicamento por condición: {ex.Message}");
+            }
+        }
+
+        public DataTable BuscarMedicamentoPorNombreUsuario(string filtro)
+        {
+            try
+            {
+                // Escapar comillas simples para evitar inyección SQL
+                string filtroSeguro = filtro.Replace("'", "''");
+                // Construir condición (solo usuarios activos)
+                string condicion = $"LOWER(Medicamento) LIKE '%{filtroSeguro.ToLower()}%' AND Activo = 1";
+                // Seleccionar las columnas que quieres mostrar
+                string columnas = "Id, Nombre, Precio, Stock, Descripcion";
+                return crud.ConsultarCondicion(columnas, "Medicamento", condicion);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error en la búsqueda: {ex.Message}");
+            }
+        }
+
     }
 }

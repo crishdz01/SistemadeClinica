@@ -33,42 +33,32 @@ namespace SistemadeClinica.Views
         }
 
 
-
-        //Metodo para que al hacer click en usuario, el texto usuario desaparezca 
+        
+        
         private void TxtUsuario_Enter(object sender, EventArgs e)
         {
-            if(TxtUsuario.Text == "Usuario")
-            {
-                TxtUsuario.Text = "";
-            }
+            
         }
 
-        //Metodo para que al hacer click en Contraseña, el texto contraseña desaparezca 
+        
         private void TxtContrasena_Enter(object sender, EventArgs e)
         {
-            if (TxtContrasena.Text == "Contraseña")
-            {
-                TxtContrasena.Text = "";
-            }
+            
         }
 
-        //Metodo para que usuario vuelva escribirse
+        
         private void TxtUsuario_Leave(object sender, EventArgs e)
         {
-            if(TxtUsuario.Text == "")
-            {
-                TxtUsuario.Text = "Usuario";
-            }
+            
         }
 
-        //Metodo para que contraseña vuelva escribirse
+        
         private void TxtContrasena_Leave(object sender, EventArgs e)
         {
-            if(TxtContrasena.Text == "")
-            {
-                TxtContrasena.Text = "Contraseña";
-            }
+            
         }
+
+        
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
@@ -121,9 +111,9 @@ namespace SistemadeClinica.Views
             Application.Exit();
         }
 
-       
+        private void TxtUsuario_TextChanged(object sender, EventArgs e)
+        {
 
-        
-
+        }
     }
 }
