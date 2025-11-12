@@ -87,6 +87,10 @@ namespace SistemadeClinica.Views
             CargarPacientes3();
             ConfigurarModoInicial5();
 
+            //Historial
+            CargarPacientes4();
+            CargarExpedientes();
+
         }
 
         private void Inicio_Load(object sender, EventArgs e)
@@ -3163,18 +3167,470 @@ namespace SistemadeClinica.Views
 
 
 
+        //Cargar Pacientes en DgvHistorial
+        private void CargarPacientes4()
+        {
+            try
+            {
+                dtPacientes = pacientesController.ObtenerTodosPacientes();
+
+                if (dtPacientes != null && dtPacientes.Rows.Count > 0)
+                {
+
+                    DgvHistorial.DataSource = dtPacientes;
+                    ConfigurarDataGridView7();
+                }
+                else
+                {
+                    DgvHistorial.DataSource = null;
+                    MessageBox.Show("No se encontraron pacientes registrados.", "Información",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar pacientes:  {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Configuracion DataGridView
+        private void ConfigurarDataGridView7()
+        {
+            try
+            {
+                DgvHistorial.SuspendLayout();
+
+                DgvHistorial.AutoGenerateColumns = false;
+                DgvHistorial.Columns.Clear();
+
+                DgvHistorial.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Nombre",
+                    HeaderText = "Nombre",
+                    DataPropertyName = "Nombre",
+                    ReadOnly = true
+                });
+
+                DgvHistorial.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Edad",
+                    HeaderText = "Edad",
+                    DataPropertyName = "Edad",
+                    ReadOnly = true,
+
+                });
+
+                DgvHistorial.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "FechaDeNacimiento",
+                    HeaderText = "FechaDeNacimiento",
+                    DataPropertyName = "FechaDeNacimiento",
+                    ReadOnly = true,
+
+                });
+
+                DgvHistorial.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "FechaDeIngreso",
+                    HeaderText = "FechaDeIngreso",
+                    DataPropertyName = "FechaDeIngreso",
+                    ReadOnly = true,
+
+                });
+
+                DgvHistorial.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Dui",
+                    HeaderText = "Dui",
+                    DataPropertyName = "Dui",
+                    ReadOnly = true,
+
+                });
+
+                DgvHistorial.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Telefono",
+                    HeaderText = "Telefono",
+                    DataPropertyName = "Telefono",
+                    ReadOnly = true,
+
+                });
+
+                DgvHistorial.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Domicilio",
+                    HeaderText = "Domicilio",
+                    DataPropertyName = "Domicilio",
+                    ReadOnly = true,
+
+                });
+
+                DgvHistorial.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Tutor",
+                    HeaderText = "Tutor",
+                    DataPropertyName = "Tutor",
+                    ReadOnly = true,
+
+                });
+
+                DgvHistorial.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Parentesco",
+                    HeaderText = "Parentesco",
+                    DataPropertyName = "Parentesco",
+                    ReadOnly = true,
+
+                });
+
+                DgvHistorial.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "DomicilioTutor",
+                    HeaderText = "DomicilioTutor",
+                    DataPropertyName = "DomicilioTutor",
+                    ReadOnly = true,
+
+                });
+
+                DgvHistorial.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "CodigoPacientes",
+                    HeaderText = "CodigoPacientes",
+                    DataPropertyName = "CodigoPacientes",
+                    ReadOnly = true,
+
+                });
+
+                //Columna ids no visible
+                DgvHistorial.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Id",
+                    HeaderText = "Id",
+                    DataPropertyName = "Id",
+                    ReadOnly = true,
+                    Visible = false
+                });
+
+                //Columna Activo no visible
+                DgvHistorial.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Activo",
+                    HeaderText = "Activo",
+                    DataPropertyName = "Activo",
+                    ReadOnly = true,
+                    Visible = false
+                });
+
+
+                //Propiedades visuales del DataView
+                DgvHistorial.ReadOnly = true;
+                DgvHistorial.AllowUserToAddRows = false;
+                DgvHistorial.AllowUserToDeleteRows = false;
+
+                DgvHistorial.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                DgvHistorial.MultiSelect = false;
+
+                DgvHistorial.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                DgvHistorial.BackgroundColor = Color.White;
+                DgvHistorial.BorderStyle = BorderStyle.None;
+                DgvHistorial.AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue;
+                DgvHistorial.RowHeadersVisible = false;
+                DgvHistorial.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+                DgvHistorial.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                DgvHistorial.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 9, FontStyle.Regular);
+                DgvHistorial.EnableHeadersVisualStyles = false;
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error  al configurar DataGridView7: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                DgvHistorial.ResumeLayout();
+            }
+
+        }
+
+        //Boton BuscarHistoial
+        private void BtnHistoBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string filtro = TxtHistoCodigo.Text.Trim();
+
+                if (!Validaciones.ValidarNoVacio(TxtHistoCodigo, "Paciente a buscar"))
+                    return;
+
+                DataTable dt = pacientesController.BuscarPacientePorNombrePaciente(filtro);
+
+
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show($"No se encontro el paciente '{filtro}'.",
+                        "Sin resultados",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    DgvHistorial.DataSource = null;
+
+                    return;
+                }
+
+                DgvHistorial.DataSource = dt;
+
+
+                MessageBox.Show($"Se encontraron {dt.Rows.Count} pacientes(s).",
+                    "Busqueda exitosa",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error en la busqueda: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        //string Codigo = fila.Cells["CodigoPacientes"].Value?.ToString() ?? "";
+
+        //DataTable dt = expedienteController.ObtenerHistorialporCodigo(Codigo);
+
+        //ConfigurarDataGridView8();
+        //Evento para cambiar las views al hacer clic
+        private void DgvHistorial_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0) 
+                {
+                    DataGridView dgv = sender as DataGridView;
+                    DataGridViewRow fila = dgv.Rows[e.RowIndex];
+
+                    string Codigo = fila.Cells["CodigoPacientes"].Value?.ToString() ?? "";
+
+                    DataTable dt = expedienteController.ObtenerHistorialporCodigo(Codigo);
+
+                    if (dt == null || dt.Rows.Count == 0)
+                    {
+                        MessageBox.Show($"No se encontró el paciente '{Codigo}'.", "Sin resultados",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DgvHistoVerdad.DataSource = null;
+                        return;
+                    }
+
+                    DgvHistoVerdad.DataSource = dt;
+                }
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar el historial del pacientes: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        private void CargarExpedientes()
+        {
+            try
+            {
+                //dtPacientes = pacientesController.ObtenerTodosPacientes();
+                dtExpediente = expedienteController.ObtenerTodosExpediente();
+
+                if (dtExpediente != null && dtExpediente.Rows.Count > 0)
+                {
+
+                    DgvHistoVerdad.DataSource = dtExpediente;
+                    ConfigurarDataGridView8();
+                }
+                else
+                {
+                    DgvHistorial.DataSource = null;
+                    MessageBox.Show("No se encontraron expedientes registrados.", "Información",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar expedientes:  {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        //Configuracion DataGridView
+        private void ConfigurarDataGridView8()
+        {
+            try
+            {
+                DgvHistoVerdad.SuspendLayout();
+
+                DgvHistoVerdad.AutoGenerateColumns = false;
+                DgvHistoVerdad.Columns.Clear();
+
+                DgvHistoVerdad.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Nombre",
+                    HeaderText = "Nombre",
+                    DataPropertyName = "Nombre",
+                    ReadOnly = true
+                });
+
+                DgvHistoVerdad.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Edad",
+                    HeaderText = "Edad",
+                    DataPropertyName = "Edad",
+                    ReadOnly = true,
+
+                });
+
+                DgvHistoVerdad.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "FechaDeCreacionExpe",
+                    HeaderText = "FechaDeCreacionExpe",
+                    DataPropertyName = "Fecha",
+                    ReadOnly = true,
+
+                });
+
+                DgvHistoVerdad.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "MotivoConsulta",
+                    HeaderText = "MotivoConsulta",
+                    DataPropertyName = "Motivo",
+                    ReadOnly = true,
+
+                });
+
+                DgvHistoVerdad.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Padece alguna enfermedad diagnosticada",
+                    HeaderText = "Padece alguna enfermedad diagnosticada",
+                    DataPropertyName = "Padece",
+                    ReadOnly = true,
+
+                });
+
+                DgvHistoVerdad.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Padecido alguna enfermedad importante",
+                    HeaderText = "Padece alguna enfermedad importante",
+                    DataPropertyName = "Padecido",
+                    ReadOnly = true,
+
+                });
+
+                DgvHistoVerdad.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Medicamento recetado",
+                    HeaderText = "Medicamento recetado",
+                    DataPropertyName = "Medicamento",
+                    ReadOnly = true,
+
+                });
+
+                DgvHistoVerdad.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Enfermedad actual",
+                    HeaderText = "Enfermedad actual",
+                    DataPropertyName = "Enfermedad",
+                    ReadOnly = true,
+
+                });
+
+                //Columna ids no visible
+                DgvHistoVerdad.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Id",
+                    HeaderText = "Id",
+                    DataPropertyName = "Id",
+                    ReadOnly = true,
+                    Visible = false
+                });
+
+
+                DgvHistoVerdad.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Codigo",
+                    HeaderText = "Codigo",
+                    DataPropertyName = "Codigo",
+                    ReadOnly = true,
+                   
+                });
+
+
+
+
+                //Propiedades visuales del DataView
+                DgvHistoVerdad.ReadOnly = true;
+                DgvHistoVerdad.AllowUserToAddRows = false;
+                DgvHistoVerdad.AllowUserToDeleteRows = false;
+
+                DgvHistoVerdad.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                DgvHistoVerdad.MultiSelect = false;
+
+                DgvHistoVerdad.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                DgvHistoVerdad.BackgroundColor = Color.White;
+                DgvHistoVerdad.BorderStyle = BorderStyle.None;
+                DgvHistoVerdad.AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue;
+                DgvHistoVerdad.RowHeadersVisible = false;
+                DgvHistoVerdad.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+                DgvHistoVerdad.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                DgvHistoVerdad.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 9, FontStyle.Regular);
+                DgvHistoVerdad.EnableHeadersVisualStyles = false;
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error  al configurar DataGridView7: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                DgvHistoVerdad.ResumeLayout();
+            }
+
+        }
+
+        //Boon ver todos
+        private void BtnHistoVerTodos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TxtHistoCodigo.Clear();
+
+                CargarPacientes();
+                CargarExpedientes();
+                
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar pacientes: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
 
 
 
 
-
-
-
-
-
-
-
+        private void materialButton5_Click(object sender, EventArgs e)
+        {
+            
+        }
 
 
 

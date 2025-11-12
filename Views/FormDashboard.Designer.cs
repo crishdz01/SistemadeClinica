@@ -80,8 +80,8 @@ namespace SistemadeClinica.Views
             this.DgvCitas = new System.Windows.Forms.DataGridView();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.RepoMedi = new System.Windows.Forms.TabPage();
-            this.materialButton3 = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton2 = new MaterialSkin.Controls.MaterialButton();
+            this.BtnHistoBuscar = new MaterialSkin.Controls.MaterialButton();
+            this.BtnHistoVerTodos = new MaterialSkin.Controls.MaterialButton();
             this.DgvHistorial = new System.Windows.Forms.DataGridView();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.Medicamentos = new System.Windows.Forms.TabPage();
@@ -178,8 +178,10 @@ namespace SistemadeClinica.Views
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.MaterialControl = new MaterialSkin.Controls.MaterialTabControl();
-            this.materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
+            this.TxtHistoCodigo = new MaterialSkin.Controls.MaterialTextBox();
             this.materialButton5 = new MaterialSkin.Controls.MaterialButton();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.DgvHistoVerdad = new System.Windows.Forms.DataGridView();
             this.Expe.SuspendLayout();
             this.groupBox15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
@@ -233,6 +235,8 @@ namespace SistemadeClinica.Views
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.MaterialControl.SuspendLayout();
+            this.groupBox16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvHistoVerdad)).BeginInit();
             this.SuspendLayout();
             // 
             // Expe
@@ -933,10 +937,8 @@ namespace SistemadeClinica.Views
             // 
             // RepoMedi
             // 
-            this.RepoMedi.Controls.Add(this.materialButton5);
-            this.RepoMedi.Controls.Add(this.materialTextBox1);
-            this.RepoMedi.Controls.Add(this.materialButton3);
-            this.RepoMedi.Controls.Add(this.materialButton2);
+            this.RepoMedi.Controls.Add(this.DgvHistoVerdad);
+            this.RepoMedi.Controls.Add(this.groupBox16);
             this.RepoMedi.Controls.Add(this.DgvHistorial);
             this.RepoMedi.Controls.Add(this.pictureBox13);
             this.RepoMedi.Location = new System.Drawing.Point(4, 22);
@@ -946,50 +948,53 @@ namespace SistemadeClinica.Views
             this.RepoMedi.Text = "Historial Clinico";
             this.RepoMedi.UseVisualStyleBackColor = true;
             // 
-            // materialButton3
+            // BtnHistoBuscar
             // 
-            this.materialButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton3.Depth = 0;
-            this.materialButton3.DrawShadows = true;
-            this.materialButton3.HighEmphasis = true;
-            this.materialButton3.Icon = null;
-            this.materialButton3.Location = new System.Drawing.Point(381, 433);
-            this.materialButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton3.Name = "materialButton3";
-            this.materialButton3.Size = new System.Drawing.Size(99, 36);
-            this.materialButton3.TabIndex = 22;
-            this.materialButton3.Text = "      BUSCAR      ";
-            this.materialButton3.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton3.UseAccentColor = false;
-            this.materialButton3.UseVisualStyleBackColor = true;
+            this.BtnHistoBuscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnHistoBuscar.Depth = 0;
+            this.BtnHistoBuscar.DrawShadows = true;
+            this.BtnHistoBuscar.HighEmphasis = true;
+            this.BtnHistoBuscar.Icon = null;
+            this.BtnHistoBuscar.Location = new System.Drawing.Point(371, 22);
+            this.BtnHistoBuscar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnHistoBuscar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnHistoBuscar.Name = "BtnHistoBuscar";
+            this.BtnHistoBuscar.Size = new System.Drawing.Size(99, 36);
+            this.BtnHistoBuscar.TabIndex = 22;
+            this.BtnHistoBuscar.Text = "      BUSCAR      ";
+            this.BtnHistoBuscar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.BtnHistoBuscar.UseAccentColor = false;
+            this.BtnHistoBuscar.UseVisualStyleBackColor = true;
+            this.BtnHistoBuscar.Click += new System.EventHandler(this.BtnHistoBuscar_Click);
             // 
-            // materialButton2
+            // BtnHistoVerTodos
             // 
-            this.materialButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton2.Depth = 0;
-            this.materialButton2.DrawShadows = true;
-            this.materialButton2.HighEmphasis = true;
-            this.materialButton2.Icon = null;
-            this.materialButton2.Location = new System.Drawing.Point(237, 433);
-            this.materialButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton2.Name = "materialButton2";
-            this.materialButton2.Size = new System.Drawing.Size(118, 36);
-            this.materialButton2.TabIndex = 17;
-            this.materialButton2.Text = "     VER TODOS      ";
-            this.materialButton2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton2.UseAccentColor = false;
-            this.materialButton2.UseVisualStyleBackColor = true;
+            this.BtnHistoVerTodos.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnHistoVerTodos.Depth = 0;
+            this.BtnHistoVerTodos.DrawShadows = true;
+            this.BtnHistoVerTodos.HighEmphasis = true;
+            this.BtnHistoVerTodos.Icon = null;
+            this.BtnHistoVerTodos.Location = new System.Drawing.Point(229, 22);
+            this.BtnHistoVerTodos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnHistoVerTodos.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnHistoVerTodos.Name = "BtnHistoVerTodos";
+            this.BtnHistoVerTodos.Size = new System.Drawing.Size(118, 36);
+            this.BtnHistoVerTodos.TabIndex = 17;
+            this.BtnHistoVerTodos.Text = "     VER TODOS      ";
+            this.BtnHistoVerTodos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.BtnHistoVerTodos.UseAccentColor = false;
+            this.BtnHistoVerTodos.UseVisualStyleBackColor = true;
+            this.BtnHistoVerTodos.Click += new System.EventHandler(this.BtnHistoVerTodos_Click);
             // 
             // DgvHistorial
             // 
             this.DgvHistorial.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.DgvHistorial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvHistorial.Location = new System.Drawing.Point(54, 83);
+            this.DgvHistorial.Location = new System.Drawing.Point(42, 79);
             this.DgvHistorial.Name = "DgvHistorial";
-            this.DgvHistorial.Size = new System.Drawing.Size(1226, 304);
+            this.DgvHistorial.Size = new System.Drawing.Size(1226, 147);
             this.DgvHistorial.TabIndex = 16;
+            this.DgvHistorial.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvHistorial_CellClick);
             // 
             // pictureBox13
             // 
@@ -2250,20 +2255,20 @@ namespace SistemadeClinica.Views
             this.MaterialControl.Size = new System.Drawing.Size(1316, 569);
             this.MaterialControl.TabIndex = 0;
             // 
-            // materialTextBox1
+            // TxtHistoCodigo
             // 
-            this.materialTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialTextBox1.Depth = 0;
-            this.materialTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.materialTextBox1.Hint = "Buscar por Codigo de Paciente";
-            this.materialTextBox1.Location = new System.Drawing.Point(493, 419);
-            this.materialTextBox1.MaxLength = 50;
-            this.materialTextBox1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox1.Multiline = false;
-            this.materialTextBox1.Name = "materialTextBox1";
-            this.materialTextBox1.Size = new System.Drawing.Size(241, 50);
-            this.materialTextBox1.TabIndex = 23;
-            this.materialTextBox1.Text = "";
+            this.TxtHistoCodigo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtHistoCodigo.Depth = 0;
+            this.TxtHistoCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.TxtHistoCodigo.Hint = "Buscar por Codigo de Paciente";
+            this.TxtHistoCodigo.Location = new System.Drawing.Point(492, 19);
+            this.TxtHistoCodigo.MaxLength = 50;
+            this.TxtHistoCodigo.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtHistoCodigo.Multiline = false;
+            this.TxtHistoCodigo.Name = "TxtHistoCodigo";
+            this.TxtHistoCodigo.Size = new System.Drawing.Size(241, 50);
+            this.TxtHistoCodigo.TabIndex = 23;
+            this.TxtHistoCodigo.Text = "";
             // 
             // materialButton5
             // 
@@ -2272,16 +2277,39 @@ namespace SistemadeClinica.Views
             this.materialButton5.DrawShadows = true;
             this.materialButton5.HighEmphasis = true;
             this.materialButton5.Icon = null;
-            this.materialButton5.Location = new System.Drawing.Point(764, 419);
+            this.materialButton5.Location = new System.Drawing.Point(754, 22);
             this.materialButton5.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialButton5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton5.Name = "materialButton5";
-            this.materialButton5.Size = new System.Drawing.Size(118, 36);
+            this.materialButton5.Size = new System.Drawing.Size(182, 36);
             this.materialButton5.TabIndex = 24;
-            this.materialButton5.Text = "     VER TODOS      ";
+            this.materialButton5.Text = "     Exportar a excell      ";
             this.materialButton5.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.materialButton5.UseAccentColor = false;
             this.materialButton5.UseVisualStyleBackColor = true;
+            this.materialButton5.Click += new System.EventHandler(this.materialButton5_Click);
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox16.Controls.Add(this.BtnHistoVerTodos);
+            this.groupBox16.Controls.Add(this.materialButton5);
+            this.groupBox16.Controls.Add(this.BtnHistoBuscar);
+            this.groupBox16.Controls.Add(this.TxtHistoCodigo);
+            this.groupBox16.Location = new System.Drawing.Point(42, 245);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(1238, 84);
+            this.groupBox16.TabIndex = 25;
+            this.groupBox16.TabStop = false;
+            // 
+            // DgvHistoVerdad
+            // 
+            this.DgvHistoVerdad.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.DgvHistoVerdad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvHistoVerdad.Location = new System.Drawing.Point(42, 360);
+            this.DgvHistoVerdad.Name = "DgvHistoVerdad";
+            this.DgvHistoVerdad.Size = new System.Drawing.Size(1226, 147);
+            this.DgvHistoVerdad.TabIndex = 26;
             // 
             // FormDashboard
             // 
@@ -2317,7 +2345,6 @@ namespace SistemadeClinica.Views
             ((System.ComponentModel.ISupportInitialize)(this.DgvCitas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             this.RepoMedi.ResumeLayout(false);
-            this.RepoMedi.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvHistorial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             this.Medicamentos.ResumeLayout(false);
@@ -2365,6 +2392,9 @@ namespace SistemadeClinica.Views
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.MaterialControl.ResumeLayout(false);
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvHistoVerdad)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2515,11 +2545,13 @@ namespace SistemadeClinica.Views
         private MaterialSkin.Controls.MaterialButton BtnExpeLimpiar;
         private MaterialSkin.Controls.MaterialTextBox TxtExpeFecha;
         private MaterialSkin.Controls.MaterialTextBox TxtExpeRecetado;
-        private MaterialSkin.Controls.MaterialButton materialButton3;
-        private MaterialSkin.Controls.MaterialButton materialButton2;
+        private MaterialSkin.Controls.MaterialButton BtnHistoBuscar;
+        private MaterialSkin.Controls.MaterialButton BtnHistoVerTodos;
         private System.Windows.Forms.DataGridView DgvHistorial;
         private MaterialSkin.Controls.MaterialButton materialButton5;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox1;
+        private MaterialSkin.Controls.MaterialTextBox TxtHistoCodigo;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.DataGridView DgvHistoVerdad;
     }
 }
 
