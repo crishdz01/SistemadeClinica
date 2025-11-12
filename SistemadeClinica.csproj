@@ -147,6 +147,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AuthControllers.cs" />
     <Compile Include="Controllers\CitaController.cs" />
+    <Compile Include="Controllers\ExpedienteController.cs" />
     <Compile Include="Controllers\MedicamentosController.cs" />
     <Compile Include="Controllers\PacientesController.cs" />
     <Compile Include="Controllers\RolController.cs" />
@@ -154,6 +155,7 @@
     <Compile Include="Data\ClaseCRUD.cs" />
     <Compile Include="Helpers\Validaciones.cs" />
     <Compile Include="Models\Cita.cs" />
+    <Compile Include="Models\Expediente.cs" />
     <Compile Include="Models\Medicamentos.cs" />
     <Compile Include="Models\Pacientes.cs" />
     <Compile Include="Models\Rol.cs" />

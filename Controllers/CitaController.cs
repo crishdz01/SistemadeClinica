@@ -18,8 +18,13 @@ namespace SistemadeClinica.Controllers
         {
             try
             {
-                string query = "SELECT Id, Nombre, Fecha FROM citas";
+                string query = "SELECT Id, Nombre, Fecha, Hora FROM citas";
+                
                 crud.ConsultarGral(query, "citas");
+
+                crud.ConsultarGral(query, "citas");
+
+                
                 return crud.ds.Tables["citas"];
             }
             catch (Exception ex)
@@ -32,8 +37,8 @@ namespace SistemadeClinica.Controllers
         {
             try
             {
-                string campos = "Nombre, Fecha";
-                string valores = $"'{cita.NombreCompleto}', '{cita.fecha}'";
+                string campos = "Nombre, Fecha, Hora";
+                string valores = $"'{cita.NombreCompleto}', '{cita.fecha}', '{cita.Hora}'";
 
                 return crud.Insertar("citas", campos, valores);
             }
@@ -47,7 +52,7 @@ namespace SistemadeClinica.Controllers
         {
             try
             {
-                string campos = $"Nombre = '{cita.NombreCompleto}', Fecha = '{cita.fecha}'";
+                string campos = $"Nombre = '{cita.NombreCompleto}', Fecha = '{cita.fecha}', Hora = '{cita.Hora}'";
                 string condicion = $"Id = {cita.id}";
                 return crud.Actualizar("Citas", campos, condicion);
             }

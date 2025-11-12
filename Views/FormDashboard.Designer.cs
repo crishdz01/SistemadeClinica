@@ -30,24 +30,59 @@ namespace SistemadeClinica.Views
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDashboard));
-            this.Perfil = new System.Windows.Forms.TabPage();
-            this.pictureBox18 = new System.Windows.Forms.PictureBox();
             this.Expe = new System.Windows.Forms.TabPage();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.BtnExpeLimpiar = new MaterialSkin.Controls.MaterialButton();
+            this.BtnExpeCrear = new MaterialSkin.Controls.MaterialButton();
+            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.materialButton4 = new MaterialSkin.Controls.MaterialButton();
+            this.BtnExpeVerTodos = new MaterialSkin.Controls.MaterialButton();
+            this.BtnExpeBuscar = new MaterialSkin.Controls.MaterialButton();
+            this.TxtExpeBuscar = new MaterialSkin.Controls.MaterialTextBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.TxtExpeFecha = new MaterialSkin.Controls.MaterialTextBox();
+            this.TxtExpeRecetado = new MaterialSkin.Controls.MaterialTextBox();
+            this.TxtExpeEnfermedadActual = new MaterialSkin.Controls.MaterialTextBox();
+            this.TxtExpePadece = new MaterialSkin.Controls.MaterialTextBox();
+            this.TxtExpePadecido = new MaterialSkin.Controls.MaterialTextBox();
+            this.TxtExpeTomarMedi = new MaterialSkin.Controls.MaterialTextBox();
+            this.TxtExpeMotivo = new MaterialSkin.Controls.MaterialTextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.DgvExpedientePaci = new System.Windows.Forms.DataGridView();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.LblExpeCodigo = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.LblExpeEdad = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.LblExpeNombre = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.Citas = new System.Windows.Forms.TabPage();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.DgvCitasVerda = new System.Windows.Forms.DataGridView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.BtnCitasEli = new MaterialSkin.Controls.MaterialButton();
             this.BtnCitasInsertar = new MaterialSkin.Controls.MaterialButton();
             this.BtnCitasActualizar = new MaterialSkin.Controls.MaterialButton();
             this.BtnCitasLimpiar = new MaterialSkin.Controls.MaterialButton();
             this.BtnCitasVertodos = new MaterialSkin.Controls.MaterialButton();
             this.BtnCitasBuscar = new MaterialSkin.Controls.MaterialButton();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.TxtCitaCodigo = new MaterialSkin.Controls.MaterialTextBox();
+            this.TxtCitaFecha = new MaterialSkin.Controls.MaterialTextBox();
+            this.ComboBoxHoraCita = new MaterialSkin.Controls.MaterialComboBox();
+            this.LblNombreCitas = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.DgvCitas = new System.Windows.Forms.DataGridView();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.RepoMedi = new System.Windows.Forms.TabPage();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.materialButton3 = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton2 = new MaterialSkin.Controls.MaterialButton();
+            this.DgvHistorial = new System.Windows.Forms.DataGridView();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.Medicamentos = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -143,20 +178,24 @@ namespace SistemadeClinica.Views
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.MaterialControl = new MaterialSkin.Controls.MaterialTabControl();
-            this.label19 = new System.Windows.Forms.Label();
-            this.materialComboBox1 = new MaterialSkin.Controls.MaterialComboBox();
             this.materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
-            this.materialTextBox2 = new MaterialSkin.Controls.MaterialTextBox();
-            this.Perfil.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
+            this.materialButton5 = new MaterialSkin.Controls.MaterialButton();
             this.Expe.SuspendLayout();
+            this.groupBox15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            this.groupBox14.SuspendLayout();
+            this.groupBox13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvExpedientePaci)).BeginInit();
+            this.groupBox12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             this.Citas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvCitasVerda)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvCitas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             this.RepoMedi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvHistorial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             this.Medicamentos.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -196,45 +235,401 @@ namespace SistemadeClinica.Views
             this.MaterialControl.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Perfil
-            // 
-            this.Perfil.Controls.Add(this.pictureBox18);
-            this.Perfil.Location = new System.Drawing.Point(4, 22);
-            this.Perfil.Name = "Perfil";
-            this.Perfil.Size = new System.Drawing.Size(1308, 543);
-            this.Perfil.TabIndex = 8;
-            this.Perfil.Text = "Perfil";
-            this.Perfil.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox18
-            // 
-            this.pictureBox18.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox18.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox18.Image")));
-            this.pictureBox18.Location = new System.Drawing.Point(557, 3);
-            this.pictureBox18.Name = "pictureBox18";
-            this.pictureBox18.Size = new System.Drawing.Size(183, 85);
-            this.pictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox18.TabIndex = 4;
-            this.pictureBox18.TabStop = false;
-            // 
             // Expe
             // 
+            this.Expe.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Expe.Controls.Add(this.groupBox15);
+            this.Expe.Controls.Add(this.pictureBox15);
+            this.Expe.Controls.Add(this.groupBox14);
+            this.Expe.Controls.Add(this.BtnExpeVerTodos);
+            this.Expe.Controls.Add(this.BtnExpeBuscar);
+            this.Expe.Controls.Add(this.TxtExpeBuscar);
+            this.Expe.Controls.Add(this.groupBox13);
+            this.Expe.Controls.Add(this.DgvExpedientePaci);
+            this.Expe.Controls.Add(this.groupBox12);
             this.Expe.Controls.Add(this.pictureBox17);
             this.Expe.Location = new System.Drawing.Point(4, 22);
             this.Expe.Name = "Expe";
             this.Expe.Size = new System.Drawing.Size(1308, 543);
             this.Expe.TabIndex = 7;
             this.Expe.Text = "Expediente";
-            this.Expe.UseVisualStyleBackColor = true;
             this.Expe.Click += new System.EventHandler(this.Expe_Click);
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox15.Controls.Add(this.BtnExpeLimpiar);
+            this.groupBox15.Controls.Add(this.BtnExpeCrear);
+            this.groupBox15.Location = new System.Drawing.Point(953, 444);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(347, 60);
+            this.groupBox15.TabIndex = 23;
+            this.groupBox15.TabStop = false;
+            // 
+            // BtnExpeLimpiar
+            // 
+            this.BtnExpeLimpiar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnExpeLimpiar.Depth = 0;
+            this.BtnExpeLimpiar.DrawShadows = true;
+            this.BtnExpeLimpiar.HighEmphasis = true;
+            this.BtnExpeLimpiar.Icon = null;
+            this.BtnExpeLimpiar.Location = new System.Drawing.Point(193, 15);
+            this.BtnExpeLimpiar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnExpeLimpiar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnExpeLimpiar.Name = "BtnExpeLimpiar";
+            this.BtnExpeLimpiar.Size = new System.Drawing.Size(97, 36);
+            this.BtnExpeLimpiar.TabIndex = 24;
+            this.BtnExpeLimpiar.Text = "     Limpiar      ";
+            this.BtnExpeLimpiar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.BtnExpeLimpiar.UseAccentColor = false;
+            this.BtnExpeLimpiar.UseVisualStyleBackColor = true;
+            this.BtnExpeLimpiar.Click += new System.EventHandler(this.BtnExpeLimpiar_Click);
+            // 
+            // BtnExpeCrear
+            // 
+            this.BtnExpeCrear.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnExpeCrear.Depth = 0;
+            this.BtnExpeCrear.DrawShadows = true;
+            this.BtnExpeCrear.HighEmphasis = true;
+            this.BtnExpeCrear.Icon = null;
+            this.BtnExpeCrear.Location = new System.Drawing.Point(7, 15);
+            this.BtnExpeCrear.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnExpeCrear.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnExpeCrear.Name = "BtnExpeCrear";
+            this.BtnExpeCrear.Size = new System.Drawing.Size(178, 36);
+            this.BtnExpeCrear.TabIndex = 2;
+            this.BtnExpeCrear.Text = "      CREAR EXPEDIENTE      ";
+            this.BtnExpeCrear.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.BtnExpeCrear.UseAccentColor = false;
+            this.BtnExpeCrear.UseVisualStyleBackColor = true;
+            this.BtnExpeCrear.Click += new System.EventHandler(this.BtnExpeCrear_Click);
+            // 
+            // pictureBox15
+            // 
+            this.pictureBox15.Location = new System.Drawing.Point(1025, 273);
+            this.pictureBox15.Name = "pictureBox15";
+            this.pictureBox15.Size = new System.Drawing.Size(181, 162);
+            this.pictureBox15.TabIndex = 23;
+            this.pictureBox15.TabStop = false;
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox14.Controls.Add(this.materialButton4);
+            this.groupBox14.Location = new System.Drawing.Point(990, 195);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(261, 60);
+            this.groupBox14.TabIndex = 22;
+            this.groupBox14.TabStop = false;
+            // 
+            // materialButton4
+            // 
+            this.materialButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton4.Depth = 0;
+            this.materialButton4.DrawShadows = true;
+            this.materialButton4.HighEmphasis = true;
+            this.materialButton4.Icon = null;
+            this.materialButton4.Location = new System.Drawing.Point(35, 15);
+            this.materialButton4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton4.Name = "materialButton4";
+            this.materialButton4.Size = new System.Drawing.Size(171, 36);
+            this.materialButton4.TabIndex = 2;
+            this.materialButton4.Text = "      INSERTAR IMAGEN      ";
+            this.materialButton4.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton4.UseAccentColor = false;
+            this.materialButton4.UseVisualStyleBackColor = true;
+            // 
+            // BtnExpeVerTodos
+            // 
+            this.BtnExpeVerTodos.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnExpeVerTodos.Depth = 0;
+            this.BtnExpeVerTodos.DrawShadows = true;
+            this.BtnExpeVerTodos.HighEmphasis = true;
+            this.BtnExpeVerTodos.Icon = null;
+            this.BtnExpeVerTodos.Location = new System.Drawing.Point(827, 11);
+            this.BtnExpeVerTodos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnExpeVerTodos.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnExpeVerTodos.Name = "BtnExpeVerTodos";
+            this.BtnExpeVerTodos.Size = new System.Drawing.Size(118, 36);
+            this.BtnExpeVerTodos.TabIndex = 6;
+            this.BtnExpeVerTodos.Text = "     VER TODOS      ";
+            this.BtnExpeVerTodos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.BtnExpeVerTodos.UseAccentColor = false;
+            this.BtnExpeVerTodos.UseVisualStyleBackColor = true;
+            this.BtnExpeVerTodos.Click += new System.EventHandler(this.BtnExpeVerTodos_Click);
+            // 
+            // BtnExpeBuscar
+            // 
+            this.BtnExpeBuscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnExpeBuscar.Depth = 0;
+            this.BtnExpeBuscar.DrawShadows = true;
+            this.BtnExpeBuscar.HighEmphasis = true;
+            this.BtnExpeBuscar.Icon = null;
+            this.BtnExpeBuscar.Location = new System.Drawing.Point(953, 11);
+            this.BtnExpeBuscar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnExpeBuscar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnExpeBuscar.Name = "BtnExpeBuscar";
+            this.BtnExpeBuscar.Size = new System.Drawing.Size(99, 36);
+            this.BtnExpeBuscar.TabIndex = 21;
+            this.BtnExpeBuscar.Text = "      BUSCAR      ";
+            this.BtnExpeBuscar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.BtnExpeBuscar.UseAccentColor = false;
+            this.BtnExpeBuscar.UseVisualStyleBackColor = true;
+            this.BtnExpeBuscar.Click += new System.EventHandler(this.BtnExpeBuscar_Click);
+            // 
+            // TxtExpeBuscar
+            // 
+            this.TxtExpeBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtExpeBuscar.Depth = 0;
+            this.TxtExpeBuscar.Font = new System.Drawing.Font("Roboto", 12F);
+            this.TxtExpeBuscar.Hint = "Buscar por Codigo de Paciente";
+            this.TxtExpeBuscar.Location = new System.Drawing.Point(1059, 3);
+            this.TxtExpeBuscar.MaxLength = 50;
+            this.TxtExpeBuscar.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtExpeBuscar.Multiline = false;
+            this.TxtExpeBuscar.Name = "TxtExpeBuscar";
+            this.TxtExpeBuscar.Size = new System.Drawing.Size(241, 50);
+            this.TxtExpeBuscar.TabIndex = 20;
+            this.TxtExpeBuscar.Text = "";
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox13.Controls.Add(this.TxtExpeFecha);
+            this.groupBox13.Controls.Add(this.TxtExpeRecetado);
+            this.groupBox13.Controls.Add(this.TxtExpeEnfermedadActual);
+            this.groupBox13.Controls.Add(this.TxtExpePadece);
+            this.groupBox13.Controls.Add(this.TxtExpePadecido);
+            this.groupBox13.Controls.Add(this.TxtExpeTomarMedi);
+            this.groupBox13.Controls.Add(this.TxtExpeMotivo);
+            this.groupBox13.Controls.Add(this.label26);
+            this.groupBox13.Font = new System.Drawing.Font("Perpetua Titling MT", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox13.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.groupBox13.Location = new System.Drawing.Point(19, 195);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(926, 319);
+            this.groupBox13.TabIndex = 16;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Antecendentes Salud/Enfermedad";
+            // 
+            // TxtExpeFecha
+            // 
+            this.TxtExpeFecha.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtExpeFecha.Depth = 0;
+            this.TxtExpeFecha.Font = new System.Drawing.Font("Roboto", 12F);
+            this.TxtExpeFecha.Hint = "Fecha de creacion del expediente";
+            this.TxtExpeFecha.Location = new System.Drawing.Point(379, 246);
+            this.TxtExpeFecha.MaxLength = 50;
+            this.TxtExpeFecha.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtExpeFecha.Multiline = false;
+            this.TxtExpeFecha.Name = "TxtExpeFecha";
+            this.TxtExpeFecha.Size = new System.Drawing.Size(537, 50);
+            this.TxtExpeFecha.TabIndex = 21;
+            this.TxtExpeFecha.Text = "";
+            // 
+            // TxtExpeRecetado
+            // 
+            this.TxtExpeRecetado.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtExpeRecetado.Depth = 0;
+            this.TxtExpeRecetado.Font = new System.Drawing.Font("Roboto", 12F);
+            this.TxtExpeRecetado.Hint = "Medicamento recetado";
+            this.TxtExpeRecetado.Location = new System.Drawing.Point(31, 246);
+            this.TxtExpeRecetado.MaxLength = 50;
+            this.TxtExpeRecetado.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtExpeRecetado.Multiline = false;
+            this.TxtExpeRecetado.Name = "TxtExpeRecetado";
+            this.TxtExpeRecetado.Size = new System.Drawing.Size(342, 50);
+            this.TxtExpeRecetado.TabIndex = 20;
+            this.TxtExpeRecetado.Text = "";
+            // 
+            // TxtExpeEnfermedadActual
+            // 
+            this.TxtExpeEnfermedadActual.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtExpeEnfermedadActual.Depth = 0;
+            this.TxtExpeEnfermedadActual.Font = new System.Drawing.Font("Roboto", 12F);
+            this.TxtExpeEnfermedadActual.Hint = "Enfermedad Actual";
+            this.TxtExpeEnfermedadActual.Location = new System.Drawing.Point(31, 190);
+            this.TxtExpeEnfermedadActual.MaxLength = 50;
+            this.TxtExpeEnfermedadActual.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtExpeEnfermedadActual.Multiline = false;
+            this.TxtExpeEnfermedadActual.Name = "TxtExpeEnfermedadActual";
+            this.TxtExpeEnfermedadActual.Size = new System.Drawing.Size(885, 50);
+            this.TxtExpeEnfermedadActual.TabIndex = 19;
+            this.TxtExpeEnfermedadActual.Text = "";
+            // 
+            // TxtExpePadece
+            // 
+            this.TxtExpePadece.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtExpePadece.Depth = 0;
+            this.TxtExpePadece.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.TxtExpePadece.Hint = "Padece alguna enfermedad diagnosticada:";
+            this.TxtExpePadece.Location = new System.Drawing.Point(31, 78);
+            this.TxtExpePadece.MaxLength = 50;
+            this.TxtExpePadece.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtExpePadece.Multiline = false;
+            this.TxtExpePadece.Name = "TxtExpePadece";
+            this.TxtExpePadece.Size = new System.Drawing.Size(342, 50);
+            this.TxtExpePadece.TabIndex = 18;
+            this.TxtExpePadece.Text = "N/A";
+            // 
+            // TxtExpePadecido
+            // 
+            this.TxtExpePadecido.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtExpePadecido.Depth = 0;
+            this.TxtExpePadecido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.TxtExpePadecido.Hint = "Ah padecido alguna enfermedad importante:";
+            this.TxtExpePadecido.Location = new System.Drawing.Point(379, 78);
+            this.TxtExpePadecido.MaxLength = 50;
+            this.TxtExpePadecido.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtExpePadecido.Multiline = false;
+            this.TxtExpePadecido.Name = "TxtExpePadecido";
+            this.TxtExpePadecido.Size = new System.Drawing.Size(537, 50);
+            this.TxtExpePadecido.TabIndex = 16;
+            this.TxtExpePadecido.Text = "N/A";
+            // 
+            // TxtExpeTomarMedi
+            // 
+            this.TxtExpeTomarMedi.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtExpeTomarMedi.Depth = 0;
+            this.TxtExpeTomarMedi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.TxtExpeTomarMedi.Hint = "Toma algun medicamento:";
+            this.TxtExpeTomarMedi.Location = new System.Drawing.Point(31, 134);
+            this.TxtExpeTomarMedi.MaxLength = 50;
+            this.TxtExpeTomarMedi.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtExpeTomarMedi.Multiline = false;
+            this.TxtExpeTomarMedi.Name = "TxtExpeTomarMedi";
+            this.TxtExpeTomarMedi.Size = new System.Drawing.Size(885, 50);
+            this.TxtExpeTomarMedi.TabIndex = 14;
+            this.TxtExpeTomarMedi.Text = "N/A";
+            // 
+            // TxtExpeMotivo
+            // 
+            this.TxtExpeMotivo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtExpeMotivo.Depth = 0;
+            this.TxtExpeMotivo.Font = new System.Drawing.Font("Roboto", 12F);
+            this.TxtExpeMotivo.Hint = "Motivo de la consulta";
+            this.TxtExpeMotivo.Location = new System.Drawing.Point(31, 22);
+            this.TxtExpeMotivo.MaxLength = 50;
+            this.TxtExpeMotivo.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtExpeMotivo.Multiline = false;
+            this.TxtExpeMotivo.Name = "TxtExpeMotivo";
+            this.TxtExpeMotivo.Size = new System.Drawing.Size(885, 50);
+            this.TxtExpeMotivo.TabIndex = 13;
+            this.TxtExpeMotivo.Text = "";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(211, 16);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(0, 16);
+            this.label26.TabIndex = 0;
+            // 
+            // DgvExpedientePaci
+            // 
+            this.DgvExpedientePaci.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.DgvExpedientePaci.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvExpedientePaci.Location = new System.Drawing.Point(669, 56);
+            this.DgvExpedientePaci.Name = "DgvExpedientePaci";
+            this.DgvExpedientePaci.Size = new System.Drawing.Size(631, 133);
+            this.DgvExpedientePaci.TabIndex = 15;
+            this.DgvExpedientePaci.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvExpedientePaci_CellClick);
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox12.Controls.Add(this.LblExpeCodigo);
+            this.groupBox12.Controls.Add(this.label27);
+            this.groupBox12.Controls.Add(this.LblExpeEdad);
+            this.groupBox12.Controls.Add(this.label24);
+            this.groupBox12.Controls.Add(this.LblExpeNombre);
+            this.groupBox12.Controls.Add(this.label22);
+            this.groupBox12.Controls.Add(this.label23);
+            this.groupBox12.Font = new System.Drawing.Font("Perpetua Titling MT", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox12.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.groupBox12.Location = new System.Drawing.Point(19, 56);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(633, 133);
+            this.groupBox12.TabIndex = 14;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Datos generales del paciente";
+            // 
+            // LblExpeCodigo
+            // 
+            this.LblExpeCodigo.AutoSize = true;
+            this.LblExpeCodigo.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblExpeCodigo.Location = new System.Drawing.Point(180, 90);
+            this.LblExpeCodigo.Name = "LblExpeCodigo";
+            this.LblExpeCodigo.Size = new System.Drawing.Size(31, 17);
+            this.LblExpeCodigo.TabIndex = 13;
+            this.LblExpeCodigo.Text = "N/A";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(45, 90);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(129, 17);
+            this.label27.TabIndex = 12;
+            this.label27.Text = "Codigo Paciente:";
+            // 
+            // LblExpeEdad
+            // 
+            this.LblExpeEdad.AutoSize = true;
+            this.LblExpeEdad.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblExpeEdad.Location = new System.Drawing.Point(180, 63);
+            this.LblExpeEdad.Name = "LblExpeEdad";
+            this.LblExpeEdad.Size = new System.Drawing.Size(31, 17);
+            this.LblExpeEdad.TabIndex = 11;
+            this.LblExpeEdad.Text = "N/A";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(127, 63);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(47, 17);
+            this.label24.TabIndex = 10;
+            this.label24.Text = "Edad:";
+            // 
+            // LblExpeNombre
+            // 
+            this.LblExpeNombre.AutoSize = true;
+            this.LblExpeNombre.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblExpeNombre.Location = new System.Drawing.Point(180, 32);
+            this.LblExpeNombre.Name = "LblExpeNombre";
+            this.LblExpeNombre.Size = new System.Drawing.Size(31, 17);
+            this.LblExpeNombre.TabIndex = 9;
+            this.LblExpeNombre.Text = "N/A";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(15, 32);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(159, 17);
+            this.label22.TabIndex = 2;
+            this.label22.Text = "Nombre del paciente:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(211, 16);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(0, 16);
+            this.label23.TabIndex = 0;
             // 
             // pictureBox17
             // 
             this.pictureBox17.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox17.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox17.Image")));
-            this.pictureBox17.Location = new System.Drawing.Point(492, 12);
+            this.pictureBox17.Location = new System.Drawing.Point(19, 11);
             this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(285, 65);
+            this.pictureBox17.Size = new System.Drawing.Size(146, 35);
             this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox17.TabIndex = 3;
             this.pictureBox17.TabStop = false;
@@ -242,6 +637,9 @@ namespace SistemadeClinica.Views
             // Citas
             // 
             this.Citas.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Citas.Controls.Add(this.label19);
+            this.Citas.Controls.Add(this.label16);
+            this.Citas.Controls.Add(this.DgvCitasVerda);
             this.Citas.Controls.Add(this.groupBox6);
             this.Citas.Controls.Add(this.groupBox7);
             this.Citas.Controls.Add(this.DgvCitas);
@@ -252,9 +650,41 @@ namespace SistemadeClinica.Views
             this.Citas.TabIndex = 4;
             this.Citas.Text = "Citas";
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(900, 315);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(45, 17);
+            this.label19.TabIndex = 21;
+            this.label19.Text = "Citas";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(301, 315);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(77, 17);
+            this.label16.TabIndex = 20;
+            this.label16.Text = "Pacientes";
+            // 
+            // DgvCitasVerda
+            // 
+            this.DgvCitasVerda.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DgvCitasVerda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvCitasVerda.Location = new System.Drawing.Point(640, 352);
+            this.DgvCitasVerda.Name = "DgvCitasVerda";
+            this.DgvCitasVerda.Size = new System.Drawing.Size(639, 160);
+            this.DgvCitasVerda.TabIndex = 14;
+            this.DgvCitasVerda.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCitasVerda_CellClick);
+            // 
             // groupBox6
             // 
             this.groupBox6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox6.Controls.Add(this.BtnCitasEli);
             this.groupBox6.Controls.Add(this.BtnCitasInsertar);
             this.groupBox6.Controls.Add(this.BtnCitasActualizar);
             this.groupBox6.Controls.Add(this.BtnCitasLimpiar);
@@ -262,9 +692,28 @@ namespace SistemadeClinica.Views
             this.groupBox6.Controls.Add(this.BtnCitasBuscar);
             this.groupBox6.Location = new System.Drawing.Point(39, 213);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(1212, 93);
+            this.groupBox6.Size = new System.Drawing.Size(1212, 81);
             this.groupBox6.TabIndex = 12;
             this.groupBox6.TabStop = false;
+            // 
+            // BtnCitasEli
+            // 
+            this.BtnCitasEli.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnCitasEli.Depth = 0;
+            this.BtnCitasEli.DrawShadows = true;
+            this.BtnCitasEli.HighEmphasis = true;
+            this.BtnCitasEli.Icon = null;
+            this.BtnCitasEli.Location = new System.Drawing.Point(438, 22);
+            this.BtnCitasEli.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnCitasEli.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnCitasEli.Name = "BtnCitasEli";
+            this.BtnCitasEli.Size = new System.Drawing.Size(110, 36);
+            this.BtnCitasEli.TabIndex = 8;
+            this.BtnCitasEli.Text = "      ELIMINAR      ";
+            this.BtnCitasEli.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.BtnCitasEli.UseAccentColor = false;
+            this.BtnCitasEli.UseVisualStyleBackColor = true;
+            this.BtnCitasEli.Click += new System.EventHandler(this.BtnCitasEli_Click);
             // 
             // BtnCitasInsertar
             // 
@@ -273,7 +722,7 @@ namespace SistemadeClinica.Views
             this.BtnCitasInsertar.DrawShadows = true;
             this.BtnCitasInsertar.HighEmphasis = true;
             this.BtnCitasInsertar.Icon = null;
-            this.BtnCitasInsertar.Location = new System.Drawing.Point(214, 22);
+            this.BtnCitasInsertar.Location = new System.Drawing.Point(170, 22);
             this.BtnCitasInsertar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.BtnCitasInsertar.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnCitasInsertar.Name = "BtnCitasInsertar";
@@ -283,6 +732,7 @@ namespace SistemadeClinica.Views
             this.BtnCitasInsertar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.BtnCitasInsertar.UseAccentColor = false;
             this.BtnCitasInsertar.UseVisualStyleBackColor = true;
+            this.BtnCitasInsertar.Click += new System.EventHandler(this.BtnCitasInsertar_Click);
             // 
             // BtnCitasActualizar
             // 
@@ -291,7 +741,7 @@ namespace SistemadeClinica.Views
             this.BtnCitasActualizar.DrawShadows = true;
             this.BtnCitasActualizar.HighEmphasis = true;
             this.BtnCitasActualizar.Icon = null;
-            this.BtnCitasActualizar.Location = new System.Drawing.Point(351, 22);
+            this.BtnCitasActualizar.Location = new System.Drawing.Point(290, 22);
             this.BtnCitasActualizar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.BtnCitasActualizar.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnCitasActualizar.Name = "BtnCitasActualizar";
@@ -301,6 +751,7 @@ namespace SistemadeClinica.Views
             this.BtnCitasActualizar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.BtnCitasActualizar.UseAccentColor = false;
             this.BtnCitasActualizar.UseVisualStyleBackColor = true;
+            this.BtnCitasActualizar.Click += new System.EventHandler(this.BtnCitasActualizar_Click);
             // 
             // BtnCitasLimpiar
             // 
@@ -309,7 +760,7 @@ namespace SistemadeClinica.Views
             this.BtnCitasLimpiar.DrawShadows = true;
             this.BtnCitasLimpiar.HighEmphasis = true;
             this.BtnCitasLimpiar.Icon = null;
-            this.BtnCitasLimpiar.Location = new System.Drawing.Point(506, 22);
+            this.BtnCitasLimpiar.Location = new System.Drawing.Point(556, 22);
             this.BtnCitasLimpiar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.BtnCitasLimpiar.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnCitasLimpiar.Name = "BtnCitasLimpiar";
@@ -319,6 +770,7 @@ namespace SistemadeClinica.Views
             this.BtnCitasLimpiar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.BtnCitasLimpiar.UseAccentColor = false;
             this.BtnCitasLimpiar.UseVisualStyleBackColor = true;
+            this.BtnCitasLimpiar.Click += new System.EventHandler(this.BtnCitasLimpiar_Click);
             // 
             // BtnCitasVertodos
             // 
@@ -327,7 +779,7 @@ namespace SistemadeClinica.Views
             this.BtnCitasVertodos.DrawShadows = true;
             this.BtnCitasVertodos.HighEmphasis = true;
             this.BtnCitasVertodos.Icon = null;
-            this.BtnCitasVertodos.Location = new System.Drawing.Point(756, 22);
+            this.BtnCitasVertodos.Location = new System.Drawing.Point(788, 22);
             this.BtnCitasVertodos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.BtnCitasVertodos.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnCitasVertodos.Name = "BtnCitasVertodos";
@@ -337,6 +789,7 @@ namespace SistemadeClinica.Views
             this.BtnCitasVertodos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.BtnCitasVertodos.UseAccentColor = false;
             this.BtnCitasVertodos.UseVisualStyleBackColor = true;
+            this.BtnCitasVertodos.Click += new System.EventHandler(this.BtnCitasVertodos_Click);
             // 
             // BtnCitasBuscar
             // 
@@ -345,7 +798,7 @@ namespace SistemadeClinica.Views
             this.BtnCitasBuscar.DrawShadows = true;
             this.BtnCitasBuscar.HighEmphasis = true;
             this.BtnCitasBuscar.Icon = null;
-            this.BtnCitasBuscar.Location = new System.Drawing.Point(633, 22);
+            this.BtnCitasBuscar.Location = new System.Drawing.Point(675, 22);
             this.BtnCitasBuscar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.BtnCitasBuscar.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnCitasBuscar.Name = "BtnCitasBuscar";
@@ -355,14 +808,15 @@ namespace SistemadeClinica.Views
             this.BtnCitasBuscar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.BtnCitasBuscar.UseAccentColor = false;
             this.BtnCitasBuscar.UseVisualStyleBackColor = true;
+            this.BtnCitasBuscar.Click += new System.EventHandler(this.BtnCitasBuscar_Click);
             // 
             // groupBox7
             // 
             this.groupBox7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.groupBox7.Controls.Add(this.materialTextBox2);
-            this.groupBox7.Controls.Add(this.materialTextBox1);
-            this.groupBox7.Controls.Add(this.materialComboBox1);
-            this.groupBox7.Controls.Add(this.label19);
+            this.groupBox7.Controls.Add(this.TxtCitaCodigo);
+            this.groupBox7.Controls.Add(this.TxtCitaFecha);
+            this.groupBox7.Controls.Add(this.ComboBoxHoraCita);
+            this.groupBox7.Controls.Add(this.LblNombreCitas);
             this.groupBox7.Controls.Add(this.label17);
             this.groupBox7.Controls.Add(this.label18);
             this.groupBox7.Font = new System.Drawing.Font("Perpetua Titling MT", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -374,15 +828,77 @@ namespace SistemadeClinica.Views
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Gestión de citas";
             // 
+            // TxtCitaCodigo
+            // 
+            this.TxtCitaCodigo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtCitaCodigo.Depth = 0;
+            this.TxtCitaCodigo.Font = new System.Drawing.Font("Roboto", 12F);
+            this.TxtCitaCodigo.Hint = "Buscar por Codigo de Paciente";
+            this.TxtCitaCodigo.Location = new System.Drawing.Point(712, 56);
+            this.TxtCitaCodigo.MaxLength = 50;
+            this.TxtCitaCodigo.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtCitaCodigo.Multiline = false;
+            this.TxtCitaCodigo.Name = "TxtCitaCodigo";
+            this.TxtCitaCodigo.Size = new System.Drawing.Size(241, 50);
+            this.TxtCitaCodigo.TabIndex = 19;
+            this.TxtCitaCodigo.Text = "";
+            // 
+            // TxtCitaFecha
+            // 
+            this.TxtCitaFecha.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtCitaFecha.Depth = 0;
+            this.TxtCitaFecha.Font = new System.Drawing.Font("Roboto", 12F);
+            this.TxtCitaFecha.Hint = "Fecha de Cita";
+            this.TxtCitaFecha.Location = new System.Drawing.Point(189, 57);
+            this.TxtCitaFecha.MaxLength = 50;
+            this.TxtCitaFecha.MouseState = MaterialSkin.MouseState.OUT;
+            this.TxtCitaFecha.Multiline = false;
+            this.TxtCitaFecha.Name = "TxtCitaFecha";
+            this.TxtCitaFecha.Size = new System.Drawing.Size(263, 50);
+            this.TxtCitaFecha.TabIndex = 17;
+            this.TxtCitaFecha.Text = "";
+            // 
+            // ComboBoxHoraCita
+            // 
+            this.ComboBoxHoraCita.AutoResize = false;
+            this.ComboBoxHoraCita.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ComboBoxHoraCita.Depth = 0;
+            this.ComboBoxHoraCita.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.ComboBoxHoraCita.DropDownHeight = 174;
+            this.ComboBoxHoraCita.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBoxHoraCita.DropDownWidth = 121;
+            this.ComboBoxHoraCita.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.ComboBoxHoraCita.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ComboBoxHoraCita.FormattingEnabled = true;
+            this.ComboBoxHoraCita.Hint = "Hora Cita";
+            this.ComboBoxHoraCita.IntegralHeight = false;
+            this.ComboBoxHoraCita.ItemHeight = 43;
+            this.ComboBoxHoraCita.Location = new System.Drawing.Point(468, 56);
+            this.ComboBoxHoraCita.MaxDropDownItems = 4;
+            this.ComboBoxHoraCita.MouseState = MaterialSkin.MouseState.OUT;
+            this.ComboBoxHoraCita.Name = "ComboBoxHoraCita";
+            this.ComboBoxHoraCita.Size = new System.Drawing.Size(226, 49);
+            this.ComboBoxHoraCita.TabIndex = 15;
+            // 
+            // LblNombreCitas
+            // 
+            this.LblNombreCitas.AutoSize = true;
+            this.LblNombreCitas.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblNombreCitas.Location = new System.Drawing.Point(180, 32);
+            this.LblNombreCitas.Name = "LblNombreCitas";
+            this.LblNombreCitas.Size = new System.Drawing.Size(31, 17);
+            this.LblNombreCitas.TabIndex = 9;
+            this.LblNombreCitas.Text = "N/A";
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(20, 31);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(141, 17);
+            this.label17.Size = new System.Drawing.Size(159, 17);
             this.label17.TabIndex = 2;
-            this.label17.Text = "Nombre Completo:";
+            this.label17.Text = "Nombre del paciente:";
             this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // label18
@@ -395,13 +911,12 @@ namespace SistemadeClinica.Views
             // 
             // DgvCitas
             // 
-            this.DgvCitas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DgvCitas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.DgvCitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvCitas.Location = new System.Drawing.Point(30, 335);
+            this.DgvCitas.Location = new System.Drawing.Point(39, 352);
             this.DgvCitas.Name = "DgvCitas";
-            this.DgvCitas.Size = new System.Drawing.Size(1221, 160);
+            this.DgvCitas.Size = new System.Drawing.Size(595, 160);
             this.DgvCitas.TabIndex = 12;
             this.DgvCitas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCitas_CellClick);
             // 
@@ -418,33 +933,71 @@ namespace SistemadeClinica.Views
             // 
             // RepoMedi
             // 
-            this.RepoMedi.Controls.Add(this.reportViewer1);
+            this.RepoMedi.Controls.Add(this.materialButton5);
+            this.RepoMedi.Controls.Add(this.materialTextBox1);
+            this.RepoMedi.Controls.Add(this.materialButton3);
+            this.RepoMedi.Controls.Add(this.materialButton2);
+            this.RepoMedi.Controls.Add(this.DgvHistorial);
             this.RepoMedi.Controls.Add(this.pictureBox13);
             this.RepoMedi.Location = new System.Drawing.Point(4, 22);
             this.RepoMedi.Name = "RepoMedi";
             this.RepoMedi.Size = new System.Drawing.Size(1308, 543);
             this.RepoMedi.TabIndex = 3;
-            this.RepoMedi.Text = "Reportes";
+            this.RepoMedi.Text = "Historial Clinico";
             this.RepoMedi.UseVisualStyleBackColor = true;
             // 
-            // reportViewer1
+            // materialButton3
             // 
-            this.reportViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.reportViewer1.Location = new System.Drawing.Point(22, 88);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1268, 400);
-            this.reportViewer1.TabIndex = 3;
+            this.materialButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton3.Depth = 0;
+            this.materialButton3.DrawShadows = true;
+            this.materialButton3.HighEmphasis = true;
+            this.materialButton3.Icon = null;
+            this.materialButton3.Location = new System.Drawing.Point(381, 433);
+            this.materialButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton3.Name = "materialButton3";
+            this.materialButton3.Size = new System.Drawing.Size(99, 36);
+            this.materialButton3.TabIndex = 22;
+            this.materialButton3.Text = "      BUSCAR      ";
+            this.materialButton3.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton3.UseAccentColor = false;
+            this.materialButton3.UseVisualStyleBackColor = true;
+            // 
+            // materialButton2
+            // 
+            this.materialButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton2.Depth = 0;
+            this.materialButton2.DrawShadows = true;
+            this.materialButton2.HighEmphasis = true;
+            this.materialButton2.Icon = null;
+            this.materialButton2.Location = new System.Drawing.Point(237, 433);
+            this.materialButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton2.Name = "materialButton2";
+            this.materialButton2.Size = new System.Drawing.Size(118, 36);
+            this.materialButton2.TabIndex = 17;
+            this.materialButton2.Text = "     VER TODOS      ";
+            this.materialButton2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton2.UseAccentColor = false;
+            this.materialButton2.UseVisualStyleBackColor = true;
+            // 
+            // DgvHistorial
+            // 
+            this.DgvHistorial.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.DgvHistorial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvHistorial.Location = new System.Drawing.Point(54, 83);
+            this.DgvHistorial.Name = "DgvHistorial";
+            this.DgvHistorial.Size = new System.Drawing.Size(1226, 304);
+            this.DgvHistorial.TabIndex = 16;
             // 
             // pictureBox13
             // 
             this.pictureBox13.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
-            this.pictureBox13.Location = new System.Drawing.Point(428, 17);
+            this.pictureBox13.Location = new System.Drawing.Point(493, 12);
             this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(441, 65);
+            this.pictureBox13.Size = new System.Drawing.Size(335, 51);
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox13.TabIndex = 2;
             this.pictureBox13.TabStop = false;
@@ -1685,9 +2238,8 @@ namespace SistemadeClinica.Views
             this.MaterialControl.Controls.Add(this.tabPage1);
             this.MaterialControl.Controls.Add(this.Medicamentos);
             this.MaterialControl.Controls.Add(this.Citas);
-            this.MaterialControl.Controls.Add(this.RepoMedi);
             this.MaterialControl.Controls.Add(this.Expe);
-            this.MaterialControl.Controls.Add(this.Perfil);
+            this.MaterialControl.Controls.Add(this.RepoMedi);
             this.MaterialControl.Depth = 0;
             this.MaterialControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MaterialControl.Location = new System.Drawing.Point(0, 0);
@@ -1698,67 +2250,38 @@ namespace SistemadeClinica.Views
             this.MaterialControl.Size = new System.Drawing.Size(1316, 569);
             this.MaterialControl.TabIndex = 0;
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(164, 32);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(31, 17);
-            this.label19.TabIndex = 9;
-            this.label19.Text = "N/A";
-            // 
-            // materialComboBox1
-            // 
-            this.materialComboBox1.AutoResize = false;
-            this.materialComboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialComboBox1.Depth = 0;
-            this.materialComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.materialComboBox1.DropDownHeight = 174;
-            this.materialComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.materialComboBox1.DropDownWidth = 121;
-            this.materialComboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.materialComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialComboBox1.FormattingEnabled = true;
-            this.materialComboBox1.Hint = "Hora Cita";
-            this.materialComboBox1.IntegralHeight = false;
-            this.materialComboBox1.ItemHeight = 43;
-            this.materialComboBox1.Location = new System.Drawing.Point(468, 56);
-            this.materialComboBox1.MaxDropDownItems = 4;
-            this.materialComboBox1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialComboBox1.Name = "materialComboBox1";
-            this.materialComboBox1.Size = new System.Drawing.Size(226, 49);
-            this.materialComboBox1.TabIndex = 15;
-            // 
             // materialTextBox1
             // 
             this.materialTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.materialTextBox1.Depth = 0;
             this.materialTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.materialTextBox1.Hint = "Fecha de Cita";
-            this.materialTextBox1.Location = new System.Drawing.Point(189, 57);
+            this.materialTextBox1.Hint = "Buscar por Codigo de Paciente";
+            this.materialTextBox1.Location = new System.Drawing.Point(493, 419);
             this.materialTextBox1.MaxLength = 50;
             this.materialTextBox1.MouseState = MaterialSkin.MouseState.OUT;
             this.materialTextBox1.Multiline = false;
             this.materialTextBox1.Name = "materialTextBox1";
-            this.materialTextBox1.Size = new System.Drawing.Size(263, 50);
-            this.materialTextBox1.TabIndex = 17;
+            this.materialTextBox1.Size = new System.Drawing.Size(241, 50);
+            this.materialTextBox1.TabIndex = 23;
             this.materialTextBox1.Text = "";
             // 
-            // materialTextBox2
+            // materialButton5
             // 
-            this.materialTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialTextBox2.Depth = 0;
-            this.materialTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.materialTextBox2.Hint = "Buscar por Codigo de Paciente";
-            this.materialTextBox2.Location = new System.Drawing.Point(712, 56);
-            this.materialTextBox2.MaxLength = 50;
-            this.materialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox2.Multiline = false;
-            this.materialTextBox2.Name = "materialTextBox2";
-            this.materialTextBox2.Size = new System.Drawing.Size(241, 50);
-            this.materialTextBox2.TabIndex = 19;
-            this.materialTextBox2.Text = "";
+            this.materialButton5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton5.Depth = 0;
+            this.materialButton5.DrawShadows = true;
+            this.materialButton5.HighEmphasis = true;
+            this.materialButton5.Icon = null;
+            this.materialButton5.Location = new System.Drawing.Point(764, 419);
+            this.materialButton5.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton5.Name = "materialButton5";
+            this.materialButton5.Size = new System.Drawing.Size(118, 36);
+            this.materialButton5.TabIndex = 24;
+            this.materialButton5.Text = "     VER TODOS      ";
+            this.materialButton5.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton5.UseAccentColor = false;
+            this.materialButton5.UseVisualStyleBackColor = true;
             // 
             // FormDashboard
             // 
@@ -1771,11 +2294,22 @@ namespace SistemadeClinica.Views
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de gestión de clinica";
             this.Load += new System.EventHandler(this.Inicio_Load);
-            this.Perfil.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             this.Expe.ResumeLayout(false);
+            this.Expe.PerformLayout();
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvExpedientePaci)).EndInit();
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             this.Citas.ResumeLayout(false);
+            this.Citas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvCitasVerda)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox7.ResumeLayout(false);
@@ -1783,6 +2317,8 @@ namespace SistemadeClinica.Views
             ((System.ComponentModel.ISupportInitialize)(this.DgvCitas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             this.RepoMedi.ResumeLayout(false);
+            this.RepoMedi.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvHistorial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             this.Medicamentos.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
@@ -1834,9 +2370,6 @@ namespace SistemadeClinica.Views
         }
 
         #endregion
-
-        private System.Windows.Forms.TabPage Perfil;
-        private System.Windows.Forms.PictureBox pictureBox18;
         private System.Windows.Forms.TabPage Expe;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.TabPage Citas;
@@ -1852,7 +2385,6 @@ namespace SistemadeClinica.Views
         private System.Windows.Forms.DataGridView DgvCitas;
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.TabPage RepoMedi;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.PictureBox pictureBox13;
         private System.Windows.Forms.TabPage Medicamentos;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -1948,10 +2480,46 @@ namespace SistemadeClinica.Views
         private System.Windows.Forms.PictureBox pictureBox9;
         private MaterialSkin.Controls.MaterialTabControl MaterialControl;
         private MaterialSkin.Controls.MaterialButton materialButton1;
-        private MaterialSkin.Controls.MaterialComboBox materialComboBox1;
+        private MaterialSkin.Controls.MaterialComboBox ComboBoxHoraCita;
+        private System.Windows.Forms.Label LblNombreCitas;
+        private MaterialSkin.Controls.MaterialTextBox TxtCitaFecha;
+        private MaterialSkin.Controls.MaterialTextBox TxtCitaCodigo;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.DataGridView DgvCitasVerda;
+        private MaterialSkin.Controls.MaterialButton BtnCitasEli;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Label LblExpeNombre;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private MaterialSkin.Controls.MaterialTextBox TxtExpePadece;
+        private MaterialSkin.Controls.MaterialTextBox TxtExpePadecido;
+        private MaterialSkin.Controls.MaterialTextBox TxtExpeTomarMedi;
+        private MaterialSkin.Controls.MaterialTextBox TxtExpeMotivo;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.DataGridView DgvExpedientePaci;
+        private System.Windows.Forms.Label LblExpeEdad;
+        private System.Windows.Forms.Label label24;
+        private MaterialSkin.Controls.MaterialButton BtnExpeBuscar;
+        private MaterialSkin.Controls.MaterialTextBox TxtExpeBuscar;
+        private MaterialSkin.Controls.MaterialTextBox TxtExpeEnfermedadActual;
+        private System.Windows.Forms.Label LblExpeCodigo;
+        private System.Windows.Forms.Label label27;
+        private MaterialSkin.Controls.MaterialButton materialButton4;
+        private MaterialSkin.Controls.MaterialButton BtnExpeVerTodos;
+        private System.Windows.Forms.PictureBox pictureBox15;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private MaterialSkin.Controls.MaterialButton BtnExpeCrear;
+        private MaterialSkin.Controls.MaterialButton BtnExpeLimpiar;
+        private MaterialSkin.Controls.MaterialTextBox TxtExpeFecha;
+        private MaterialSkin.Controls.MaterialTextBox TxtExpeRecetado;
+        private MaterialSkin.Controls.MaterialButton materialButton3;
+        private MaterialSkin.Controls.MaterialButton materialButton2;
+        private System.Windows.Forms.DataGridView DgvHistorial;
+        private MaterialSkin.Controls.MaterialButton materialButton5;
         private MaterialSkin.Controls.MaterialTextBox materialTextBox1;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox2;
     }
 }
 

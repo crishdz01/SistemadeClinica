@@ -11,6 +11,6 @@ namespace SistemadeClinica.Models
         public int id { get; set; }
         public string NombreCompleto { get; set; }
         public string fecha { get; set; }
-        public string Hora { get;set }
+        public string Hora { get; set; }
     }
 }

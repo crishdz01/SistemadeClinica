@@ -47,9 +47,20 @@ namespace SistemadeClinica.Controllers
         {
             try
             {
-                //                                                                                                                                                                                                                                                                                                                  
-                string campos = $"Nombre='{pacientes.Nombre}', Edad='{pacientes.Edad}', FechaDeNacimiento='{pacientes.FechaNacimiento}', FechaDeIngreso='{pacientes.FechaIngreso}', Dui='{pacientes.DUI}', Telefono='{pacientes.Telefono}', Domicilio='{pacientes.Domicilio}', Tutor='{pacientes.Tutor}', Parentesco='{pacientes.Parentesco}', DomicilioTutor='{pacientes.DomicilioTutor}', CodigoPacientesr='{pacientes.CodigoPaciente}'";
-                string condicion = $"Id = {pacientes.Id}";
+                string campos = $"Nombre='{pacientes.Nombre}', " +
+                                $"Edad='{pacientes.Edad}', " +
+                                $"FechaDeNacimiento='{pacientes.FechaNacimiento}', " +
+                                $"FechaDeIngreso='{pacientes.FechaIngreso}', " +
+                                $"Dui='{pacientes.DUI}', " +
+                                $"Telefono='{pacientes.Telefono}', " +
+                                $"Domicilio='{pacientes.Domicilio}', " +
+                                $"Tutor='{pacientes.Tutor}', " +
+                                $"Parentesco='{pacientes.Parentesco}', " +
+                                $"DomicilioTutor='{pacientes.DomicilioTutor}'";
+
+                
+                string condicion = $"CodigoPacientes = {pacientes.CodigoPaciente}";
+
                 return crud.Actualizar("pacientes", campos, condicion);
             }
             catch (Exception ex)
@@ -58,7 +69,8 @@ namespace SistemadeClinica.Controllers
             }
         }
 
-        
+
+
 
         public DataTable ObtenerPacientesPorCondicion(string condicion)
         {
@@ -107,7 +119,7 @@ namespace SistemadeClinica.Controllers
                 // Escapar comillas simples para evitar inyección SQL
                 string filtroSeguro = filtro.Replace("'", "''");
                 // Construir condición (solo usuarios activos)
-                string condicion = $"LOWER(pacientes) LIKE '%{filtroSeguro.ToLower()}%' AND Activo = 1";
+                string condicion = $"LOWER(CodigoPacientes) LIKE '%{filtroSeguro.ToLower()}%' AND Activo = 1";
                 // Seleccionar las columnas que quieres mostrar
                 string columnas = "Id, Nombre, Edad, FechaDeNacimiento, FechaDeIngreso, Dui, Telefono, Domicilio, Tutor, Parentesco, DomicilioTutor, CodigoPacientes";
                 return crud.ConsultarCondicion(columnas, "pacientes", condicion);

@@ -40,6 +40,12 @@ namespace SistemadeClinica.Views
         private int pacienteSeleccionado = 0;
         private PacientesController pacientesController;
         private DataTable dtPacientes;
+
+        //Metodos para expediente
+        private int expedienteSeleccionado = 0;
+        private ExpedienteController expedienteController;
+        private DataTable dtExpediente;
+
         public FormDashboard()
         {
             
@@ -50,6 +56,7 @@ namespace SistemadeClinica.Views
             usuarioController = new UsuarioControllers();
             citaController = new CitaController();
             pacientesController = new PacientesController();
+            expedienteController = new ExpedienteController();
 
             //Usuarios
             PersonalizarFormulario();
@@ -64,18 +71,28 @@ namespace SistemadeClinica.Views
             CargarMedicamentos();
 
             //Citas
+            ConfigurarModoInicial3();
+            ConfigurarModoInicial4();
             CargarCitas();
+            CargarHora();
+            CargarPacientes2();
 
             //Pacientes
             CargarPacientes();
+            //Sondiferentes
             CargarParientes();
+
+
+            //Expediente
+            CargarPacientes3();
+            ConfigurarModoInicial5();
 
         }
 
         private void Inicio_Load(object sender, EventArgs e)
         {
 
-            this.reportViewer1.RefreshReport();
+            
         }
 
 
@@ -222,7 +239,6 @@ namespace SistemadeClinica.Views
             }
         }
 
-        
 
         //Metodo para configurar la vista del DataView
         private void ConfigurarDataGriwView()
@@ -1406,96 +1422,64 @@ namespace SistemadeClinica.Views
         }
 
 
-        /*
-          **********************************************************************************************************************************************************************
-          -------------------------------------FIN DE PESTAÑA MEDICAMENTOS---------------------------------------------------------------------------------------------
-          **********************************************************************************************************************************************************************
-         */
 
         /*
           **********************************************************************************************************************************************************************
-          ---------------------------------------REPORTE--------------------------------------------------------------------------------------------------
-          **********************************************************************************************************************************************************************
-         */
-        private void FormReporteMedicamentos_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                // Instancia del controlador (ajusta el nombre de tu clase si difiere)
-                MedicamentosController controller = new MedicamentosController();
-                DataTable dt = controller.ObtenerTodosMedicamentos();
-
-                if (dt == null || dt.Rows.Count == 0)
-                {
-                    MessageBox.Show("No hay medicamentos para mostrar en el reporte.", "Aviso",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                //  Usa exactamente el nombre del dataset del RDLC: DataSet1
-                ReportDataSource fuente = new ReportDataSource("DataSetMedicamentos", dt);
-
-                reportViewer1.LocalReport.DataSources.Clear();
-                reportViewer1.LocalReport.DataSources.Add(fuente);
-
-                //  Ajusta la ruta según tu estructura
-                string ruta = System.IO.Path.Combine(Application.StartupPath, "Views", "ReportMedicamentos.rdlc");
-                reportViewer1.LocalReport.ReportPath = ruta;
-
-                reportViewer1.RefreshReport();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar el reporte: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        /*
-          **********************************************************************************************************************************************************************
-          ---------------------------------------FIN DE REPORTE---------------------------------------------------------------------------------------------
-          **********************************************************************************************************************************************************************
-         */
-
-        /*
-          **********************************************************************************************************************************************************************
-          ---------------------------------------PESTAÑA CITAS---------------------------------------------------------------------------------------------
+          ------------------------------------------------------------PESTAÑA CITAS---------------------------------------------------------------------------------------------
           **********************************************************************************************************************************************************************
          */
 
         //Ocultar botones indispensables
         private void ConfigurarModoInicial3()
         {
-            DtnEliminar.Enabled = false;
+            
+            BtnCitasInsertar.Enabled = false;
             BtnCitasActualizar.Enabled = false;
+            BtnCitasEli.Enabled = false;
+            
         }
 
-        private void CargarCitas()
+        //Cambio de color
+        private void CambiarColorFormularioEdicion5()
+        {
+            Color colorEdicion = Color.LightYellow;
+            TxtCitaCodigo.BackColor = colorEdicion;
+            TxtCitaFecha.BackColor = colorEdicion;
+
+        }
+
+
+
+
+        //DataGridView Pacientes
+        //Cargar Pacientes en DgvCitas
+        private void CargarPacientes2()
         {
             try
             {
-                dtCitas = citaController.ObtenerTodasCitas();
+                dtPacientes = pacientesController.ObtenerTodosPacientes();
 
-                if (dtCitas != null && dtCitas.Rows.Count > 0)
+                if (dtPacientes != null && dtPacientes.Rows.Count > 0)
                 {
 
-                    DgvCitas.DataSource = dtCitas;
+                    DgvCitas.DataSource = dtPacientes;
                     ConfigurarDataGridView3();
                 }
                 else
                 {
                     DgvCitas.DataSource = null;
-                    MessageBox.Show("No se encontraron citas registrados.", "Información",
+                    MessageBox.Show("No se encontraron pacientes registrados.", "Información",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al cargar citas:  {ex.Message}", "Error",
+                MessageBox.Show($"Error al cargar pacientes:  {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        //Configuracion DataGridView
         private void ConfigurarDataGridView3()
         {
             try
@@ -1508,20 +1492,100 @@ namespace SistemadeClinica.Views
                 DgvCitas.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     Name = "Nombre",
-                    HeaderText = "Nombre Completo",
+                    HeaderText = "Nombre",
                     DataPropertyName = "Nombre",
                     ReadOnly = true
                 });
 
                 DgvCitas.Columns.Add(new DataGridViewTextBoxColumn
                 {
-                    Name = "Fecha",
-                    HeaderText = "Fecha",
-                    DataPropertyName = "Fecha",
+                    Name = "Edad",
+                    HeaderText = "Edad",
+                    DataPropertyName = "Edad",
                     ReadOnly = true,
-                    
+
                 });
 
+                DgvCitas.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "FechaDeNacimiento",
+                    HeaderText = "FechaDeNacimiento",
+                    DataPropertyName = "FechaDeNacimiento",
+                    ReadOnly = true,
+
+                });
+
+                DgvCitas.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "FechaDeIngreso",
+                    HeaderText = "FechaDeIngreso",
+                    DataPropertyName = "FechaDeIngreso",
+                    ReadOnly = true,
+
+                });
+
+                DgvCitas.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Dui",
+                    HeaderText = "Dui",
+                    DataPropertyName = "Dui",
+                    ReadOnly = true,
+
+                });
+
+                DgvCitas.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Telefono",
+                    HeaderText = "Telefono",
+                    DataPropertyName = "Telefono",
+                    ReadOnly = true,
+
+                });
+
+                DgvCitas.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Domicilio",
+                    HeaderText = "Domicilio",
+                    DataPropertyName = "Domicilio",
+                    ReadOnly = true,
+
+                });
+
+                DgvCitas.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Tutor",
+                    HeaderText = "Tutor",
+                    DataPropertyName = "Tutor",
+                    ReadOnly = true,
+
+                });
+
+                DgvCitas.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Parentesco",
+                    HeaderText = "Parentesco",
+                    DataPropertyName = "Parentesco",
+                    ReadOnly = true,
+
+                });
+
+                DgvCitas.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "DomicilioTutor",
+                    HeaderText = "DomicilioTutor",
+                    DataPropertyName = "DomicilioTutor",
+                    ReadOnly = true,
+
+                });
+
+                DgvCitas.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "CodigoPacientes",
+                    HeaderText = "CodigoPacientes",
+                    DataPropertyName = "CodigoPacientes",
+                    ReadOnly = true,
+
+                });
 
                 //Columna ids no visible
                 DgvCitas.Columns.Add(new DataGridViewTextBoxColumn
@@ -1533,8 +1597,15 @@ namespace SistemadeClinica.Views
                     Visible = false
                 });
 
-
-
+                //Columna Activo no visible
+                DgvCitas.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Activo",
+                    HeaderText = "Activo",
+                    DataPropertyName = "Activo",
+                    ReadOnly = true,
+                    Visible = false
+                });
 
 
                 //Propiedades visuales del DataView
@@ -1560,7 +1631,7 @@ namespace SistemadeClinica.Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error  al configurar DataGridView3: {ex.Message}", "Error",
+                MessageBox.Show($"Error  al configurar DataGridView: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
@@ -1570,73 +1641,252 @@ namespace SistemadeClinica.Views
 
         }
 
+        //Evento para cambiar las views al hacer clic
         private void DgvCitas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
+                LimpiarFormulario3();
+
                 if (e.RowIndex < 0) return;
 
                 DataGridViewRow fila = DgvCitas.Rows[e.RowIndex];
 
-                if (fila.Cells["Id"].Value != null)
-                {
-                    citaSeleccionada = Convert.ToInt32(fila.Cells["Id"].Value);
-                }
-
-                MateTxtNombre.Text = fila.Cells["Nombre"].Value?.ToString() ?? "";
-                MateTxtCitas.Text = fila.Cells["Fecha"].Value?.ToString() ?? "";
+                
+                LblNombreCitas.Text = fila.Cells["Nombre"].Value?.ToString() ?? "";
+                
 
 
+                
 
-                //CambiarColorFormularioEdicion3();
-                DtnEliminar.Enabled = true;
-                BtnCitasActualizar.Enabled = true;
+
+                CambiarColorFormularioEdicion5();
+                BtnCitasInsertar.Enabled = true;
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al cargar datos del citas: {ex.Message}", "Error",
+                MessageBox.Show($"Error al cargar datos del pacientes: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void CambiarColorFormularioEdicion3()
+        //Metodo para agregar los parientes al combo box
+        private void CargarHora()
         {
-            Color colorEdicion = Color.LightYellow;
-            XtxNombreMedi.BackColor = colorEdicion;
-            XtxPrecioMedi.BackColor = colorEdicion;
-            XtxStockMedi.BackColor = colorEdicion;
-            XtxDescripMedi.BackColor = colorEdicion;
+            ComboBoxHoraCita.Items.Clear();
+
+            ComboBoxHoraCita.Items.Add("8:00 AM - 12:00MD");
+            ComboBoxHoraCita.Items.Add("1:00 PM - 4:00PM");
+            
+
+            ComboBoxHoraCita.SelectedIndex = 0;
+
+            ComboBoxHoraCita.DropDownStyle = ComboBoxStyle.DropDownList;
+
         }
+
+
+
+
+
+        //DataGridView Citas
+        //Cargar citas
+        private void CargarCitas()
+        {
+            try
+            {
+                
+                dtCitas = citaController.ObtenerTodasCitas();
+
+                //DgvCitasVerda.Columns.Clear();
+
+
+                if (dtCitas != null && dtCitas.Rows.Count > 0)
+                {
+                    ConfigurarDataGridView5();
+                    
+                    DgvCitasVerda.DataSource = dtCitas;
+                    
+                }
+                else
+                {
+                    DgvCitasVerda.DataSource = null;
+                    MessageBox.Show("No se encontraron citas registrados.", "Información",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar citas:  {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Configuracion DataGridView
+        private void ConfigurarDataGridView5()
+        {
+            try
+            {
+                DgvCitasVerda.SuspendLayout();
+
+                DgvCitasVerda.AutoGenerateColumns = false;
+                DgvCitasVerda.Columns.Clear();
+
+
+                //Columna ids no visible
+                DgvCitasVerda.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Id",
+                    HeaderText = "Id",
+                    DataPropertyName = "Id",
+                    ReadOnly = true,
+                    Visible = false
+                });
+
+                DgvCitasVerda.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Nombre",
+                    HeaderText = "Nombre",
+                    DataPropertyName = "Nombre",
+                    ReadOnly = true
+                });
+
+                DgvCitasVerda.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Fecha",
+                    HeaderText = "Fecha",
+                    DataPropertyName = "Fecha",
+                    ReadOnly = true,
+
+                });
+
+                DgvCitasVerda.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Hora",
+                    HeaderText = "Hora",
+                    DataPropertyName = "Hora",
+                    ReadOnly = true,
+
+                });
+
+                
+
+
+
+
+                //Propiedades visuales del DataView
+                DgvCitasVerda.ReadOnly = true;
+                DgvCitasVerda.AllowUserToAddRows = false;
+                DgvCitasVerda.AllowUserToDeleteRows = false;
+
+                DgvCitasVerda.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                DgvCitasVerda.MultiSelect = false;
+
+                DgvCitasVerda.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                DgvCitasVerda.BackgroundColor = Color.White;
+                DgvCitasVerda.BorderStyle = BorderStyle.None;
+                DgvCitasVerda.AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue;
+                DgvCitasVerda.RowHeadersVisible = false;
+                DgvCitasVerda.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+                DgvCitasVerda.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                DgvCitasVerda.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 9, FontStyle.Regular);
+                DgvCitasVerda.EnableHeadersVisualStyles = false;
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error  al configurar DataGridView: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                DgvCitasVerda.ResumeLayout();
+            }
+
+        }
+
+        //Evento para cambiar las views al hacer clic
+        private void DgvCitasVerda_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                LimpiarFormulario3();
+                if (e.RowIndex < 0) return;
+
+                DataGridViewRow fila = DgvCitasVerda.Rows[e.RowIndex];
+
+                if (fila.Cells["Id"].Value != null)
+                {
+                    citaSeleccionada = Convert.ToInt32(fila.Cells["Id"].Value);
+                    
+
+                }
+
+
+                LblNombreCitas.Text = fila.Cells["Nombre"].Value?.ToString() ?? "";
+                TxtCitaFecha.Text = fila.Cells["Fecha"].Value?.ToString() ?? "";
+
+                string hora = fila.Cells["Hora"].Value?.ToString() ?? "";
+                if (!string.IsNullOrEmpty(hora))
+                {
+                    ComboBoxHoraCita.Text = hora;
+                }
+
+
+                
+                CambiarColorFormularioEdicion5();
+
+                BtnCitasInsertar.Enabled = false;
+                BtnCitasActualizar.Enabled = true;
+                BtnCitasEli.Enabled = true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar datos de la cita: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
 
         //Metodo para cambiar el color cuando no se edita
         private void RestaurarColorFormulario3()
         {
             Color colorNormal = Color.White;
-            XtxNombreMedi.BackColor = colorNormal;
-            XtxPrecioMedi.BackColor = colorNormal;
-            XtxStockMedi.BackColor = colorNormal;
-            XtxDescripMedi.BackColor = colorNormal;
+            TxtCitaCodigo.BackColor = colorNormal;
+            TxtCitaFecha.BackColor = colorNormal;
+            
 
         }
 
+        //LimpiarFormulario
         private void LimpiarFormulario3()
         {
             citaSeleccionada = 0;
 
-            MateTxtNombre.Clear();
-            MateTxtCitas.Clear();
-            ;
+            LblNombreCitas.Text = "N/A";
+            TxtCitaCodigo.Clear();
+            TxtCitaFecha.Clear();
+
+            ComboBoxHoraCita.SelectedIndex = 0;
+            
 
 
             RestaurarColorFormulario3();
 
-            DtnEliminar.Enabled = false;
+            BtnCitasInsertar.Enabled = false;
             BtnCitasActualizar.Enabled = false;
+            BtnCitasEli.Enabled = false;
         }
 
-
-        private void DtnInsertar_Click(object sender, EventArgs e)
+        //Boton Ingresar
+        private void BtnCitasInsertar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -1650,13 +1900,15 @@ namespace SistemadeClinica.Views
                 }
 
                 //Validaciones Simples
+                if (!Validaciones.ValidarNoVacio(TxtCitaFecha, "Cita Fecha")) return;
+                if (!Validaciones.ValidarLongitud(TxtCitaFecha.Text, 10, 10, "Fecha de la cita")) return;
 
-                if (!Validaciones.ValidarNoVacio(MateTxtNombre, "Nombre")) return;
+                //Validar ComboBox
+                if (!Validaciones.ValidarComboBox2(ComboBoxHoraCita, "Hora cita")) return;
 
-                if (!Validaciones.ValidarNoVacio(MateTxtCitas, "Fecha")) return;
 
                 var confirmacion = MessageBox.Show(
-                    $"¿Esta seguro de crear los datos de la cita: {MateTxtNombre.Text}?",
+                    $"¿Esta seguro de crear los datos de la cita: {LblNombreCitas}?",
                     "Confirmar Actualización",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -1664,9 +1916,9 @@ namespace SistemadeClinica.Views
 
                 Cita cita = new Cita
                 {
-                    NombreCompleto = MateTxtNombre.Text,
-                    fecha = MateTxtCitas.Text
-
+                    NombreCompleto = LblNombreCitas.Text,
+                    fecha = TxtCitaFecha.Text,
+                    Hora = ComboBoxHoraCita.SelectedItem.ToString(),
                 };
 
                 bool resultado = citaController.CrearCita(cita);
@@ -1686,10 +1938,9 @@ namespace SistemadeClinica.Views
             }
         }
 
-
-        private void DtnActualizar_Click(object sender, EventArgs e)
+        //Boton Actualizar
+        private void BtnCitasActualizar_Click(object sender, EventArgs e)
         {
-
             try
             {
                 if (citaSeleccionada == 0)
@@ -1702,13 +1953,15 @@ namespace SistemadeClinica.Views
                 }
 
                 //Validaciones Simples
-                if (!Validaciones.ValidarNoVacio(MateTxtNombre, "Nombre")) return;
+                if (!Validaciones.ValidarNoVacio(TxtCitaFecha, "Cita Fecha")) return;
+                if (!Validaciones.ValidarLongitud(TxtCitaFecha.Text, 10, 10, "Fecha de la cita")) return;
 
-                if (!Validaciones.ValidarNoVacio(MateTxtCitas, "Fecha")) return;
+                //Validar ComboBox
+                if (!Validaciones.ValidarComboBox2(ComboBoxHoraCita, "Hora cita")) return;
 
 
                 var confirmacion = MessageBox.Show(
-                    $"¿Esta seguro de actualizar los datos de la cita: {XtxNombreMedi.Text}?",
+                    $"¿Esta seguro de actualizar los datos de la cita: {LblNombreCitas.Text}?",
                     "Confirmar Actualización",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -1719,13 +1972,13 @@ namespace SistemadeClinica.Views
                 Cita cita = new Cita
                 {
                     id = citaSeleccionada,
-                    NombreCompleto = MateTxtNombre.Text,
-                    fecha = MateTxtCitas.Text
-
+                    NombreCompleto = LblNombreCitas.Text,
+                    fecha = TxtCitaFecha.Text,
+                    Hora = ComboBoxHoraCita.SelectedItem.ToString(),
                 };
 
                 bool resultado = citaController.ActualizarCita(cita);
-                
+
 
                 if (resultado)
                 {
@@ -1747,7 +2000,8 @@ namespace SistemadeClinica.Views
             }
         }
 
-        private void DtnEliminar_Click(object sender, EventArgs e)
+        //Boton Eliminar
+        private void BtnCitasEli_Click(object sender, EventArgs e)
         {
             try
             {
@@ -1765,11 +2019,11 @@ namespace SistemadeClinica.Views
 
                 if (confirmacion != DialogResult.Yes) return;
 
-                bool resultado = citaController.EliminarCitas(medicamentoSeleccionado);
+                bool resultado = citaController.EliminarCitas(citaSeleccionada);
 
                 if (resultado)
                 {
-                    MessageBox.Show("Cita Exitosamente.");
+                    MessageBox.Show("Cita eliminada Exitosamente.");
                     LimpiarFormulario3();
                     CargarCitas();
                 }
@@ -1781,33 +2035,34 @@ namespace SistemadeClinica.Views
             }
         }
 
-        private void DtnBuscar_Click(object sender, EventArgs e)
+        //Boton Buscar
+        private void BtnCitasBuscar_Click(object sender, EventArgs e)
         {
             try
             {
-                string filtro = MateTxtNombre.Text.Trim();
+                string filtro = TxtCitaCodigo.Text.Trim();
 
-                if (!Validaciones.ValidarNoVacio(MateTxtNombre, "Cita a buscar"))
+                if (!Validaciones.ValidarNoVacio(TxtCitaCodigo, "Paciente a buscar"))
                     return;
 
-                DataTable dt = citaController.BuscarCitaPorNombreUsuario(filtro);
-                LimpiarFormulario3();
+                DataTable dt = pacientesController.BuscarPacientePorNombrePaciente(filtro);
+                LimpiarFormulario4();
 
                 if (dt == null || dt.Rows.Count == 0)
                 {
-                    MessageBox.Show($"No se encontro la cita '{filtro}'.",
+                    MessageBox.Show($"No se encontro el paciente '{filtro}'.",
                         "Sin resultados",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     DgvCitas.DataSource = null;
-                    LimpiarFormulario3();
+                    
                     return;
                 }
 
                 DgvCitas.DataSource = dt;
-                LimpiarFormulario3();
+                
 
-                MessageBox.Show($"Se encontraron {dt.Rows.Count} cita.",
+                MessageBox.Show($"Se encontraron {dt.Rows.Count} pacientes(s).",
                     "Busqueda exitosa",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -1820,27 +2075,32 @@ namespace SistemadeClinica.Views
             }
         }
 
-        private void DtnVertodos_Click(object sender, EventArgs e)
+        //Boton ver todos
+        private void BtnCitasVertodos_Click(object sender, EventArgs e)
         {
             try
             {
-                MateTxtNombre.Clear();
+                LblNombreCitas.Text = "N/A";
 
                 CargarCitas();
+                CargarPacientes2();
                 LimpiarFormulario3();
 
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al cargar citas: {ex.Message}",
+                MessageBox.Show($"Error al cargar: {ex.Message}",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void DtnLimpiar_Click(object sender, EventArgs e)
+
+        //Boton Limpiar
+        private void BtnCitasLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarFormulario3();
         }
+
 
         /*
          ************************************************************************************************************************************
@@ -2332,6 +2592,8 @@ namespace SistemadeClinica.Views
                 if (!Validaciones.ValidarRango(codigopaciente, 0, 9999999999, "Codigo de paciente")) return;
                 if (!Validaciones.ValidarComboBox2(ComboBoxParientes, "Parientes")) return;
 
+                
+
                 //Validacion Edad
                 if (edad < 0 && edad > 200)
                 {
@@ -2342,7 +2604,7 @@ namespace SistemadeClinica.Views
                 }
 
 
-                if (!ValidarPacienteUnico(TxtPacientesCodigo.Text)) return;
+                
 
 
                 var confirmacion = MessageBox.Show(
@@ -2498,6 +2760,418 @@ namespace SistemadeClinica.Views
          ************************************************************************************************************************************
         */
 
+        /*
+          **********************************************************************************************************************************************************************
+          ------------------------------------------------------------PESTAÑA EXPEDIENETE---------------------------------------------------------------------------------------
+          **********************************************************************************************************************************************************************
+         */
+
+        //Ocultar botones indispensables
+        private void ConfigurarModoInicial5()
+        {
+
+            BtnExpeCrear.Enabled = false;
+
+        }
+
+        //Metodo para cambiar el color cuando se edita
+        private void CambiarColorFormularioEdicion6()
+        {
+            Color colorEdicion = Color.LightYellow;
+            TxtExpeEnfermedadActual.BackColor = colorEdicion;
+            TxtExpeMotivo.BackColor = colorEdicion;
+            TxtExpePadece.BackColor = colorEdicion;
+            TxtExpePadecido.BackColor = colorEdicion;
+            TxtExpeTomarMedi.BackColor = colorEdicion;
+            TxtExpeRecetado.BackColor = colorEdicion;
+            TxtExpeFecha.BackColor = colorEdicion;
+        }
+
+        //DataGridView Pacientes
+        //Cargar Pacientes en DgvCitas
+        private void CargarPacientes3()
+        {
+            try
+            {
+                dtPacientes = pacientesController.ObtenerTodosPacientes();
+
+                if (dtPacientes != null && dtPacientes.Rows.Count > 0)
+                {
+
+                    DgvExpedientePaci.DataSource = dtPacientes;
+                    ConfigurarDataGridView6();
+                }
+                else
+                {
+                    DgvExpedientePaci.DataSource = null;
+                    MessageBox.Show("No se encontraron pacientes registrados.", "Información",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar pacientes:  {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Configuracion DataGridView
+        private void ConfigurarDataGridView6()
+        {
+            try
+            {
+                DgvExpedientePaci.SuspendLayout();
+
+                DgvExpedientePaci.AutoGenerateColumns = false;
+                DgvExpedientePaci.Columns.Clear();
+
+                DgvExpedientePaci.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Nombre",
+                    HeaderText = "Nombre",
+                    DataPropertyName = "Nombre",
+                    ReadOnly = true
+                });
+
+                DgvExpedientePaci.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Edad",
+                    HeaderText = "Edad",
+                    DataPropertyName = "Edad",
+                    ReadOnly = true,
+
+                });
+
+                DgvExpedientePaci.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "FechaDeNacimiento",
+                    HeaderText = "FechaDeNacimiento",
+                    DataPropertyName = "FechaDeNacimiento",
+                    ReadOnly = true,
+
+                });
+
+                DgvExpedientePaci.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "FechaDeIngreso",
+                    HeaderText = "FechaDeIngreso",
+                    DataPropertyName = "FechaDeIngreso",
+                    ReadOnly = true,
+
+                });
+
+                DgvExpedientePaci.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Dui",
+                    HeaderText = "Dui",
+                    DataPropertyName = "Dui",
+                    ReadOnly = true,
+
+                });
+
+                DgvExpedientePaci.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Telefono",
+                    HeaderText = "Telefono",
+                    DataPropertyName = "Telefono",
+                    ReadOnly = true,
+
+                });
+
+                DgvExpedientePaci.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Domicilio",
+                    HeaderText = "Domicilio",
+                    DataPropertyName = "Domicilio",
+                    ReadOnly = true,
+
+                });
+
+                DgvExpedientePaci.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Tutor",
+                    HeaderText = "Tutor",
+                    DataPropertyName = "Tutor",
+                    ReadOnly = true,
+
+                });
+
+                DgvExpedientePaci.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Parentesco",
+                    HeaderText = "Parentesco",
+                    DataPropertyName = "Parentesco",
+                    ReadOnly = true,
+
+                });
+
+                DgvExpedientePaci.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "DomicilioTutor",
+                    HeaderText = "DomicilioTutor",
+                    DataPropertyName = "DomicilioTutor",
+                    ReadOnly = true,
+
+                });
+
+                DgvExpedientePaci.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "CodigoPacientes",
+                    HeaderText = "CodigoPacientes",
+                    DataPropertyName = "CodigoPacientes",
+                    ReadOnly = true,
+
+                });
+
+                //Columna ids no visible
+                DgvExpedientePaci.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Id",
+                    HeaderText = "Id",
+                    DataPropertyName = "Id",
+                    ReadOnly = true,
+                    Visible = false
+                });
+
+                //Columna Activo no visible
+                DgvExpedientePaci.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Activo",
+                    HeaderText = "Activo",
+                    DataPropertyName = "Activo",
+                    ReadOnly = true,
+                    Visible = false
+                });
+
+
+                //Propiedades visuales del DataView
+                DgvExpedientePaci.ReadOnly = true;
+                DgvExpedientePaci.AllowUserToAddRows = false;
+                DgvExpedientePaci.AllowUserToDeleteRows = false;
+
+                DgvExpedientePaci.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                DgvExpedientePaci.MultiSelect = false;
+
+                DgvExpedientePaci.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                DgvExpedientePaci.BackgroundColor = Color.White;
+                DgvExpedientePaci.BorderStyle = BorderStyle.None;
+                DgvExpedientePaci.AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue;
+                DgvExpedientePaci.RowHeadersVisible = false;
+                DgvExpedientePaci.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+                DgvExpedientePaci.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                DgvExpedientePaci.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 9, FontStyle.Regular);
+                DgvExpedientePaci.EnableHeadersVisualStyles = false;
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error  al configurar DataGridView: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                DgvExpedientePaci.ResumeLayout();
+            }
+
+        }
+
+        //Evento para cambiar las views al hacer clic
+        private void DgvExpedientePaci_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //LimpiarFormulario3();
+
+                if (e.RowIndex < 0) return;
+
+                DataGridViewRow fila = DgvExpedientePaci.Rows[e.RowIndex];
+
+
+                LblExpeNombre.Text = fila.Cells["Nombre"].Value?.ToString() ?? "";
+                LblExpeEdad.Text = fila.Cells["Edad"].Value?.ToString() ?? "";
+                LblExpeCodigo.Text = fila.Cells["CodigoPacientes"].Value?.ToString() ?? "";
+
+
+
+
+                CambiarColorFormularioEdicion6();
+                BtnExpeCrear.Enabled = true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar datos del pacientes: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Limpiar Formulario
+        private void LimpiarFormulario5()
+        {
+            expedienteSeleccionado = 0;
+
+            TxtExpeMotivo.Clear();
+
+            TxtExpePadece.Text = "N/A";
+            TxtExpePadecido.Text = "N/A";
+            TxtExpeTomarMedi.Text = "N/A";
+            TxtExpeRecetado.Clear();
+            TxtExpeFecha.Clear();
+
+            TxtExpeEnfermedadActual.Clear();
+            
+
+
+            RestaurarColorFormulario5();
+
+            BtnExpeCrear.Enabled = false;
+
+        }
+
+        //Metodo para cambiar el color cuando no se edita
+        private void RestaurarColorFormulario5()
+        {
+            Color colorEdicion2 = Color.White;
+            TxtExpeEnfermedadActual.BackColor = colorEdicion2;
+            TxtExpeMotivo.BackColor = colorEdicion2;
+            TxtExpePadece.BackColor = colorEdicion2;
+            TxtExpePadecido.BackColor = colorEdicion2;
+            TxtExpeTomarMedi.BackColor = colorEdicion2;
+            TxtExpeRecetado.BackColor = colorEdicion2;
+            TxtExpeFecha.BackColor = colorEdicion2;
+
+        }
+        
+        //Boton Crear
+        private void BtnExpeCrear_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (expedienteSeleccionado > 0)
+                {
+                    MessageBox.Show("Esta en modo edicion, Para crear un nuevo paciente, " +
+                        "Primero llene el formulario con los datos correctos.", "Modo edicion",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimpiarFormulario5();
+                    return;
+                }
+
+                //Validaciones Simples
+                if (!Validaciones.ValidarNoVacio(TxtExpeMotivo, "Motivo")) return;
+                if (!Validaciones.ValidarNoVacio(TxtExpeEnfermedadActual, "Enfermedad")) return;
+                if (!Validaciones.ValidarNoVacio(TxtExpeFecha, "Fecha")) return;
+                if (!Validaciones.ValidarNoVacio(TxtExpeRecetado, "Medicamento Recetado")) return;
+
+                Expediente expediente = new Expediente()
+                {
+                    Motivo = TxtExpeMotivo.Text,
+                    Padece = TxtExpePadece.Text,
+                    Padecido = TxtExpePadecido.Text,
+                    Enfermedad = TxtExpeTomarMedi.Text,
+                    Nombre = LblExpeNombre.Text,
+                    Edad = LblExpeEdad.Text,
+                    Codigo = LblExpeCodigo.Text,
+                    Medicamento = TxtExpeRecetado.Text,
+                    Fecha = TxtExpeFecha.Text
+                };
+
+                bool resultado = expedienteController.CrearExpediente(expediente);
+
+                
+
+                if (resultado)
+                {
+                    MessageBox.Show("Expediente creado exitosamente.", "Exito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimpiarFormulario4();
+                    CargarPacientes();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al guardar expediente: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Boton Limpiar
+        private void BtnExpeLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarFormulario5();
+        }
+
+        //Boton Buscar
+        private void BtnExpeBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string filtro = TxtExpeBuscar.Text.Trim();
+
+                if (!Validaciones.ValidarNoVacio(TxtExpeBuscar, "Paciente a buscar"))
+                    return;
+
+                DataTable dt = pacientesController.BuscarPacientePorNombrePaciente(filtro);
+                
+
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show($"No se encontro el paciente '{filtro}'.",
+                        "Sin resultados",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    DgvExpedientePaci.DataSource = null;
+
+                    return;
+                }
+
+                DgvExpedientePaci.DataSource = dt;
+
+
+                MessageBox.Show($"Se encontraron {dt.Rows.Count} pacientes(s).",
+                    "Busqueda exitosa",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error en la busqueda: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Boton VerTodos
+        private void BtnExpeVerTodos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TxtExpeBuscar.Clear();
+
+                CargarPacientes3();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar pacientes: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2533,5 +3207,7 @@ namespace SistemadeClinica.Views
         {
 
         }
+
+        
     }
 }
